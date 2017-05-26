@@ -1,0 +1,33 @@
+Èlenovia tímu: Michal Románek a Richard Trembeckı
+
+Aplikácia: Drink tracker
+
+Aplikácia slúi na kontrolovanie mnostva zakúpenıch nápojov v bare, najmä pri stretnutiach väèších skupín ¾udí. Pouívate¾ si behom veèera v aplikácii vdy naklikne nápoj, ktorı si práve objedná, aby si to nemusel zapisova niekam na papier a neskôr, keï bude potrebova odís a zaplati, bude hneï vedie, èo všetko si behom veèera objednal. Zároveò si môe aj nastavi cenu jednotlivıch nápojov, a bude behom veèera vdy vedie, ko¾ko bude dokopy plati bez potreby poèítania.
+Navyše, pouívate¾ môe v nastaveniach zada svoje fyzické údaje, a na základe vypitıch nápojov behom veèera mu bude aplikácia poèíta mnostvo alkoholu v krvi a èas, kedy bude môc sadnú za volant.
+
+
+Databáza:
+- Uívatelia (kolekcia)
+  - Úèty (kolekcia)
+    - Poloky (kolekcia)
+      - Nápoj (id)
+      - Èas pridania
+    - Deò/Èas vytvorenia
+- Nápoje (kolekcia)
+  - Názov - string
+  - Objem (kolekcia) - int
+  - Percento alkoholu (kolekcia) - int
+  - Ceny (kolekcia) - int
+
+eng:
+- Accounts (kolekcia)
+  - Bills (kolekcia)
+    - Item (kolekcia)
+      - Drink (id)
+      - Time added
+    - Day/Time created
+- Drink (kolekcia)
+  - Name - string
+  - Volume - int
+  - Alcohol by volume (kolekcia) - int
+  - Price (kolekcia) - int
