@@ -46,11 +46,16 @@
     </xs:sequence>
     <xs:attribute blend:Format="Time" name="Time_added" type="xs:string" />
     <xs:attribute blend:Format="Date" name="Date_added" type="xs:string" />
+    <xs:attribute name="Image" type="tns:Basic-Image" />
+    <xs:attribute blend:FormatParameters="2,8" name="Name" type="xs:string" />
   </xs:complexType>
   <xs:complexType name="Drink">
     <xs:attribute blend:FormatParameters="2,8" name="Name" type="xs:string" />
-    <xs:attribute blend:FormatParameters="2" name="Volume" type="xs:double" />
-    <xs:attribute blend:FormatParameters="2" name="ABV" type="xs:double" />
+    <xs:attribute name="Volume" type="xs:double" />
+    <xs:attribute name="ABV" type="xs:double" />
     <xs:attribute blend:Format="Price" name="Price" type="xs:string" />
   </xs:complexType>
+  <xs:simpleType name="Basic-Image">
+    <xs:restriction base="xs:anyURI" />
+  </xs:simpleType>
 </xs:schema>

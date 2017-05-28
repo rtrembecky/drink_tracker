@@ -8,7 +8,9 @@ Navyše, pouívate¾ môe v nastaveniach zada svoje fyzické údaje, a na základe v
 
 Databáza:
 - Uívatelia (kolekcia)
+  - Meno - string
   - Úèty (kolekcia)
+    - Vlastnı názov - string
     - Poloky (kolekcia)
       - Nápoj (id)
       - Èas pridania
@@ -21,7 +23,9 @@ Databáza:
 
 eng:
 - Accounts (kolekcia)
+  - Username - string
   - Bills (kolekcia)
+    - Custom name - string
     - Item (kolekcia)
       - Drink (id)
       - Time added

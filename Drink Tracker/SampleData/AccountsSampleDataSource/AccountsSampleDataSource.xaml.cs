@@ -47,6 +47,56 @@ namespace Blend.SampleData.AccountsSampleDataSource
         }
     }
 
+    public class Accounts : System.Collections.ObjectModel.ObservableCollection<AccountsItem>
+    { 
+    }
+
+    public class AccountsItem : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            if (this.PropertyChanged != null)
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        private Bills _Bills = new Bills();
+
+        public Bills Bills
+        {
+            get
+            {
+                return this._Bills;
+            }
+        }
+
+        private string _Username = string.Empty;
+
+        public string Username
+        {
+            get
+            {
+                return this._Username;
+            }
+
+            set
+            {
+                if (this._Username != value)
+                {
+                    this._Username = value;
+                    this.OnPropertyChanged("Username");
+                }
+            }
+        }
+    }
+
+    public class Bills : System.Collections.ObjectModel.ObservableCollection<BillsItem>
+    { 
+    }
+
     public class BillsItem : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -127,53 +177,7 @@ namespace Blend.SampleData.AccountsSampleDataSource
         }
     }
 
-    public class AccountsItem : INotifyPropertyChanged
-    {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            if (this.PropertyChanged != null)
-            {
-                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
-
-        private Bills _Bills = new Bills();
-
-        public Bills Bills
-        {
-            get
-            {
-                return this._Bills;
-            }
-        }
-
-        private string _Username = string.Empty;
-
-        public string Username
-        {
-            get
-            {
-                return this._Username;
-            }
-
-            set
-            {
-                if (this._Username != value)
-                {
-                    this._Username = value;
-                    this.OnPropertyChanged("Username");
-                }
-            }
-        }
-    }
-
-    public class Accounts : System.Collections.ObjectModel.ObservableCollection<AccountsItem>
-    { 
-    }
-
-    public class Bills : System.Collections.ObjectModel.ObservableCollection<BillsItem>
+    public class Items : System.Collections.ObjectModel.ObservableCollection<ItemsItem>
     { 
     }
 
@@ -245,10 +249,44 @@ namespace Blend.SampleData.AccountsSampleDataSource
                 }
             }
         }
-    }
 
-    public class Items : System.Collections.ObjectModel.ObservableCollection<ItemsItem>
-    { 
+        private Windows.UI.Xaml.Media.ImageSource _Image = null;
+
+        public Windows.UI.Xaml.Media.ImageSource Image
+        {
+            get
+            {
+                return this._Image;
+            }
+
+            set
+            {
+                if (this._Image != value)
+                {
+                    this._Image = value;
+                    this.OnPropertyChanged("Image");
+                }
+            }
+        }
+
+        private string _Name = string.Empty;
+
+        public string Name
+        {
+            get
+            {
+                return this._Name;
+            }
+
+            set
+            {
+                if (this._Name != value)
+                {
+                    this._Name = value;
+                    this.OnPropertyChanged("Name");
+                }
+            }
+        }
     }
 
     public class Drink : INotifyPropertyChanged

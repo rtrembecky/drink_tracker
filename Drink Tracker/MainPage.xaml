@@ -13,9 +13,6 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Border Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}" Width="110" Height="110">
-                    <Image Height="110" Width="110"/>
-                </Border>
                 <StackPanel Grid.Column="1" Margin="10,0,0,0">
                     <TextBlock Text="{Binding Username}" Style="{StaticResource TitleTextBlockStyle}"/>
                     <TextBlock Text="Subtitle" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap"/>
