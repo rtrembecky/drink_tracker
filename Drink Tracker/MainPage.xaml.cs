@@ -29,7 +29,7 @@ namespace Drink_Tracker
 
         private void AccountsList_ItemClick(object sender, ItemClickEventArgs e)
         {
-            this.Frame.Navigate(typeof(Bills));
+            this.Frame.Navigate(typeof(Bills), e.ClickedItem);
         }
     }
 }
