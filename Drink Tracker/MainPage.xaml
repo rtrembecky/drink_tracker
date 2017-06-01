@@ -22,7 +22,7 @@
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" DataContext="{Binding Source={StaticResource AccountsSampleDataSource}}">
-        <ListView x:Name="AccountsList" ItemTemplate="{StaticResource AccountsItemTemplate}" ItemsSource="{Binding Accounts}" ItemClick="AccountsList_ItemClick" IsItemClickEnabled="True">
+        <ListView x:Name="AccountsList" ItemTemplate="{StaticResource AccountsItemTemplate}" ItemsSource="{Binding Accounts}" ItemClick="AccountsList_ItemClick" IsItemClickEnabled="True" SelectionMode="None">
 
         </ListView>
     </Grid>
