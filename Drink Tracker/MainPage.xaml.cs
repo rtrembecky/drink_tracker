@@ -26,5 +26,10 @@ namespace Drink_Tracker
         {
             this.InitializeComponent();
         }
+
+        private void AccountsList_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            this.Frame.Navigate(typeof(Bills));
+        }
     }
 }

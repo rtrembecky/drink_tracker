@@ -8,7 +8,7 @@
     mc:Ignorable="d">
     <Page.Resources>
         <DataTemplate x:Key="AccountsItemTemplate">
-            <Grid Height="110" Width="480" Margin="10" >
+            <Grid Height="30" Width="480" Margin="10" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
@@ -22,7 +22,7 @@
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" DataContext="{Binding Source={StaticResource AccountsSampleDataSource}}">
-        <ListView x:Name="AccountsList" ItemTemplate="{StaticResource AccountsItemTemplate}" ItemsSource="{Binding Accounts}">
+        <ListView x:Name="AccountsList" ItemTemplate="{StaticResource AccountsItemTemplate}" ItemsSource="{Binding Accounts}" ItemClick="AccountsList_ItemClick" IsItemClickEnabled="True">
 
         </ListView>
     </Grid>
