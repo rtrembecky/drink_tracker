@@ -36,6 +36,7 @@
         <ListView Grid.Row="2" x:Name="BillsList" ItemTemplate="{StaticResource BillsItemTemplate}" ItemsSource="{Binding Source={StaticResource BillsGroupedByAccountsItem}}" SelectionMode="None" IsItemClickEnabled="True" ItemClick="BillsList_ItemClick" ContainerContentChanging="BillsListView_ContainerContentChanging">
         </ListView>
 
+        <!-- for future maybe -->
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualState x:Name="WideState">
