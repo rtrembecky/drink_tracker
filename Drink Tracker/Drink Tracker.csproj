@@ -119,6 +119,9 @@
       <DependentUpon>AccountsSampleDataSource.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\BillsViewModel.cs" />
+    <Compile Include="YtemsPage.xaml.cs">
+      <DependentUpon>YtemsPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -165,6 +168,10 @@
     <Page Include="SampleData\AccountsSampleDataSource\AccountsSampleDataSource.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="YtemsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup />

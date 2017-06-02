@@ -20,25 +20,19 @@ namespace Drink_Tracker
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class BillsPage : Page
+    public sealed partial class YtemsPage : Page
     {
-        public BillsPage()
+        public YtemsPage()
         {
             this.InitializeComponent();
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        private void YtemsList_ItemClick(object sender, ItemClickEventArgs e)
         {
-            //TODO: fill UI
+            this.Frame.Navigate(typeof(DrinkTypesPage), e.ClickedItem);
         }
 
-        // nebude viest na drinktypes ale na konkretny ucet z vecera
-        private void BillsList_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            this.Frame.Navigate(typeof(YtemsPage), e.ClickedItem);
-        }
-        
-        private void BillsListView_ContainerContentChanging(ListViewBase sender, ContainerContentChangingEventArgs args)
+        private void YtemsListView_ContainerContentChanging(ListViewBase sender, ContainerContentChangingEventArgs args)
         {
             if (args.ItemIndex % 2 == 0)
             {
@@ -48,6 +42,11 @@ namespace Drink_Tracker
             {
                 args.ItemContainer.Background = new SolidColorBrush(Windows.UI.Colors.LightGoldenrodYellow);
             }
+        }
+        
+        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(DrinkTypesPage), e.OriginalSource);
         }
     }
 }
