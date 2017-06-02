@@ -33,14 +33,13 @@
         <Border x:Name="Header" Grid.Row="0" Style="{StaticResource HeaderBackground}">
             <TextBlock Text="Ytems obrazovka" Style="{StaticResource HeaderStyle}"/>
         </Border>
+        <!-- remove this i guess -->
         <Button x:Name="ButtonAdd" Grid.Row="1" Background="LightGreen" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Click="ButtonAdd_Click">
             <TextBlock Text="Add" Margin="10"/>
         </Button>
+        <!-- up until here -->
         <ListView Grid.Row="2" x:Name="YtemsList" ItemTemplate="{StaticResource YtemsItemTemplate}" ItemsSource="{Binding Source={StaticResource YtemsGroupedByBillsItem}}" SelectionMode="None" IsItemClickEnabled="True" ItemClick="YtemsList_ItemClick" ContainerContentChanging="YtemsListView_ContainerContentChanging">
         </ListView>
-        <Border x:Name="Footer" Grid.Row="3" Style="{StaticResource HeaderBackground}">
-            <TextBlock Text="To pay: XX CZK (Total: YY CZK)" Style="{StaticResource FlyoutPickerTitleTextBlockStyle}"/>
-        </Border>
 
         <!-- for future maybe -->
         <VisualStateManager.VisualStateGroups>
@@ -64,4 +63,13 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
     </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar>
+            <CommandBar.Content>
+                <TextBlock Text="To pay: XX CZK (Total: YY CZK)" Margin="12,14"/>
+            </CommandBar.Content>
+            <AppBarButton Icon="Add" Label="New drink" Click="ButtonAdd_Click" />
+        </CommandBar>
+    </Page.BottomAppBar>
 </Page>
