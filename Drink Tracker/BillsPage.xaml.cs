@@ -36,7 +36,7 @@ namespace Drink_Tracker
         // nebude viest na drinktypes ale na konkretny ucet z vecera
         private void BillsList_ItemClick(object sender, ItemClickEventArgs e)
         {
-            this.Frame.Navigate(typeof(DrinkTypes), e.ClickedItem);
+            this.Frame.Navigate(typeof(DrinkTypesPage), e.ClickedItem);
         }
         
         private void BillsListView_ContainerContentChanging(ListViewBase sender, ContainerContentChangingEventArgs args)
