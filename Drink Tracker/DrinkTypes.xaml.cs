@@ -27,9 +27,9 @@ namespace Drink_Tracker
             this.InitializeComponent();
         }
 
-        private void AccountsList_ItemClick(object sender, ItemClickEventArgs e)
+        private void DrinkTypesList_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            this.Frame.Navigate(typeof(MainPage), e.ClickedItem);
         }
     }
 }

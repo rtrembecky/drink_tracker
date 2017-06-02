@@ -8,27 +8,102 @@
     mc:Ignorable="d">
 
     <Page.Resources>
-        <DataTemplate x:Key="DrinktypesItemTemplate">
-            <Grid Height="30" Width="480" Margin="10" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <CollectionViewSource x:Key="DrinkTypesGroupedByAccountsItem" IsSourceGrouped="True" ItemsPath="Bills" Source="{Binding Accounts, Source={StaticResource AccountsSampleDataSource}}"/>
+        <DataTemplate x:Key="DrinkTypesItemTemplate">
+            <Grid x:Name="ContentGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition x:Name="HeaderRow"/>
+                    <RowDefinition x:Name="ContentRow1"/>
+                    <RowDefinition x:Name="ContentRow2"/>
+                    <RowDefinition x:Name="ContentRow3"/>
+                    <RowDefinition x:Name="ContentRow4"/>
+                </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition x:Name="ContentColumn0"/>
+                    <ColumnDefinition x:Name="ContentColumn1"/>
+                    <ColumnDefinition x:Name="ContentColumn2"/>
                 </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="2" Margin="10,0,0,0">
-                    <TextBlock Text="{Binding DrinkType}" Style="{StaticResource TitleTextBlockStyle}"/>
-                    <TextBlock Text="Subtype of drink" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap"/>
-                </StackPanel>
+                <Button x:Name="ButtonBeer" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Background="Khaki" VerticalAlignment="Stretch">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Beer" Margin="20"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="ButtonWine" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Stretch" Background="Khaki" VerticalAlignment="Stretch">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Wine" Margin="20"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="ButtonShots" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Background="Khaki" VerticalAlignment="Stretch">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Shots" Margin="20"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="Nonalco" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Stretch" Background="Khaki" VerticalAlignment="Stretch">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Nonalco" Margin="20"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="Other" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" Background="Khaki" VerticalAlignment="Stretch">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Other" Margin="20"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="Favs" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Stretch" Background="Khaki" VerticalAlignment="Stretch">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Favs" Margin="20"/>
+                    </StackPanel>
+                </Button>
             </Grid>
         </DataTemplate>
     </Page.Resources>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" DataContext="{Binding Source={StaticResource AccountsSampleDataSource}}">
-        
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{StaticResource HeaderHeight}"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
         <Border x:Name="Header" Grid.Row="0" Style="{StaticResource HeaderBackground}">
-            <TextBlock Text="Drinktypes obrazovka" Style="{StaticResource HeaderStyle}"/>
+            <TextBlock Text="DrinkTypes obrazovka" Style="{StaticResource HeaderStyle}"/>
         </Border>
-        <ListView x:Name="DrinktypesList" ItemTemplate="{StaticResource DrinktypesItemTemplate}" ItemsSource="{Binding Accounts}" ItemClick="AccountsList_ItemClick" IsItemClickEnabled="True" SelectionMode="None">
-
+        <ListView Grid.Row="2" x:Name="DrinkTypesList" ItemTemplate="{StaticResource DrinkTypesItemTemplate}" ItemsSource="{Binding Source={StaticResource DrinkTypesGroupedByAccountsItem}}" SelectionMode="None" IsItemClickEnabled="True" ItemClick="DrinkTypesList_ItemClick">
         </ListView>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="WideState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ButtonBeer.(Grid.Row)" Value="0"/>
+                        <Setter Target="ButtonBeer.(Grid.Column)" Value="1"/>
+                        <Setter Target="ButtonWine.(Grid.Row)" Value="0"/>
+                        <Setter Target="ButtonWine.(Grid.Column)" Value="2"/>
+                        <Setter Target="ButtonShots.(Grid.Row)" Value="1"/>
+                        <Setter Target="ButtonShots.(Grid.Column)" Value="1"/>
+                        <Setter Target="ButtonNonalco.(Grid.Row)" Value="1"/>
+                        <Setter Target="ButtonNonalco.(Grid.Column)" Value="2"/>
+                        <Setter Target="ButtonOther.(Grid.Row)" Value="2"/>
+                        <Setter Target="ButtonOther.(Grid.Column)" Value="1"/>
+                        <Setter Target="ButtonFavs.(Grid.Row)" Value="2"/>
+                        <Setter Target="ButtonFavs.(Grid.Column)" Value="2"/>
+                        
+                        <Setter Target="ContentColumn2.Width" Value="*"/>
+                        <Setter Target="ContentRow0.Height" Value="75"/>
+                        <Setter Target="ContentRow1.Height" Value="75"/>
+                        <Setter Target="ContentRow2.Height" Value="*"/>
+                        <Setter Target="ContentRow3.Height" Value="0"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="NarrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="DrinkTypesList.ItemTemplate" Value="{StaticResource DrinkTypesItemTemplate}"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
     </Grid>
 </Page>
