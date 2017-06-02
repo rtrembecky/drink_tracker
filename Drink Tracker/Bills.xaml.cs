@@ -33,13 +33,12 @@ namespace Drink_Tracker
             //TODO: fill UI
         }
 
-        // nebude viest na mainpage
+        // nebude viest na drinktypes ale na konkretny ucet z vecera
         private void BillsList_ItemClick(object sender, ItemClickEventArgs e)
         {
             this.Frame.Navigate(typeof(DrinkTypes), e.ClickedItem);
         }
-
-        // provizorne
+        
         private void BillsListView_ContainerContentChanging(ListViewBase sender, ContainerContentChangingEventArgs args)
         {
             if (args.ItemIndex % 2 == 0)
