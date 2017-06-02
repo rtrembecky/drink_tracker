@@ -26,5 +26,24 @@ namespace Drink_Tracker
         {
             this.InitializeComponent();
         }
+
+        // nebude viest na mainpage
+        private void BillsList_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MainPage));
+        }
+
+        // provizorne
+        private void BillsListView_ContainerContentChanging(ListViewBase sender, ContainerContentChangingEventArgs args)
+        {
+            if (args.ItemIndex % 2 == 0)
+            {
+                args.ItemContainer.Background = new SolidColorBrush(Windows.UI.Colors.LightYellow);
+            }
+            else
+            {
+                args.ItemContainer.Background = new SolidColorBrush(Windows.UI.Colors.LightGoldenrodYellow);
+            }
+        }
     }
 }

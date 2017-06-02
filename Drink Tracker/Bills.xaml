@@ -22,9 +22,42 @@
         </DataTemplate>
     </Page.Resources>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" DataContext="{Binding Source={StaticResource AccountsSampleDataSource}}">
-        <ListView x:Name="BillsList" ItemTemplate="{StaticResource BillsItemTemplate}" ItemsSource="{Binding Source={StaticResource BillsGroupedByAccountsItem}}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{StaticResource HeaderHeight}"/>
+            <RowDefinition Height="{StaticResource SearchBarHeight}"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Border x:Name="Header" Grid.Row="0" Style="{StaticResource HeaderBackground}">
+            <TextBlock Text="Bills obrazovka" Style="{StaticResource HeaderStyle}"/>
+        </Border>
+        <AutoSuggestBox x:Name="SearchBox" Grid.Row="1" PlaceholderText="Tu môžeš písať veci" Text="{Binding Path=NameFilter, Mode=TwoWay}"/>
+        <ListView Grid.Row="2" x:Name="BillsListView" SelectionMode="None" IsItemClickEnabled="True" ItemTemplate="{StaticResource BillsItemTemplate}" ItemsSource="{Binding Accounts}" ItemClick="BillsList_ItemClick" ContainerContentChanging="BillsListView_ContainerContentChanging">
+            <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" DataContext="{Binding Source={StaticResource AccountsSampleDataSource}}">
+                <ListView x:Name="BillsList" ItemTemplate="{StaticResource BillsItemTemplate}" ItemsSource="{Binding Source={StaticResource BillsGroupedByAccountsItem}}">
+                </ListView>
+            </Grid>
+    </ListView>
 
-        </ListView>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="WideState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="BillsListView.ItemTemplate" Value="{StaticResource BillsItemTemplate}"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="NarrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="BillsListView.ItemTemplate" Value="{StaticResource BillsItemTemplate}"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
     </Grid>
 </Page>
