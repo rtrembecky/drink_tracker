@@ -20,9 +20,9 @@ namespace Drink_Tracker
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class AccountsPage : Page
     {
-        public MainPage()
+        public AccountsPage()
         {
             this.InitializeComponent();
             this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
@@ -30,7 +30,7 @@ namespace Drink_Tracker
 
         private void AccountsList_ItemClick(object sender, ItemClickEventArgs e)
         {
-            this.Frame.Navigate(typeof(Bills), e.ClickedItem);
+            this.Frame.Navigate(typeof(BillsPage), e.ClickedItem);
         }
     }
 }
