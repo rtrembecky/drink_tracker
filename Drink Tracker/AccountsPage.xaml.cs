@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Drink_Tracker.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,12 +26,33 @@ namespace Drink_Tracker
         public AccountsPage()
         {
             this.InitializeComponent();
-            this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
         }
 
         private void AccountsList_ItemClick(object sender, ItemClickEventArgs e)
         {
             this.Frame.Navigate(typeof(BillsPage), e.ClickedItem);
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            using (var db = new AccountContext())
+            {
+                AccountsList.ItemsSource = db.Accounts.ToList();
+            }
+        }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(NewAccountPage));
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            using (var db = new AccountContext())
+            {
+                AccountsList.ItemsSource = db.Accounts.ToList();
+            }
+            base.OnNavigatedFrom(e);
         }
     }
 }

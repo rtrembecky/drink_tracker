@@ -6,6 +6,11 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Icon="Add" Label="New account" Click="Add_Click" />
+        </CommandBar>
+    </Page.BottomAppBar>
     <Page.Resources>
         <DataTemplate x:Key="AccountsItemTemplate">
             <Grid Height="30" Width="300" Margin="10" >
@@ -21,8 +26,8 @@
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" DataContext="{Binding Source={StaticResource AccountsSampleDataSource}}">
-        <ListView x:Name="AccountsList" ItemTemplate="{StaticResource AccountsItemTemplate}" ItemsSource="{Binding Accounts}" ItemClick="AccountsList_ItemClick" IsItemClickEnabled="True" SelectionMode="None">
-
+        <ListView x:Name="AccountsList" ItemTemplate="{StaticResource AccountsItemTemplate}" ItemClick="AccountsList_ItemClick" IsItemClickEnabled="True" SelectionMode="None">
+            <!-- ItemsSource="{Binding Accounts}"-->
         </ListView>
     </Grid>
 </Page>
