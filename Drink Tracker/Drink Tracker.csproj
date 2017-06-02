@@ -112,6 +112,10 @@
     <Compile Include="Migrations\20170602182120_MyFirstMigration.Designer.cs">
       <DependentUpon>20170602182120_MyFirstMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20170602233802_AddAccountColumns.cs" />
+    <Compile Include="Migrations\20170602233802_AddAccountColumns.designer.cs">
+      <DependentUpon>20170602233802_AddAccountColumns.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AccountContextModelSnapshot.cs" />
     <Compile Include="Models\Model.cs" />
     <Compile Include="NewAccountPage.xaml.cs">

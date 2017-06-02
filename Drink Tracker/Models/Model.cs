@@ -20,14 +20,13 @@ namespace Drink_Tracker.Models
             optionsBuilder.UseSqlite("Data Source=accounts.db");
         }
     }
-    public enum Sex { MAN, WOMAN };
 
     public class Account
     {
         public int AccountId { get; set; }
         public string Username { get; set; }
         public int WeightInKg { get; set; }
-        public Sex Sex { get; set; }
+        public bool Man { get; set; }
         public List<Bill> Bills { get; set; }
     }
 
