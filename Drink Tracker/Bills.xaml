@@ -9,14 +9,15 @@
     <Page.Resources>
         <CollectionViewSource x:Key="BillsGroupedByAccountsItem" IsSourceGrouped="True" ItemsPath="Bills" Source="{Binding Accounts, Source={StaticResource AccountsSampleDataSource}}"/>
         <DataTemplate x:Key="BillsItemTemplate">
-            <Grid Height="110" Width="480" Margin="10" >
+            <Grid Height="50" Width="480" Margin="10" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="1" Margin="10,0,0,0">
-                    <TextBlock Text="{Binding Username}" Style="{StaticResource TitleTextBlockStyle}"/>
-                    <TextBlock Text="Subtitle" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap"/>
+                <StackPanel Grid.Column="1" Margin="0,0,0,0">
+                    <TextBlock Text="{Binding Custom_name}" Style="{StaticResource BaseTextBlockStyle}"/>
+                    <TextBlock Text="{Binding Date_created}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap"/>
+                    <TextBlock Text="{Binding Time_created}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap"/>
                 </StackPanel>
             </Grid>
         </DataTemplate>
@@ -32,12 +33,9 @@
             <TextBlock Text="Bills obrazovka" Style="{StaticResource HeaderStyle}"/>
         </Border>
         <AutoSuggestBox x:Name="SearchBox" Grid.Row="1" PlaceholderText="Tu môžeš písať veci" Text="{Binding Path=NameFilter, Mode=TwoWay}"/>
-        <ListView Grid.Row="2" x:Name="BillsListView" SelectionMode="None" IsItemClickEnabled="True" ItemTemplate="{StaticResource BillsItemTemplate}" ItemsSource="{Binding Accounts}" ItemClick="BillsList_ItemClick" ContainerContentChanging="BillsListView_ContainerContentChanging">
-            <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" DataContext="{Binding Source={StaticResource AccountsSampleDataSource}}">
-                <ListView x:Name="BillsList" ItemTemplate="{StaticResource BillsItemTemplate}" ItemsSource="{Binding Source={StaticResource BillsGroupedByAccountsItem}}">
-                </ListView>
-            </Grid>
-    </ListView>
+        <ListView Grid.Row="2" x:Name="BillsList" ItemTemplate="{StaticResource BillsItemTemplate}" ItemsSource="{Binding Source={StaticResource BillsGroupedByAccountsItem}}" SelectionMode="None" IsItemClickEnabled="True" ItemClick="BillsList_ItemClick" ContainerContentChanging="BillsListView_ContainerContentChanging">
+        </ListView>
+
 
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
@@ -46,7 +44,7 @@
                         <AdaptiveTrigger MinWindowWidth="720" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="BillsListView.ItemTemplate" Value="{StaticResource BillsItemTemplate}"/>
+                        <Setter Target="BillsList.ItemTemplate" Value="{StaticResource BillsItemTemplate}"/>
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="NarrowState">
@@ -54,7 +52,7 @@
                         <AdaptiveTrigger MinWindowWidth="0" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="BillsListView.ItemTemplate" Value="{StaticResource BillsItemTemplate}"/>
+                        <Setter Target="BillsList.ItemTemplate" Value="{StaticResource BillsItemTemplate}"/>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>

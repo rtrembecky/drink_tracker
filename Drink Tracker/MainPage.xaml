@@ -15,7 +15,6 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="1" Margin="10,0,0,0">
                     <TextBlock Text="{Binding Username}" Style="{StaticResource TitleTextBlockStyle}"/>
-                    <TextBlock Text="Subtitle" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap"/>
                 </StackPanel>
             </Grid>
         </DataTemplate>
