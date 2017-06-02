@@ -147,7 +147,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-<<<<<<< 9e7f145a74eb1471e825f33055f3c9a2d005567e
     <Page Include="DrinkTypes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
