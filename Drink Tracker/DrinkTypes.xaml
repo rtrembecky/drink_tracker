@@ -7,57 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Page.Resources>
-        <CollectionViewSource x:Key="DrinkTypesGroupedByAccountsItem" IsSourceGrouped="True" ItemsPath="Bills" Source="{Binding Accounts, Source={StaticResource AccountsSampleDataSource}}"/>
-        <DataTemplate x:Key="DrinkTypesItemTemplate">
-            <Grid x:Name="ContentGrid">
-                <Grid.RowDefinitions>
-                    <RowDefinition x:Name="HeaderRow"/>
-                    <RowDefinition x:Name="ContentRow1"/>
-                    <RowDefinition x:Name="ContentRow2"/>
-                    <RowDefinition x:Name="ContentRow3"/>
-                    <RowDefinition x:Name="ContentRow4"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition x:Name="ContentColumn0"/>
-                    <ColumnDefinition x:Name="ContentColumn1"/>
-                    <ColumnDefinition x:Name="ContentColumn2"/>
-                </Grid.ColumnDefinitions>
-                <Button x:Name="ButtonBeer" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Background="Khaki" VerticalAlignment="Stretch">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Beer" Margin="20"/>
-                    </StackPanel>
-                </Button>
-                <Button x:Name="ButtonWine" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Stretch" Background="Khaki" VerticalAlignment="Stretch">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Wine" Margin="20"/>
-                    </StackPanel>
-                </Button>
-                <Button x:Name="ButtonShots" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Background="Khaki" VerticalAlignment="Stretch">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Shots" Margin="20"/>
-                    </StackPanel>
-                </Button>
-                <Button x:Name="Nonalco" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Stretch" Background="Khaki" VerticalAlignment="Stretch">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Nonalco" Margin="20"/>
-                    </StackPanel>
-                </Button>
-                <Button x:Name="Other" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" Background="Khaki" VerticalAlignment="Stretch">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Other" Margin="20"/>
-                    </StackPanel>
-                </Button>
-                <Button x:Name="Favs" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Stretch" Background="Khaki" VerticalAlignment="Stretch">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Favs" Margin="20"/>
-                    </StackPanel>
-                </Button>
-            </Grid>
-        </DataTemplate>
-    </Page.Resources>
-
-    <Grid>
+    <Grid x:Name="BigGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="{StaticResource HeaderHeight}"/>
             <RowDefinition/>
@@ -65,8 +15,51 @@
         <Border x:Name="Header" Grid.Row="0" Style="{StaticResource HeaderBackground}">
             <TextBlock Text="DrinkTypes obrazovka" Style="{StaticResource HeaderStyle}"/>
         </Border>
-        <ListView Grid.Row="2" x:Name="DrinkTypesList" ItemTemplate="{StaticResource DrinkTypesItemTemplate}" ItemsSource="{Binding Source={StaticResource DrinkTypesGroupedByAccountsItem}}" SelectionMode="None" IsItemClickEnabled="True" ItemClick="DrinkTypesList_ItemClick">
-        </ListView>
+
+        <ScrollViewer Grid.Row="1">
+            <Grid x:Name="InsideGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition x:Name="InsideRow0"/>
+                    <RowDefinition x:Name="InsideRow1"/>
+                    <RowDefinition x:Name="InsideRow2"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition x:Name="InsideColumn0"/>
+                    <ColumnDefinition x:Name="InsideColumn1"/>
+                    <ColumnDefinition x:Name="InsideColumn2"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="ButtonBeer" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" Background="Khaki" VerticalAlignment="Stretch">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Beer" Margin="20"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="ButtonWine" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Background="Khaki" VerticalAlignment="Stretch">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Wine" Margin="20"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="ButtonShots" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" Background="Khaki" VerticalAlignment="Stretch">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Shots" Margin="20"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="ButtonNonalco" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Background="Khaki" VerticalAlignment="Stretch">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Nonalco" Margin="20"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="ButtonOther" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" Background="Khaki" VerticalAlignment="Stretch">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Other" Margin="20"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="ButtonFavs" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" Background="Khaki" VerticalAlignment="Stretch">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Favs" Margin="20"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+        </ScrollViewer>
 
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
@@ -76,23 +69,20 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <Setter Target="ButtonBeer.(Grid.Row)" Value="0"/>
-                        <Setter Target="ButtonBeer.(Grid.Column)" Value="1"/>
+                        <Setter Target="ButtonBeer.(Grid.Column)" Value="0"/>
                         <Setter Target="ButtonWine.(Grid.Row)" Value="0"/>
-                        <Setter Target="ButtonWine.(Grid.Column)" Value="2"/>
+                        <Setter Target="ButtonWine.(Grid.Column)" Value="1"/>
                         <Setter Target="ButtonShots.(Grid.Row)" Value="1"/>
-                        <Setter Target="ButtonShots.(Grid.Column)" Value="1"/>
+                        <Setter Target="ButtonShots.(Grid.Column)" Value="0"/>
                         <Setter Target="ButtonNonalco.(Grid.Row)" Value="1"/>
-                        <Setter Target="ButtonNonalco.(Grid.Column)" Value="2"/>
-                        <Setter Target="ButtonOther.(Grid.Row)" Value="2"/>
-                        <Setter Target="ButtonOther.(Grid.Column)" Value="1"/>
-                        <Setter Target="ButtonFavs.(Grid.Row)" Value="2"/>
+                        <Setter Target="ButtonNonalco.(Grid.Column)" Value="1"/>
+                        <Setter Target="ButtonOther.(Grid.Row)" Value="0"/>
+                        <Setter Target="ButtonOther.(Grid.Column)" Value="2"/>
+                        <Setter Target="ButtonFavs.(Grid.Row)" Value="1"/>
                         <Setter Target="ButtonFavs.(Grid.Column)" Value="2"/>
-                        
-                        <Setter Target="ContentColumn2.Width" Value="*"/>
-                        <Setter Target="ContentRow0.Height" Value="75"/>
-                        <Setter Target="ContentRow1.Height" Value="75"/>
-                        <Setter Target="ContentRow2.Height" Value="*"/>
-                        <Setter Target="ContentRow3.Height" Value="0"/>
+
+                        <Setter Target="InsideColumn2.Width" Value="*"/>
+                        <Setter Target="InsideRow2.Height" Value="0"/>
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="NarrowState">
@@ -100,7 +90,21 @@
                         <AdaptiveTrigger MinWindowWidth="0" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="DrinkTypesList.ItemTemplate" Value="{StaticResource DrinkTypesItemTemplate}"/>
+                        <Setter Target="ButtonBeer.(Grid.Row)" Value="0"/>
+                        <Setter Target="ButtonBeer.(Grid.Column)" Value="0"/>
+                        <Setter Target="ButtonWine.(Grid.Row)" Value="0"/>
+                        <Setter Target="ButtonWine.(Grid.Column)" Value="1"/>
+                        <Setter Target="ButtonShots.(Grid.Row)" Value="1"/>
+                        <Setter Target="ButtonShots.(Grid.Column)" Value="0"/>
+                        <Setter Target="ButtonNonalco.(Grid.Row)" Value="1"/>
+                        <Setter Target="ButtonNonalco.(Grid.Column)" Value="1"/>
+                        <Setter Target="ButtonOther.(Grid.Row)" Value="2"/>
+                        <Setter Target="ButtonOther.(Grid.Column)" Value="0"/>
+                        <Setter Target="ButtonFavs.(Grid.Row)" Value="2"/>
+                        <Setter Target="ButtonFavs.(Grid.Column)" Value="1"/>
+
+                        <Setter Target="InsideColumn2.Width" Value="0"/>
+                        <Setter Target="InsideRow2.Height" Value="*"/>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
