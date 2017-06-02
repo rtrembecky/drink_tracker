@@ -25,6 +25,7 @@ namespace Drink_Tracker
         public MainPage()
         {
             this.InitializeComponent();
+            this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
         }
 
         private void AccountsList_ItemClick(object sender, ItemClickEventArgs e)

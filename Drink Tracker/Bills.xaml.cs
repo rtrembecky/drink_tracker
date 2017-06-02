@@ -25,6 +25,12 @@ namespace Drink_Tracker
         public Bills()
         {
             this.InitializeComponent();
+            this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            //TODO: fill UI
         }
 
         // nebude viest na mainpage
