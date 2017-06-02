@@ -99,6 +99,9 @@
     <Compile Include="BillsPage.xaml.cs">
       <DependentUpon>BillsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DrinksPage.xaml.cs">
+      <DependentUpon>DrinksPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DrinkTypesPage.xaml.cs">
       <DependentUpon>DrinkTypesPage.xaml</DependentUpon>
     </Compile>
@@ -150,6 +153,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="BillsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DrinksPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

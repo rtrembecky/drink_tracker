@@ -29,7 +29,37 @@ namespace Drink_Tracker
 
         private void DrinkTypesList_ItemClick(object sender, ItemClickEventArgs e)
         {
-            this.Frame.Navigate(typeof(AccountsPage), e.ClickedItem);
+            this.Frame.Navigate(typeof(DrinksPage), e.ClickedItem);
+        }
+
+        private void ButtonBeer_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(DrinksPage), e.OriginalSource);
+        }
+
+        private void ButtonWine_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(DrinksPage), e.OriginalSource);
+        }
+
+        private void ButtonShots_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(DrinksPage), e.OriginalSource);
+        }
+
+        private void ButtonNonalco_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(DrinksPage), e.OriginalSource);
+        }
+
+        private void ButtonCocktails_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(DrinksPage), e.OriginalSource);
+        }
+
+        private void ButtonOther_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(DrinksPage), e.OriginalSource);
         }
     }
 }
