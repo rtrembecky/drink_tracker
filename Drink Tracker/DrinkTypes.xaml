@@ -16,50 +16,48 @@
             <TextBlock Text="DrinkTypes obrazovka" Style="{StaticResource HeaderStyle}"/>
         </Border>
 
-        <ScrollViewer Grid.Row="1">
-            <Grid x:Name="InsideGrid">
-                <Grid.RowDefinitions>
-                    <RowDefinition x:Name="InsideRow0"/>
-                    <RowDefinition x:Name="InsideRow1"/>
-                    <RowDefinition x:Name="InsideRow2"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition x:Name="InsideColumn0"/>
-                    <ColumnDefinition x:Name="InsideColumn1"/>
-                    <ColumnDefinition x:Name="InsideColumn2"/>
-                </Grid.ColumnDefinitions>
-                <Button x:Name="ButtonBeer" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" Background="Khaki" VerticalAlignment="Stretch">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Beer" Margin="20"/>
-                    </StackPanel>
-                </Button>
-                <Button x:Name="ButtonWine" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Background="Khaki" VerticalAlignment="Stretch">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Wine" Margin="20"/>
-                    </StackPanel>
-                </Button>
-                <Button x:Name="ButtonShots" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" Background="Khaki" VerticalAlignment="Stretch">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Shots" Margin="20"/>
-                    </StackPanel>
-                </Button>
-                <Button x:Name="ButtonNonalco" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Background="Khaki" VerticalAlignment="Stretch">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Nonalco" Margin="20"/>
-                    </StackPanel>
-                </Button>
-                <Button x:Name="ButtonOther" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" Background="Khaki" VerticalAlignment="Stretch">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Other" Margin="20"/>
-                    </StackPanel>
-                </Button>
-                <Button x:Name="ButtonFavs" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" Background="Khaki" VerticalAlignment="Stretch">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Favs" Margin="20"/>
-                    </StackPanel>
-                </Button>
-            </Grid>
-        </ScrollViewer>
+        <Grid x:Name="InsideGrid" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition x:Name="InsideRow0"/>
+                <RowDefinition x:Name="InsideRow1"/>
+                <RowDefinition x:Name="InsideRow2"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="InsideColumn0"/>
+                <ColumnDefinition x:Name="InsideColumn1"/>
+                <ColumnDefinition x:Name="InsideColumn2"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="ButtonBeer" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" Background="Khaki" VerticalAlignment="Stretch">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Beer" Margin="20"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="ButtonWine" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Background="Khaki" VerticalAlignment="Stretch">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Wine" Margin="20"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="ButtonShots" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" Background="Khaki" VerticalAlignment="Stretch">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Shots" Margin="20"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="ButtonNonalco" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Background="Khaki" VerticalAlignment="Stretch">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Nonalco" Margin="20"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="ButtonOther" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" Background="Khaki" VerticalAlignment="Stretch">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Other" Margin="20"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="ButtonFavs" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" Background="Khaki" VerticalAlignment="Stretch">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Favs" Margin="20"/>
+                </StackPanel>
+            </Button>
+        </Grid>
 
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
