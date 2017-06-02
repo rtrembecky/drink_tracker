@@ -36,7 +36,7 @@ namespace Drink_Tracker
         // nebude viest na mainpage
         private void BillsList_ItemClick(object sender, ItemClickEventArgs e)
         {
-            this.Frame.Navigate(typeof(MainPage));
+            this.Frame.Navigate(typeof(DrinkTypes), e.ClickedItem);
         }
 
         // provizorne

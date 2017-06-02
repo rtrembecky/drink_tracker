@@ -15,7 +15,7 @@
             <Setter Property="Background" Value="Transparent"/>
         </Style>
         <Style x:Key="HeaderBackground" TargetType="Border">
-            <Setter Property="Background" Value="Bisque"/>
+            <Setter Property="Background" Value="LightSalmon"/>
         </Style>
         <Style x:Key="HeaderStyle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="30"/>
