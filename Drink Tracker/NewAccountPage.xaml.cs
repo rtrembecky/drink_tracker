@@ -32,7 +32,7 @@ namespace Drink_Tracker
         {
             using (var db = new AccountContext())
             {
-                var account = new Account { Username = Username.Text };
+                var account = new Account { Username = Username.Text, Sex = Man.IsChecked.Value ? Sex.MAN : Sex.WOMAN, WeightInKg = int.Parse(Weight.Text) };
                 db.Accounts.Add(account);
                 db.SaveChanges();
 

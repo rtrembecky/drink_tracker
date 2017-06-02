@@ -9,7 +9,20 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel>
-            <TextBox Name="Username"/>
+            <Border x:Name="Header" Style="{StaticResource HeaderBackground}">
+                <TextBlock Text="Add account" Style="{StaticResource HeaderTextBlockStyle}"/>
+            </Border>
+            <TextBox Name="Username" PlaceholderText="Name"/>
+            <TextBlock Text="Sex:" Style="{StaticResource BaseTextBlockStyle}"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <RadioButton Name="Man" Grid.Column="0" Content="Man" IsChecked="True"/>
+                <RadioButton Grid.Column="1" Content="Woman" Tag="Woman"/>
+            </StackPanel>
+            <TextBlock Text="Weight:" Style="{StaticResource BaseTextBlockStyle}"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBox Name="Weight" Text="70"/>
+                <TextBlock Text="kg" VerticalAlignment="Center" Margin="10,0,0,0"/>
+            </StackPanel>
             <Button Click="Add_Click">Add</Button>
         </StackPanel>
     </Grid>
