@@ -80,5 +80,15 @@ namespace Drink_Tracker
         {
             this.Frame.Navigate(typeof(NewDrinkPage), billAndType);
         }
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -33,6 +33,8 @@ namespace Drink_Tracker
         {
             billAndType = (BillAndType)e.Parameter;
             base.OnNavigatedTo(e);
+
+            HeaderText.Text = "New custom " + billAndType.type;
         }
 
         private void Create_Click(object sender, RoutedEventArgs e)
