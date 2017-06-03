@@ -59,6 +59,12 @@ namespace Drink_Tracker
         public string Name { get; set; }
         public float PriceInKc { get; set; }
         public string Type { get; set; }
-        public int VolumeInCl { get; set; }
+        public int VolumeInMl { get; set; }
+    }
+
+    public class BillAndType
+    {
+        public Bill bill { get; set; }
+        public string type { get; set; }
     }
 }
