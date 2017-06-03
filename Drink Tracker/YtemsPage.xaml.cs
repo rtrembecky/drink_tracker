@@ -66,7 +66,7 @@ namespace Drink_Tracker
         
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(DrinkTypesPage), e.OriginalSource);
+            this.Frame.Navigate(typeof(DrinkTypesPage), currentbill);
         }
     }
 }

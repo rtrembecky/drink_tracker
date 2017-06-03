@@ -27,9 +27,40 @@ namespace Drink_Tracker
             this.InitializeComponent();
         }
 
-        private void Add_Click(object sender, RoutedEventArgs e)
+        BillAndType billAndType;
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            this.Frame.Navigate(typeof(YtemsPage), e.OriginalSource);
+            billAndType = (BillAndType)e.Parameter;
+            base.OnNavigatedTo(e);
+        }
+
+        private void Create_Click(object sender, RoutedEventArgs e)
+        {
+            using (var db = new AccountContext())
+            {
+                var drink = new Drink
+                {
+                    Name = DrinkName.Text,
+                    ABV = float.Parse(ABV.Text),
+                    PriceInKc = int.Parse(Cost.Text),
+                    Type = billAndType.type,
+                    VolumeInMl = int.Parse(Volume.Text)
+                };
+                db.Drinks.Add(drink);
+
+                //TODO: osetrit, ci item uz je na liste a nejak zgrupit? premysliet
+                billAndType.bill.Items = new List<Item>();
+                Item item = new Item()
+                {
+                    Added = DateTime.Now,
+                    Drink = drink
+                };
+                billAndType.bill.Items.Add(item);
+                db.Bills.Update(billAndType.bill);
+                db.SaveChanges();
+            }
+            this.Frame.Navigate(typeof(YtemsPage), billAndType.bill);
         }
     }
 }

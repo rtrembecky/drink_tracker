@@ -35,7 +35,7 @@ namespace Drink_Tracker
             base.OnNavigatedTo(e);
         }
 
-        private void Create(object sender, RoutedEventArgs e)
+        private void Create_click(object sender, RoutedEventArgs e)
         {
             using (var db = new AccountContext())
             {
@@ -44,8 +44,7 @@ namespace Drink_Tracker
                     Created = DateTime.Now,
                     Name = Bill_name.Text
                 };
-                if (account.Bills == null)
-                    account.Bills = new List<Bill>();
+                account.Bills = new List<Bill>();
                 account.Bills.Add(bill);
                 db.Accounts.Update(account);
                 db.SaveChanges();

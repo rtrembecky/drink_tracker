@@ -8,8 +8,8 @@ using Drink_Tracker;
 namespace Drink_Tracker.Migrations
 {
     [DbContext(typeof(AccountContext))]
-    [Migration("20170603104609_MyFirstMigration")]
-    partial class MyFirstMigration
+    [Migration("20170603175526_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -63,7 +63,7 @@ namespace Drink_Tracker.Migrations
 
                     b.Property<string>("Type");
 
-                    b.Property<int>("VolumeInCl");
+                    b.Property<int>("VolumeInMl");
 
                     b.HasKey("DrinkId");
 

@@ -27,6 +27,19 @@ namespace Drink_Tracker
             this.InitializeComponent();
         }
 
+        string type;
+        Bill bill;
+        BillAndType billAndType;
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            billAndType = (BillAndType)e.Parameter;
+            type = billAndType.type;
+            bill = billAndType.bill;
+
+            base.OnNavigatedTo(e);
+        }
+
         private void DrinksList_ItemClick(object sender, ItemClickEventArgs e)
         {
             this.Frame.Navigate(typeof(YtemsPage), e.ClickedItem);
@@ -34,7 +47,7 @@ namespace Drink_Tracker
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(NewDrinkPage), e.OriginalSource);
+            this.Frame.Navigate(typeof(NewDrinkPage), billAndType);
         }
     }
 }

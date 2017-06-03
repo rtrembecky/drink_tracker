@@ -63,5 +63,18 @@ namespace Drink_Tracker
         {
 
         }
+
+        private async void DeleteDialog()
+        {
+            ContentDialog deleteDialog = new ContentDialog
+            {
+                Title = "Delete account?",
+                Content = "If you delete this account, you won't be able to recover it. Are you sure you want to delete it?",
+                SecondaryButtonText = "No",
+                PrimaryButtonText = "Yes"
+            };
+
+            ContentDialogResult result = await deleteDialog.ShowAsync();
+        }
     }
 }

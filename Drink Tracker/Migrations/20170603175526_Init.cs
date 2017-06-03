@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Drink_Tracker.Migrations
 {
-    public partial class MyFirstMigration : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -33,7 +33,7 @@ namespace Drink_Tracker.Migrations
                     Name = table.Column<string>(nullable: true),
                     PriceInKc = table.Column<float>(nullable: false),
                     Type = table.Column<string>(nullable: true),
-                    VolumeInCl = table.Column<int>(nullable: false)
+                    VolumeInMl = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

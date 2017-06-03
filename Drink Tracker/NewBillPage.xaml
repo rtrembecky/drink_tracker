@@ -14,7 +14,7 @@
             </Border>
             <TextBlock Text="Bill name (e.g. pub):"/>
             <TextBox Name="Bill_name" PlaceholderText="Pivní burza"/>
-            <Button Click="Create">Create</Button>
+            <AppBarButton Label="Create" Icon="Accept" Click="Create_click" HorizontalAlignment="Right"/>
         </StackPanel>
     </Grid>
 </Page>

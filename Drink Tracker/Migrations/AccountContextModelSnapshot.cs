@@ -62,7 +62,7 @@ namespace Drink_Tracker.Migrations
 
                     b.Property<string>("Type");
 
-                    b.Property<int>("VolumeInCl");
+                    b.Property<int>("VolumeInMl");
 
                     b.HasKey("DrinkId");
 

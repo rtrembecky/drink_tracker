@@ -27,39 +27,42 @@ namespace Drink_Tracker
             this.InitializeComponent();
         }
 
-        private void DrinkTypesList_ItemClick(object sender, ItemClickEventArgs e)
+        Bill currentBill;
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            this.Frame.Navigate(typeof(DrinksPage), e.ClickedItem);
+            currentBill = (Bill)e.Parameter;
+            base.OnNavigatedTo(e);
         }
 
         private void ButtonBeer_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(DrinksPage), e.OriginalSource);
+            this.Frame.Navigate(typeof(DrinksPage), new BillAndType { bill = currentBill, type = "Beer" } );
         }
 
         private void ButtonWine_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(DrinksPage), e.OriginalSource);
+            this.Frame.Navigate(typeof(DrinksPage), new BillAndType { bill = currentBill, type = "Wine" } );
         }
 
         private void ButtonShots_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(DrinksPage), e.OriginalSource);
+            this.Frame.Navigate(typeof(DrinksPage), new BillAndType { bill = currentBill, type = "Shot" } );
         }
 
         private void ButtonNonalco_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(DrinksPage), e.OriginalSource);
+            this.Frame.Navigate(typeof(DrinksPage), new BillAndType { bill = currentBill, type = "Nonalco" } );
         }
 
         private void ButtonCocktails_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(DrinksPage), e.OriginalSource);
+            this.Frame.Navigate(typeof(DrinksPage), new BillAndType { bill = currentBill, type = "Coctail" } );
         }
 
         private void ButtonOther_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(DrinksPage), e.OriginalSource);
+            this.Frame.Navigate(typeof(DrinksPage), new BillAndType { bill = currentBill, type = "Other" } );
         }
     }
 }
