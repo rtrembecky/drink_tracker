@@ -37,12 +37,43 @@ namespace Drink_Tracker
             type = billAndType.type;
             bill = billAndType.bill;
 
+            using (var db = new AccountContext())
+            {
+                var drinksByType = db.Drinks
+                    .Where(drink => drink.Type == type)
+                    .ToList();
+
+                DrinksList.ItemsSource = drinksByType;
+            }
+
+            HeaderText.Text = "Pick a " + type + " to add to bill";
+
             base.OnNavigatedTo(e);
         }
 
         private void DrinksList_ItemClick(object sender, ItemClickEventArgs e)
         {
-            this.Frame.Navigate(typeof(YtemsPage), e.ClickedItem);
+            Drink drink = (Drink)e.ClickedItem;
+
+            using (var db = new AccountContext())
+            {
+                //TODO: osetrit, ci item uz je na liste a nejak zgrupit? premysliet
+                bill.Items = db.Items
+                    .Where(i => i.BillId == bill.BillId)
+                    .ToList();
+                var item = new Item
+                {
+                    Added = DateTime.Now,
+                    BillId = bill.BillId,
+                    DrinkId = drink.DrinkId
+                };
+                //bill.Items.Add(item);
+                db.Items.Add(item);
+                //db.Bills.Update(bill);
+                db.SaveChanges();
+            }
+
+            this.Frame.Navigate(typeof(YtemsPage), bill);
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)

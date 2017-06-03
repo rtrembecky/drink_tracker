@@ -9,24 +9,27 @@
 
     <Page.Resources>
         <DataTemplate x:Key="DrinksItemTemplate">
-            <Grid Height="30" Width="300" Margin="10" >
+            <Grid Height="Auto" Width="300" Margin="10" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="1" Margin="10,0,0,0">
-                    <TextBlock Text="{Binding Drink}" Style="{StaticResource TitleTextBlockStyle}"/>
+                    <TextBlock Text="{Binding Name}" Style="{StaticResource TitleTextBlockStyle}"/>
+                    <TextBlock Text="{Binding ABV}" Style="{StaticResource BodyTextBlockStyle}"/>
+                    <TextBlock Text="{Binding VolumeInMl}" Style="{StaticResource BodyTextBlockStyle}"/>
+                    <TextBlock Text="{Binding PriceInKc}" Style="{StaticResource BodyTextBlockStyle}"/>
                 </StackPanel>
             </Grid>
         </DataTemplate>
     </Page.Resources>
 
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" DataContext="{Binding Source={StaticResource AccountsSampleDataSource}}">
-        <Border x:Name="Header" Grid.Row="0" Style="{StaticResource HeaderBackground}" Height="30">
-            <TextBlock Text="Pick a drink to add to bill" Style="{StaticResource BaseTextBlockStyle}"/>
+        <Border x:Name="Header" Style="{StaticResource HeaderBackground}" Height="30">
+            <TextBlock Name="HeaderText" Text="Pick a DRINK_TYPE to add to bill" Style="{StaticResource BaseTextBlockStyle}"/>
         </Border>
         <ListView x:Name="DrinksList" ItemTemplate="{StaticResource DrinksItemTemplate}" ItemClick="DrinksList_ItemClick" IsItemClickEnabled="True" SelectionMode="None">
-            <!-- ItemsSource="{Binding Accounts}"-->
+            
         </ListView>
     </StackPanel>
 
