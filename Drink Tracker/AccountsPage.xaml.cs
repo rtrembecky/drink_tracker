@@ -37,6 +37,10 @@ namespace Drink_Tracker
             using (var db = new AccountContext())
             {
                 AccountsList.ItemsSource = db.Accounts.ToList();
+                foreach (var acc in AccountsList.Items)
+                {
+                    //som myslel, ze nejak pridam obrazok... asi ne
+                }
             }
         }
 
