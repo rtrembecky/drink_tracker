@@ -99,9 +99,6 @@
     <Compile Include="BillsPage.xaml.cs">
       <DependentUpon>BillsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Computation.xaml.cs">
-      <DependentUpon>Computation.xaml</DependentUpon>
-    </Compile>
     <Compile Include="DrinksPage.xaml.cs">
       <DependentUpon>DrinksPage.xaml</DependentUpon>
     </Compile>
