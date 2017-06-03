@@ -26,8 +26,13 @@
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" DataContext="{Binding Source={StaticResource AccountsSampleDataSource}}">
-        <ListView x:Name="AccountsList" ItemTemplate="{StaticResource AccountsItemTemplate}" ItemClick="AccountsList_ItemClick" IsItemClickEnabled="True" SelectionMode="None">
-            <!-- ItemsSource="{Binding Accounts}"-->
-        </ListView>
+        <StackPanel>
+            <Border x:Name="Header" Style="{StaticResource HeaderBackground}" Height="50">
+                <TextBlock Text="Accounts" Style="{StaticResource HeaderStyle}"/>
+            </Border>
+            <ListView x:Name="AccountsList" ItemTemplate="{StaticResource AccountsItemTemplate}" ItemClick="AccountsList_ItemClick" IsItemClickEnabled="True" SelectionMode="None">
+                <!-- ItemsSource="{Binding Accounts}"-->
+            </ListView>
+        </StackPanel>
     </Grid>
 </Page>

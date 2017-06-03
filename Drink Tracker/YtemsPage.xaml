@@ -26,12 +26,12 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="{StaticResource HeaderHeight}"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="{StaticResource SearchBarHeight}"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Border x:Name="Header" Grid.Row="0" Style="{StaticResource HeaderBackground}">
-            <TextBlock Text="Ytems obrazovka" Style="{StaticResource HeaderStyle}"/>
+            <TextBlock Text="Items on this bill" Style="{StaticResource HeaderStyle}"/>
         </Border>
         <!-- remove this i guess -->
         <Button x:Name="ButtonAdd" Grid.Row="1" Background="LightGreen" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Click="ButtonAdd_Click">

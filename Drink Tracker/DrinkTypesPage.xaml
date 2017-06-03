@@ -9,13 +9,13 @@
 
     <Grid x:Name="BigGrid">
         <Grid.RowDefinitions>
-            <RowDefinition Height="{StaticResource HeaderHeight}"/>
+            <RowDefinition Height="30"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Border x:Name="Header" Grid.Row="0" Style="{StaticResource HeaderBackground}">
-            <TextBlock Text="DrinkTypes obrazovka" Style="{StaticResource HeaderStyle}"/>
+            <TextBlock Text="Which type of drink to add?" Style="{StaticResource BaseTextBlockStyle}"/>
         </Border>
-
+        
         <Grid x:Name="InsideGrid" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition x:Name="InsideRow0"/>

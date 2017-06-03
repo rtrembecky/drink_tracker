@@ -22,7 +22,7 @@
     </Page.Resources>
 
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" DataContext="{Binding Source={StaticResource AccountsSampleDataSource}}">
-        <Border x:Name="Header" Grid.Row="0" Style="{StaticResource HeaderBackground}">
+        <Border x:Name="Header" Grid.Row="0" Style="{StaticResource HeaderBackground}" Height="30">
             <TextBlock Text="Pick a drink to add to bill" Style="{StaticResource BaseTextBlockStyle}"/>
         </Border>
         <ListView x:Name="DrinksList" ItemTemplate="{StaticResource DrinksItemTemplate}" ItemClick="DrinksList_ItemClick" IsItemClickEnabled="True" SelectionMode="None">

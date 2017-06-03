@@ -15,12 +15,12 @@
             <TextBox Name="Name" PlaceholderText="Name"/>
             <TextBlock Text="Alcohol by volume:" Style="{StaticResource BaseTextBlockStyle}"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBox Name="ABV" Text="70"/>
+                <TextBox Name="ABV" Text="38"/>
                 <TextBlock Text="  ‰ " VerticalAlignment="Center" Margin="10,0,0,0"/>
             </StackPanel>            
             <TextBlock Text="Cost:" Style="{StaticResource BaseTextBlockStyle}"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBox Name="Cost" Text="70"/>
+                <TextBox Name="Cost" Text="35"/>
                 <TextBlock Text="CZK" VerticalAlignment="Center" Margin="10,0,0,0"/>
             </StackPanel>
             <Button Click="Add_Click">Add</Button>
