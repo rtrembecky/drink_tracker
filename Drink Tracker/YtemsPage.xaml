@@ -3,24 +3,29 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Drink_Tracker"
+    xmlns:conv="using:Drink_Tracker.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
     <Page.Resources>
+        <conv:DrinkToName x:Key="DrinkToName"/>
+        <conv:DrinkToPrice x:Key="DrinkToPrice"/>
         <DataTemplate x:Key="YtemsItemTemplate">
             <Grid Height="50" Margin="10" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="{Binding Drink, Converter={StaticResource DrinkToPrice}}" Style="{StaticResource BaseTextBlockStyle}"/>
                 <StackPanel Grid.Column="1" Margin="0,0,0,0">
-                    <TextBlock Text="{Binding Drink_Name}" Style="{StaticResource BaseTextBlockStyle}"/>
-                    <TextBlock Text="{Binding Name}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap"/>
-                    <TextBlock Text="{Binding Time_created}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap"/>
+                    <TextBlock Text="{Binding Drink, Converter={StaticResource DrinkToName}}" Style="{StaticResource BaseTextBlockStyle}"/>
+                    <TextBlock Text="{Binding Added}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap"/>
                 </StackPanel>
                 <AppBarToggleButton Grid.Column="2" Icon="Flag" Click="Flag_Toggle"/>
+                <AppBarButton Grid.Column="3" Icon="Delete" Click="Delete_Click"/>
             </Grid>
         </DataTemplate>
     </Page.Resources>

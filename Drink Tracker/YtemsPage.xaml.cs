@@ -43,6 +43,14 @@ namespace Drink_Tracker
                     .Where(item => item.BillId == currentbill.BillId)
                     .ToList();
 
+                foreach (var item in items)
+                {
+                    item.Drink = db.Drinks
+                        .Where(drink => item.DrinkId == drink.DrinkId)
+                        .ToList()
+                        .First();
+                }
+
                 YtemsList.ItemsSource = items;
 
                 account = db.Accounts
@@ -90,6 +98,11 @@ namespace Drink_Tracker
         }
 
         private void Flag_Toggle(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
         {
 
         }
