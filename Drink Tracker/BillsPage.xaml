@@ -30,7 +30,7 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel>
             <Border x:Name="Header" Style="{StaticResource HeaderBackground}" Height="50">
-                <TextBlock Text="Bills" Style="{StaticResource HeaderStyle}"/>
+                <TextBlock Name="BillsHeaderTitle" Text="Bills of XX" Style="{StaticResource HeaderStyle}"/>
             </Border>
             <AutoSuggestBox x:Name="SearchBox" PlaceholderText="Tu môžeš písať veci" Text="{Binding Path=NameFilter, Mode=TwoWay}"/>
             <ListView x:Name="BillsList" ItemTemplate="{StaticResource BillsItemTemplate}" SelectionMode="None" IsItemClickEnabled="True" ItemClick="BillsList_ItemClick" ContainerContentChanging="BillsListView_ContainerContentChanging">
