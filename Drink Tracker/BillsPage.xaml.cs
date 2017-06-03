@@ -43,6 +43,7 @@ namespace Drink_Tracker
             }
 
             BillsHeaderTitle.Text = account.Username;
+            CalculationTitle.Text = "Around XX.XX‰. Estimated 0‰ at YY:YY.";
             
             base.OnNavigatedTo(e);
         }
