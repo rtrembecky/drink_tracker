@@ -10,7 +10,7 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel>
             <Border x:Name="Header" Style="{StaticResource HeaderBackground}">
-                <TextBlock Text="New account" Style="{StaticResource HeaderTextBlockStyle}"/>
+                <TextBlock Text="New account" Style="{StaticResource HeaderStyle}"/>
             </Border>
             <TextBlock Text="Name:" Style="{StaticResource BaseTextBlockStyle}"/>
             <TextBox Name="Username" PlaceholderText="John Doe"/>

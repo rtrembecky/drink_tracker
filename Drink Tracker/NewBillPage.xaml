@@ -10,7 +10,7 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel>
             <Border x:Name="Header" Style="{StaticResource HeaderBackground}">
-                <TextBlock Text="New bill" Style="{StaticResource HeaderTextBlockStyle}"/>
+                <TextBlock Text="New bill" Style="{StaticResource HeaderStyle}"/>
             </Border>
             <TextBlock Text="Bill name (e.g. pub):"/>
             <TextBox Name="Bill_name" PlaceholderText="Pivní burza"/>

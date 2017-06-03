@@ -10,7 +10,7 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel>
             <Border x:Name="Header" Style="{StaticResource HeaderBackground}">
-                <TextBlock Text="Add custom drink" Style="{StaticResource HeaderTextBlockStyle}"/>
+                <TextBlock Text="Add custom drink" Style="{StaticResource HeaderStyle}"/>
             </Border>
             <TextBox Name="Name" PlaceholderText="Name"/>
             <TextBlock Text="Alcohol by volume:" Style="{StaticResource BaseTextBlockStyle}"/>
@@ -23,7 +23,7 @@
                 <TextBox Name="Cost" Text="35"/>
                 <TextBlock Text="CZK" VerticalAlignment="Center" Margin="10,0,0,0"/>
             </StackPanel>
-            <Button Click="Add_Click">Add</Button>
+            <Button Click="Add_Click" Content="Add"/>
         </StackPanel>
     </Grid>
 </Page>
