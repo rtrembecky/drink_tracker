@@ -26,10 +26,6 @@ namespace Drink_Tracker
         public BillsPage()
         {
             this.InitializeComponent();
-            SystemNavigationManager.GetForCurrentView().BackRequested += (s, e) =>
-            {
-                this.Frame.Navigate(typeof(AccountsPage));
-            };
         }
 
         Account account;
@@ -39,6 +35,8 @@ namespace Drink_Tracker
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            SystemNavigationManager.GetForCurrentView().BackRequested += BackToAccount;
+
             account = (Account)e.Parameter;
 
             using (var db = new AccountContext())
@@ -60,6 +58,12 @@ namespace Drink_Tracker
                 CalculationTitle.Text = "Around " + promille + "‰. Estimated 0‰ at " + sober + ".";
 
             base.OnNavigatedTo(e);
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            SystemNavigationManager.GetForCurrentView().BackRequested -= BackToAccount;
+            base.OnNavigatedFrom(e);
         }
 
         // nebude viest na drinktypes ale na konkretny ucet z vecera
@@ -120,6 +124,11 @@ namespace Drink_Tracker
                     sober = DateTime.Now.AddMinutes(totalbac / 0.00025);
                 }
             }
+        }
+
+        private void BackToAccount(object s, BackRequestedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(AccountsPage), account);
         }
     }
 }

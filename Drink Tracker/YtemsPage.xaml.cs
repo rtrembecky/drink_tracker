@@ -26,10 +26,6 @@ namespace Drink_Tracker
         public YtemsPage()
         {
             this.InitializeComponent();
-            SystemNavigationManager.GetForCurrentView().BackRequested += (s, e) =>
-            {
-                this.Frame.Navigate(typeof(BillsPage), account);
-            };
         }
 
         Bill currentbill;
@@ -37,6 +33,8 @@ namespace Drink_Tracker
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            SystemNavigationManager.GetForCurrentView().BackRequested += BackToBills;
+
             currentbill = (Bill)e.Parameter;
 
             using (var db = new AccountContext())
@@ -58,6 +56,12 @@ namespace Drink_Tracker
             base.OnNavigatedTo(e);
         }
 
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            SystemNavigationManager.GetForCurrentView().BackRequested -= BackToBills;
+            base.OnNavigatedFrom(e);
+        }
+
         private void YtemsList_ItemClick(object sender, ItemClickEventArgs e)
         {
             this.Frame.Navigate(typeof(DrinkTypesPage), e.ClickedItem);
@@ -77,7 +81,17 @@ namespace Drink_Tracker
         
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(DrinkTypesPage), currentbill);
+            //this.Frame.Navigate(typeof(DrinkTypesPage), currentbill);
+        }
+
+        private void BackToBills(object s, BackRequestedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(BillsPage), account);
+        }
+
+        private void Flag_Toggle(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

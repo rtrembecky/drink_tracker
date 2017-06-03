@@ -13,32 +13,36 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="1" Margin="0,0,0,0">
-                    <TextBlock Text="{Binding Drink}" Style="{StaticResource BaseTextBlockStyle}"/>
+                    <TextBlock Text="{Binding Drink_Name}" Style="{StaticResource BaseTextBlockStyle}"/>
                     <TextBlock Text="{Binding Name}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap"/>
                     <TextBlock Text="{Binding Time_created}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap"/>
                 </StackPanel>
+                <AppBarToggleButton Grid.Column="2" Icon="Flag" Click="Flag_Toggle"/>
             </Grid>
         </DataTemplate>
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="{StaticResource SearchBarHeight}"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Border x:Name="Header" Grid.Row="0" Style="{StaticResource HeaderBackground}">
-            <TextBlock Name="YtemsHeaderTitle" Text="XY bill" Style="{StaticResource HeaderStyle}"/>
-        </Border>
-        <!-- remove this i guess -->
-        <Button x:Name="ButtonAdd" Grid.Row="1" Background="LightGreen" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Click="ButtonAdd_Click">
-            <TextBlock Text="Add" Margin="10"/>
-        </Button>
-        <!-- up until here -->
-        <ListView Grid.Row="2" x:Name="YtemsList" ItemTemplate="{StaticResource YtemsItemTemplate}" SelectionMode="None" IsItemClickEnabled="True" ItemClick="YtemsList_ItemClick" ContainerContentChanging="YtemsListView_ContainerContentChanging">
-        </ListView>
+        <StackPanel>
+            <Border Name="Header" Style="{StaticResource HeaderBackground}" Height="50">
+                <TextBlock Name="YtemsHeaderTitle" Text="XY bill" Style="{StaticResource HeaderStyle}"/>
+            </Border>
+            <!-- remove this i guess -->
+            <Button Name="ButtonAdd" Background="LightGreen" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Click="ButtonAdd_Click">
+                <TextBlock Text="Add" Margin="10"/>
+            </Button>
+            <!-- up until here -->
+            <ListView Name="YtemsList" ItemTemplate="{StaticResource YtemsItemTemplate}" SelectionMode="None" IsItemClickEnabled="True" ItemClick="YtemsList_ItemClick" ContainerContentChanging="YtemsListView_ContainerContentChanging">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
+        </StackPanel>
 
         <!-- for future maybe -->
         <VisualStateManager.VisualStateGroups>
