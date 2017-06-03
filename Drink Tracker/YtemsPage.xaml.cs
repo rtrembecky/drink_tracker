@@ -64,7 +64,7 @@ namespace Drink_Tracker
 
         private void YtemsList_ItemClick(object sender, ItemClickEventArgs e)
         {
-            this.Frame.Navigate(typeof(DrinkTypesPage), e.ClickedItem);
+            //this.Frame.Navigate(typeof(DrinkTypesPage), e.ClickedItem);
         }
 
         private void YtemsListView_ContainerContentChanging(ListViewBase sender, ContainerContentChangingEventArgs args)
@@ -81,7 +81,7 @@ namespace Drink_Tracker
         
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            //this.Frame.Navigate(typeof(DrinkTypesPage), currentbill);
+            this.Frame.Navigate(typeof(DrinkTypesPage), currentbill);
         }
 
         private void BackToBills(object s, BackRequestedEventArgs e)
