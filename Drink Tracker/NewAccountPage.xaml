@@ -24,7 +24,7 @@
                 <TextBox Name="Weight" Text="70"/>
                 <TextBlock Text="kg" VerticalAlignment="Center" Margin="10,0,0,0"/>
             </StackPanel>
-            <Button Click="Create">Create</Button>
+            <AppBarButton Label="Create" Icon="Accept" Click="Create_click" HorizontalAlignment="Right"/>
         </StackPanel>
     </Grid>
 </Page>

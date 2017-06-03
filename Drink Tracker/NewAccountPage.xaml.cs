@@ -27,7 +27,7 @@ namespace Drink_Tracker
             this.InitializeComponent();
         }
 
-        private void Create(object sender, RoutedEventArgs e)
+        private void Create_click(object sender, RoutedEventArgs e)
         {
             using (var db = new AccountContext())
             {
