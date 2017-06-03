@@ -29,32 +29,32 @@
             </Grid.ColumnDefinitions>
             <Button x:Name="ButtonBeer" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" Background="Khaki" VerticalAlignment="Stretch" Click="ButtonBeer_Click">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Beer" Margin="20"/>
+                    <TextBlock Text="Beer" Margin="5" FontSize="40"/>
                 </StackPanel>
             </Button>
             <Button x:Name="ButtonWine" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Background="Khaki" VerticalAlignment="Stretch" Click="ButtonWine_Click">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Wine" Margin="20"/>
+                    <TextBlock Text="Wine" Margin="5" FontSize="40"/>
                 </StackPanel>
             </Button>
             <Button x:Name="ButtonShots" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" Background="Khaki" VerticalAlignment="Stretch" Click="ButtonShots_Click">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Shots" Margin="20"/>
+                    <TextBlock Text="Shots" Margin="5" FontSize="40"/>
                 </StackPanel>
             </Button>
             <Button x:Name="ButtonNonalco" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Background="Khaki" VerticalAlignment="Stretch" Click="ButtonNonalco_Click">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Nonalco" Margin="20"/>
+                    <TextBlock Text="Nonalco" Margin="5" FontSize="40"/>
                 </StackPanel>
             </Button>
             <Button x:Name="ButtonCocktails" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" Background="Khaki" VerticalAlignment="Stretch" Click="ButtonCocktails_Click">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Cocktails" Margin="20"/>
+                    <TextBlock Text="Cocktails" Margin="5" FontSize="40"/>
                 </StackPanel>
             </Button>
             <Button x:Name="ButtonOther" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" Background="Khaki" VerticalAlignment="Stretch" Click="ButtonOther_Click">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Other" Margin="20"/>
+                    <TextBlock Text="Other" Margin="5" FontSize="40"/>
                 </StackPanel>
             </Button>
         </Grid>
