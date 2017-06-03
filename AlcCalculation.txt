@@ -1,0 +1,26 @@
+if account.sex=male r=68 else r=55
+bac = 0
+halfbac = [10000 / (account.weight * r)]
+calculationtime = currenttime
+
+for each drink { 
+drink.volume => to millilitres
+drink.alcograms = drink.volume * drink.alcpercentage * 0.789 
+elapsedtime = calculationtime - drink.time  //in hours
+bac = bac + halfbac * drink.alcograms - (elapsedtime * 0.015) 
+}
+
+promille = 0.1 * bac
+hoursToSober = bac / 0.015
+sober = calculationtime + hoursToSober
+return (promille, sober) // promille of alcohol now, time of soberness
+
+
+// every calculation is done with r as 100 times the regular r
+// BAC = [10000 / (weight * r)] * alcograms       -> in percents
+
+// alcograms = volume * alcpercentage * 8 / 10 - simplified, calculated from alcohol units below
+// standard drink = 14 g alco
+// alcunit = 8 g alco = volume * alcpercentage / 1000
+
+
