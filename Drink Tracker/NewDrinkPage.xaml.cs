@@ -48,19 +48,9 @@ namespace Drink_Tracker
                     VolumeInMl = int.Parse(Volume.Text)
                 };
                 db.Drinks.Add(drink);
-
-                //TODO: osetrit, ci item uz je na liste a nejak zgrupit? premysliet
-                billAndType.bill.Items = new List<Item>();
-                Item item = new Item()
-                {
-                    Added = DateTime.Now,
-                    Drink = drink
-                };
-                billAndType.bill.Items.Add(item);
-                db.Bills.Update(billAndType.bill);
                 db.SaveChanges();
             }
-            this.Frame.Navigate(typeof(YtemsPage), billAndType.bill);
+            this.Frame.Navigate(typeof(DrinksPage), billAndType);
         }
     }
 }
