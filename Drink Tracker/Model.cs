@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Windows.UI.Xaml.Media;
 
-namespace Drink_Tracker.Models
+namespace Drink_Tracker
 {
     public class AccountContext : DbContext
     {
@@ -36,6 +36,9 @@ namespace Drink_Tracker.Models
         public string Name { get; set; }
         public DateTime Created { get; set; }
         public List<Item> Items { get; set; }
+
+        public int AccountId { get; set; }
+        public Account Account { get; set; }
     }
 
     public class Item
@@ -44,6 +47,9 @@ namespace Drink_Tracker.Models
         public DateTime Added { get; set; }
         public string ImageSource { get; set; }
         public Drink Drink { get; set; }
+
+        public int BillId { get; set; }
+        public Bill Bill { get; set; }
     }
 
     public class Drink

@@ -1,5 +1,4 @@
-﻿using Drink_Tracker.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -52,7 +51,7 @@ namespace Drink_Tracker
             {
                 AccountsList.ItemsSource = db.Accounts.ToList();
             }
-            base.OnNavigatedFrom(e);
+            base.OnNavigatedTo(e);
         }
     }
 }

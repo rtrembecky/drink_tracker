@@ -108,18 +108,17 @@
     <Compile Include="AccountsPage.xaml.cs">
       <DependentUpon>AccountsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20170602182120_MyFirstMigration.cs" />
-    <Compile Include="Migrations\20170602182120_MyFirstMigration.Designer.cs">
-      <DependentUpon>20170602182120_MyFirstMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20170602233802_AddAccountColumns.cs" />
-    <Compile Include="Migrations\20170602233802_AddAccountColumns.designer.cs">
-      <DependentUpon>20170602233802_AddAccountColumns.cs</DependentUpon>
+    <Compile Include="Migrations\20170603104609_MyFirstMigration.cs" />
+    <Compile Include="Migrations\20170603104609_MyFirstMigration.designer.cs">
+      <DependentUpon>20170603104609_MyFirstMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\AccountContextModelSnapshot.cs" />
-    <Compile Include="Models\Model.cs" />
+    <Compile Include="Model.cs" />
     <Compile Include="NewAccountPage.xaml.cs">
       <DependentUpon>NewAccountPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NewBillPage.xaml.cs">
+      <DependentUpon>NewBillPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="NewDrinkPage.xaml.cs">
       <DependentUpon>NewDrinkPage.xaml</DependentUpon>
@@ -176,6 +175,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="NewAccountPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NewBillPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

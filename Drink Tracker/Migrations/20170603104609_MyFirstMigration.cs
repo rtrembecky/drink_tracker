@@ -14,7 +14,9 @@ namespace Drink_Tracker.Migrations
                 {
                     AccountId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Username = table.Column<string>(nullable: true)
+                    Man = table.Column<bool>(nullable: false),
+                    Username = table.Column<string>(nullable: true),
+                    WeightInKg = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -44,7 +46,7 @@ namespace Drink_Tracker.Migrations
                 {
                     BillId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    AccountId = table.Column<int>(nullable: true),
+                    AccountId = table.Column<int>(nullable: false),
                     Created = table.Column<DateTime>(nullable: false),
                     Name = table.Column<string>(nullable: true)
                 },
@@ -56,7 +58,7 @@ namespace Drink_Tracker.Migrations
                         column: x => x.AccountId,
                         principalTable: "Accounts",
                         principalColumn: "AccountId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -66,7 +68,7 @@ namespace Drink_Tracker.Migrations
                     ItemId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Added = table.Column<DateTime>(nullable: false),
-                    BillId = table.Column<int>(nullable: true),
+                    BillId = table.Column<int>(nullable: false),
                     DrinkId = table.Column<int>(nullable: true),
                     ImageSource = table.Column<string>(nullable: true)
                 },
@@ -78,7 +80,7 @@ namespace Drink_Tracker.Migrations
                         column: x => x.BillId,
                         principalTable: "Bills",
                         principalColumn: "BillId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Items_Drinks_DrinkId",
                         column: x => x.DrinkId,

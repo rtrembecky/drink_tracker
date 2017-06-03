@@ -6,6 +6,11 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Icon="Add" Label="New bill" Click="Add_Click" />
+        </CommandBar>
+    </Page.BottomAppBar>
     <Page.Resources>
         <CollectionViewSource x:Key="BillsGroupedByAccountsItem" IsSourceGrouped="True" ItemsPath="Bills" Source="{Binding Accounts, Source={StaticResource AccountsSampleDataSource}}"/>
         <DataTemplate x:Key="BillsItemTemplate">
@@ -15,27 +20,24 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="1" Margin="0,0,0,0">
-                    <TextBlock Text="{Binding Custom_name}" Style="{StaticResource BaseTextBlockStyle}"/>
-                    <TextBlock Text="{Binding Date_created}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap"/>
-                    <TextBlock Text="{Binding Time_created}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap"/>
+                    <TextBlock Text="{Binding Name}" Style="{StaticResource BaseTextBlockStyle}"/>
+                    <TextBlock Text="{Binding Created}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap"/>
                 </StackPanel>
             </Grid>
         </DataTemplate>
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="{StaticResource HeaderHeight}"/>
-            <RowDefinition Height="{StaticResource SearchBarHeight}"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Border x:Name="Header" Grid.Row="0" Style="{StaticResource HeaderBackground}">
-            <TextBlock Text="Bills obrazovka" Style="{StaticResource HeaderStyle}"/>
-        </Border>
-        <AutoSuggestBox x:Name="SearchBox" Grid.Row="1" PlaceholderText="Tu môžeš písať veci" Text="{Binding Path=NameFilter, Mode=TwoWay}"/>
-        <ListView Grid.Row="2" x:Name="BillsList" ItemTemplate="{StaticResource BillsItemTemplate}" ItemsSource="{Binding Source={StaticResource BillsGroupedByAccountsItem}}" SelectionMode="None" IsItemClickEnabled="True" ItemClick="BillsList_ItemClick" ContainerContentChanging="BillsListView_ContainerContentChanging">
-        </ListView>
-
+        <StackPanel>
+            <Border x:Name="Header" Style="{StaticResource HeaderBackground}">
+                <TextBlock Text="Bills" Style="{StaticResource HeaderTextBlockStyle}"/>
+            </Border>
+            <AutoSuggestBox x:Name="SearchBox" PlaceholderText="Tu môžeš písať veci" Text="{Binding Path=NameFilter, Mode=TwoWay}"/>
+            <ListView x:Name="BillsList" ItemTemplate="{StaticResource BillsItemTemplate}" SelectionMode="None" IsItemClickEnabled="True" ItemClick="BillsList_ItemClick" ContainerContentChanging="BillsListView_ContainerContentChanging">
+                <!-- ItemsSource="{Binding Source={StaticResource BillsGroupedByAccountsItem}}" -->
+            </ListView>
+        </StackPanel>
+        
         <!-- for future maybe -->
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>

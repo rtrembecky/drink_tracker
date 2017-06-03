@@ -27,9 +27,22 @@ namespace Drink_Tracker
             this.InitializeComponent();
         }
 
+        Account account;
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            //TODO: fill UI
+            account = (Account)e.Parameter;
+
+            using (var db = new AccountContext())
+            {
+                var bills = db.Bills
+                    .Where(bill => bill.AccountId == account.AccountId)
+                    .ToList();
+
+                BillsList.ItemsSource = bills;
+            }
+            
+            base.OnNavigatedTo(e);
         }
 
         // nebude viest na drinktypes ale na konkretny ucet z vecera
@@ -48,6 +61,11 @@ namespace Drink_Tracker
             {
                 args.ItemContainer.Background = new SolidColorBrush(Windows.UI.Colors.LightGoldenrodYellow);
             }
+        }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(NewBillPage), account);
         }
     }
 }

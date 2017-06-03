@@ -26,12 +26,18 @@ eng:
   - Username - string
   - Bills (kolekcia)
     - Custom name - string
-    - Item (kolekcia)
+    - Items (kolekcia)
       - Drink (id)
       - Time added
     - Day/Time created
 - Drink (kolekcia)
   - Name - string
-  - Volume - int
+  - Volume (kolekcia) - int
   - Alcohol by volume (kolekcia) - int
   - Price (kolekcia) - int
+
+
+to create migration:
+1) change model.cs accordingly
+2) Tools - Nuget Package Manager - Package Manager Console
+3) run "Add-Migration custom_migration_name"

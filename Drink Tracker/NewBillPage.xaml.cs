@@ -20,27 +20,37 @@ namespace Drink_Tracker
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class NewAccountPage : Page
+    public sealed partial class NewBillPage : Page
     {
-        public NewAccountPage()
+        public NewBillPage()
         {
             this.InitializeComponent();
+        }
+
+        Account account;
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            account = (Account)e.Parameter;
+            base.OnNavigatedTo(e);
         }
 
         private void Create(object sender, RoutedEventArgs e)
         {
             using (var db = new AccountContext())
             {
-                var account = new Account
+                var bill = new Bill
                 {
-                    Username = Username.Text,
-                    Man = Man.IsChecked.Value,
-                    WeightInKg = int.Parse(Weight.Text)
+                    Created = DateTime.Now,
+                    Name = Bill_name.Text
                 };
-                db.Accounts.Add(account);
+                if (account.Bills == null)
+                    account.Bills = new List<Bill>();
+                account.Bills.Add(bill);
+                db.Accounts.Update(account);
                 db.SaveChanges();
             }
-            this.Frame.Navigate(typeof(AccountsPage));
+            this.Frame.Navigate(typeof(BillsPage), account);
         }
     }
 }
