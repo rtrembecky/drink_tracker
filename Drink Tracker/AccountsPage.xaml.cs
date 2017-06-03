@@ -53,5 +53,15 @@ namespace Drink_Tracker
             }
             base.OnNavigatedTo(e);
         }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
