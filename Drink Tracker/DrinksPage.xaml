@@ -15,10 +15,10 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="1" Margin="10,0,0,0">
-                    <TextBlock Text="{Binding Name}" Style="{StaticResource TitleTextBlockStyle}"/>
-                    <TextBlock Text="{Binding ABV}" Style="{StaticResource BodyTextBlockStyle}"/>
-                    <TextBlock Text="{Binding VolumeInMl}" Style="{StaticResource BodyTextBlockStyle}"/>
-                    <TextBlock Text="{Binding PriceInKc}" Style="{StaticResource BodyTextBlockStyle}"/>
+                    <TextBlock Text="{Binding Name}" Style="{StaticResource BaseTextBlockStyle}"/>
+                    <TextBlock Text="{Binding ABV}" Style="{StaticResource CaptionTextBlockStyle}"/>
+                    <TextBlock Text="{Binding VolumeInMl}" Style="{StaticResource CaptionTextBlockStyle}"/>
+                    <TextBlock Text="{Binding PriceInKc}" Style="{StaticResource CaptionTextBlockStyle}"/>
                 </StackPanel>
             </Grid>
         </DataTemplate>
