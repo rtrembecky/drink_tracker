@@ -8,7 +8,6 @@
     mc:Ignorable="d">
 
     <Page.Resources>
-        <CollectionViewSource x:Key="YtemsGroupedByBillsItem" IsSourceGrouped="True" ItemsPath="Ytems" Source="{Binding Accounts, Source={StaticResource AccountsSampleDataSource}}"/>
         <DataTemplate x:Key="YtemsItemTemplate">
             <Grid Height="50" Width="480" Margin="10" >
                 <Grid.ColumnDefinitions>
@@ -38,7 +37,7 @@
             <TextBlock Text="Add" Margin="10"/>
         </Button>
         <!-- up until here -->
-        <ListView Grid.Row="2" x:Name="YtemsList" ItemTemplate="{StaticResource YtemsItemTemplate}" ItemsSource="{Binding Source={StaticResource YtemsGroupedByBillsItem}}" SelectionMode="None" IsItemClickEnabled="True" ItemClick="YtemsList_ItemClick" ContainerContentChanging="YtemsListView_ContainerContentChanging">
+        <ListView Grid.Row="2" x:Name="YtemsList" ItemTemplate="{StaticResource YtemsItemTemplate}" SelectionMode="None" IsItemClickEnabled="True" ItemClick="YtemsList_ItemClick" ContainerContentChanging="YtemsListView_ContainerContentChanging">
         </ListView>
 
         <!-- for future maybe -->

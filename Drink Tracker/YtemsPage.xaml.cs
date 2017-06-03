@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -25,9 +26,14 @@ namespace Drink_Tracker
         public YtemsPage()
         {
             this.InitializeComponent();
+            SystemNavigationManager.GetForCurrentView().BackRequested += (s, e) =>
+            {
+                this.Frame.Navigate(typeof(BillsPage), account);
+            };
         }
 
         Bill currentbill;
+        Account account;
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -40,6 +46,11 @@ namespace Drink_Tracker
                     .ToList();
 
                 YtemsList.ItemsSource = items;
+
+                account = db.Accounts
+                    .Where(a => a.AccountId == currentbill.AccountId)
+                    .ToList()
+                    .First();
             }
 
             YtemsHeaderTitle.Text = currentbill.Name + " bill";
