@@ -32,7 +32,7 @@
             <Border x:Name="Header" Style="{StaticResource HeaderBackground}" Height="50">
                 <TextBlock Name="BillsHeaderTitle" Text="XAccountY" Style="{StaticResource HeaderStyle}"/>
             </Border>
-            <Border x:Name="Calculation" Style="{StaticResource ListViewItemBackground}" Height="50">
+            <Border x:Name="CalculationTab" Style="{StaticResource ListViewItemBackground}" Height="50">
                 <TextBlock Name="CalculationTitle" Text="Around XX.XX‰. Estimated 0‰ at YY:YY." Style="{StaticResource SubtitleTextBlockStyle}"/>
             </Border>
             <ListView x:Name="BillsList" ItemTemplate="{StaticResource BillsItemTemplate}" SelectionMode="None" IsItemClickEnabled="True" ItemClick="BillsList_ItemClick" ContainerContentChanging="BillsListView_ContainerContentChanging">
