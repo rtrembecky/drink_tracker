@@ -107,28 +107,34 @@ namespace Drink_Tracker
             sober = DateTime.Now;
             if (bills != null && bills.Count != 0)
             {
-                //TODO: expand to bills in 24 hours, not only last one
-                //foreach bill in bills (ked je timespan teraz-created vacsi ako 48 tak breakni)
-                Bill bill = bills.First<Bill>();
-                if (bill.Items != null && bill.Items.Count != 0)
+                //TODO: fix this
+                foreach (var bill in bills)
                 {
-                    foreach (var item in bill.Items)
+                    if ((t.Subtract(bill.Created)).TotalDays >= 1)
+                        break;
+                    else
                     {
-                        alcograms = (float)(item.Drink.VolumeInMl * item.Drink.ABV * 0.789);
-                        elapsedTime = t.Subtract(item.Added);
-                        bac = (float)(halfbac * alcograms - (elapsedTime.TotalMinutes * 0.00025));
-                        if (bac > 0)
-                            totalbac = (float)(totalbac + bac);
+                        if (bill.Items != null && bill.Items.Count != 0)
+                        {
+                            foreach (var item in bill.Items)
+                            {
+                                alcograms = (float)(item.Drink.VolumeInMl * item.Drink.ABV * 0.789);
+                                elapsedTime = t.Subtract(item.Added);
+                                bac = (float)(halfbac * alcograms - (elapsedTime.TotalMinutes * 0.00025));
+                                if (bac > 0)
+                                    totalbac = (float)(totalbac + bac);
+                            }
+                            promille = (float)(0.1 * totalbac);
+                            sober = DateTime.Now.AddMinutes(totalbac / 0.00025);
+                        }
                     }
-                    promille = (float)(0.1 * totalbac);
-                    sober = DateTime.Now.AddMinutes(totalbac / 0.00025);
                 }
             }
         }
 
         private void BackToAccount(object s, BackRequestedEventArgs e)
         {
-            this.Frame.Navigate(typeof(AccountsPage), account);
-        }
+           this.Frame.Navigate(typeof(AccountsPage), account);
+        } 
     }
 }
