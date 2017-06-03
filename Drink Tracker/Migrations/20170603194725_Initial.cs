@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Drink_Tracker.Migrations
 {
-    public partial class Init : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -69,7 +69,7 @@ namespace Drink_Tracker.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Added = table.Column<DateTime>(nullable: false),
                     BillId = table.Column<int>(nullable: false),
-                    DrinkId = table.Column<int>(nullable: true),
+                    DrinkId = table.Column<int>(nullable: false),
                     ImageSource = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -86,7 +86,7 @@ namespace Drink_Tracker.Migrations
                         column: x => x.DrinkId,
                         principalTable: "Drinks",
                         principalColumn: "DrinkId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

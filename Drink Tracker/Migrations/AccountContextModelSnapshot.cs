@@ -78,7 +78,7 @@ namespace Drink_Tracker.Migrations
 
                     b.Property<int>("BillId");
 
-                    b.Property<int?>("DrinkId");
+                    b.Property<int>("DrinkId");
 
                     b.Property<string>("ImageSource");
 
@@ -108,7 +108,8 @@ namespace Drink_Tracker.Migrations
 
                     b.HasOne("Drink_Tracker.Drink", "Drink")
                         .WithMany()
-                        .HasForeignKey("DrinkId");
+                        .HasForeignKey("DrinkId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
         }
     }

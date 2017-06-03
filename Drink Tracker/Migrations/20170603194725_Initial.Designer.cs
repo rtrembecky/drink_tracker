@@ -8,8 +8,8 @@ using Drink_Tracker;
 namespace Drink_Tracker.Migrations
 {
     [DbContext(typeof(AccountContext))]
-    [Migration("20170603175526_Init")]
-    partial class Init
+    [Migration("20170603194725_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -79,7 +79,7 @@ namespace Drink_Tracker.Migrations
 
                     b.Property<int>("BillId");
 
-                    b.Property<int?>("DrinkId");
+                    b.Property<int>("DrinkId");
 
                     b.Property<string>("ImageSource");
 
@@ -109,7 +109,8 @@ namespace Drink_Tracker.Migrations
 
                     b.HasOne("Drink_Tracker.Drink", "Drink")
                         .WithMany()
-                        .HasForeignKey("DrinkId");
+                        .HasForeignKey("DrinkId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
         }
     }
