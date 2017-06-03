@@ -31,8 +31,8 @@
                             <StackPanel Grid.Column="1" Margin="10,0,0,0">
                                 <TextBlock Text="{Binding Username}" Style="{StaticResource TitleTextBlockStyle}"/>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="{Binding WeightInKg}"/>
-                                    <TextBlock Style="{StaticResource BodyTextBlockStyle}" Text="{Binding Man}"/>
+                                    <TextBlock Text="{Binding WeightInKg}" Style="{StaticResource BodyTextBlockStyle}"/>
+                                    <TextBlock Text="{Binding Man}" Style="{StaticResource BodyTextBlockStyle}"/>
                                 </StackPanel>
                             </StackPanel>
                             <AppBarButton Grid.Column="2" Icon="Edit" Click="Edit_Click"/>
