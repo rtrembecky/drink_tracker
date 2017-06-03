@@ -42,7 +42,7 @@ namespace Drink_Tracker
                 BillsList.ItemsSource = bills;
             }
 
-            BillsHeaderTitle.Text = "Bills of " + account.Username;
+            BillsHeaderTitle.Text = account.Username;
             
             base.OnNavigatedTo(e);
         }

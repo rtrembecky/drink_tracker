@@ -31,7 +31,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Border x:Name="Header" Grid.Row="0" Style="{StaticResource HeaderBackground}">
-            <TextBlock Name="YtemsHeaderTitle" Text="Items of bill XY" Style="{StaticResource HeaderStyle}"/>
+            <TextBlock Name="YtemsHeaderTitle" Text="XY bill" Style="{StaticResource HeaderStyle}"/>
         </Border>
         <!-- remove this i guess -->
         <Button x:Name="ButtonAdd" Grid.Row="1" Background="LightGreen" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Click="ButtonAdd_Click">

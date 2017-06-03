@@ -42,7 +42,7 @@ namespace Drink_Tracker
                 YtemsList.ItemsSource = items;
             }
 
-            YtemsHeaderTitle.Text = "Items on bill " + currentbill.Name;
+            YtemsHeaderTitle.Text = currentbill.Name + " bill";
 
             base.OnNavigatedTo(e);
         }
