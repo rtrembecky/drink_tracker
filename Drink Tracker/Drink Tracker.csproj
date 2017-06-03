@@ -99,6 +99,9 @@
     <Compile Include="BillsPage.xaml.cs">
       <DependentUpon>BillsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\SexBoolToImage.cs" />
+    <Compile Include="Converters\DrinkToPrice.cs" />
+    <Compile Include="Converters\DrinkToName.cs" />
     <Compile Include="DrinksPage.xaml.cs">
       <DependentUpon>DrinksPage.xaml</DependentUpon>
     </Compile>
@@ -195,7 +198,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
