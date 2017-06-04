@@ -46,6 +46,21 @@ namespace Drink_Tracker
                     .ToList();
 
                 BillsList.ItemsSource = bills;
+
+                foreach (var bill in bills)
+                {
+                    bill.Items = db.Items
+                        .Where(i => i.BillId == bill.BillId)
+                        .ToList();
+
+                    foreach (var item in bill.Items)
+                    {
+                        item.Drink = db.Drinks
+                            .Where(d => d.DrinkId == item.DrinkId)
+                            .ToList()
+                            .First();
+                    }
+                }
             }
 
             BillsHeaderTitle.Text = account.Username;
@@ -98,7 +113,7 @@ namespace Drink_Tracker
                 r = 55;
             float bac = 0;
             float totalbac = 0;
-            int halfbac = (10 / (account.WeightInKg * r));
+            float halfbac = (float)(10f / (account.WeightInKg * r));
             float alcograms = 0;
             DateTime t = DateTime.Now;
             TimeSpan elapsedTime = new TimeSpan(0, 0, 0);
@@ -118,7 +133,7 @@ namespace Drink_Tracker
                         {
                             foreach (var item in bill.Items)
                             {
-                                alcograms = (float)(item.Drink.VolumeInMl * item.Drink.ABV * 0.789);
+                                alcograms = (float)(item.Drink.VolumeInMl * item.Drink.ABV * 0.01 * 0.789);
                                 elapsedTime = t.Subtract(item.Added);
                                 bac = (float)(halfbac * alcograms - (elapsedTime.TotalMinutes * 0.00025));
                                 if (bac > 0)
