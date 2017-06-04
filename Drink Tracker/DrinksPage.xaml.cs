@@ -81,14 +81,37 @@ namespace Drink_Tracker
             this.Frame.Navigate(typeof(NewDrinkPage), billAndType);
         }
 
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            DeleteDialog(sender);
+        }
+
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void Delete_Click(object sender, RoutedEventArgs e)
+        private async void DeleteDialog(object sender)
         {
+            ContentDialog deleteDialog = new ContentDialog
+            {
+                Title = "Delete drink?",
+                Content = "If you delete this drink, you won't be able to recover it. Are you sure you want to delete it?",
+                SecondaryButtonText = "No",
+                PrimaryButtonText = "Yes"
+            };
 
+            ContentDialogResult result = await deleteDialog.ShowAsync();
+            if (result == ContentDialogResult.Primary)
+            {
+                using (var db = new AccountContext())
+                {
+                    var drink = (sender as FrameworkElement).DataContext as Drink;
+                    db.Drinks.Remove(drink);
+                    db.SaveChanges();
+                }
+                this.Frame.Navigate(typeof(DrinksPage), billAndType);
+            }
         }
     }
 }

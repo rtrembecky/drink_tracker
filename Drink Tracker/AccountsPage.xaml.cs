@@ -60,7 +60,7 @@ namespace Drink_Tracker
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-
+            DeleteDialog(sender);
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
@@ -68,7 +68,7 @@ namespace Drink_Tracker
 
         }
 
-        private async void DeleteDialog()
+        private async void DeleteDialog(object sender)
         {
             ContentDialog deleteDialog = new ContentDialog
             {
@@ -79,6 +79,16 @@ namespace Drink_Tracker
             };
 
             ContentDialogResult result = await deleteDialog.ShowAsync();
+            if (result == ContentDialogResult.Primary)
+            {
+                using (var db = new AccountContext())
+                {
+                    var acc = (sender as FrameworkElement).DataContext as Account;
+                    db.Accounts.Remove(acc);
+                    db.SaveChanges();
+                }
+                this.Frame.Navigate(typeof(AccountsPage));
+            }
         }
     }
 }
