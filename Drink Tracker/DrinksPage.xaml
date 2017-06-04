@@ -28,16 +28,19 @@
         </DataTemplate>
     </Page.Resources>
 
-    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" DataContext="{Binding Source={StaticResource AccountsSampleDataSource}}">
-        <Border x:Name="Header" Style="{StaticResource HeaderBackground}" Height="30">
-            <TextBlock Name="HeaderText" Text="Pick a DRINK_TYPE to add to bill" Style="{StaticResource BaseTextBlockStyle}"/>
-        </Border>
-        <ListView x:Name="DrinksList" ItemTemplate="{StaticResource DrinksItemTemplate}" ItemClick="DrinksList_ItemClick" IsItemClickEnabled="True" SelectionMode="None">
-            
-        </ListView>
-    </StackPanel>
 
-    <Page.BottomAppBar>
+    <ScrollViewer>
+        <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" DataContext="{Binding Source={StaticResource AccountsSampleDataSource}}">
+            <Border x:Name="Header" Style="{StaticResource HeaderBackground}" Height="30">
+                <TextBlock Name="HeaderText" Text="Pick a DRINK_TYPE to add to bill" Style="{StaticResource BaseTextBlockStyle}"/>
+            </Border>
+            <ListView x:Name="DrinksList" ItemTemplate="{StaticResource DrinksItemTemplate}" ItemClick="DrinksList_ItemClick" IsItemClickEnabled="True" SelectionMode="None">
+            
+            </ListView>
+        </StackPanel>
+    </ScrollViewer>
+
+            <Page.BottomAppBar>
         <CommandBar>
             <AppBarButton Icon="Add" Label="Custom drink" Click="Add_Click" />
         </CommandBar>
