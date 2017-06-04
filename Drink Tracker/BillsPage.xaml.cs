@@ -139,7 +139,7 @@ namespace Drink_Tracker
                                 if (bac > 0)
                                     totalbac = (float)(totalbac + bac);
                             }
-                            promille = (float)(0.1 * totalbac);
+                            promille = (float)(10 * totalbac);
                             sober = DateTime.Now.AddMinutes(totalbac / 0.00025);
                         }
                     }
