@@ -31,14 +31,16 @@
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel>
-            <Border x:Name="Header" Style="{StaticResource HeaderBackground}" Height="50">
-                <TextBlock Name="BillsHeaderTitle" Text="XAccountY" Style="{StaticResource HeaderStyle}"/>
-            </Border>
-            <ListView x:Name="BillsList" ItemTemplate="{StaticResource BillsItemTemplate}" SelectionMode="None" IsItemClickEnabled="True" ItemClick="BillsList_ItemClick" ContainerContentChanging="BillsListView_ContainerContentChanging">
-                <!-- ItemsSource="{Binding Source={StaticResource BillsGroupedByAccountsItem}}" -->
-            </ListView>
-        </StackPanel>
+        <ScrollViewer>
+            <StackPanel>
+                <Border x:Name="Header" Style="{StaticResource HeaderBackground}" Height="50">
+                    <TextBlock Name="BillsHeaderTitle" Text="XAccountY" Style="{StaticResource HeaderStyle}"/>
+                </Border>
+                <ListView x:Name="BillsList" ItemTemplate="{StaticResource BillsItemTemplate}" SelectionMode="None" IsItemClickEnabled="True" ItemClick="BillsList_ItemClick" ContainerContentChanging="BillsListView_ContainerContentChanging">
+                    <!-- ItemsSource="{Binding Source={StaticResource BillsGroupedByAccountsItem}}" -->
+                </ListView>
+            </StackPanel>
+        </ScrollViewer>
 
         <!-- for future maybe -->
         <VisualStateManager.VisualStateGroups>
