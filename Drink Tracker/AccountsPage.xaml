@@ -17,13 +17,21 @@
     </Page.BottomAppBar>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" DataContext="{Binding Source={StaticResource AccountsSampleDataSource}}">
-        <ScrollViewer>
-            <StackPanel>
-                <Border x:Name="Header" Style="{StaticResource HeaderBackground}" Height="50">
-                    <TextBlock Text="Accounts" Style="{StaticResource HeaderStyle}"/>
-                </Border>
-                <Image Source="Images/man.png"/>
-                <ListView x:Name="AccountsList" ItemClick="AccountsList_ItemClick" IsItemClickEnabled="True" SelectionMode="None">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Border x:Name="Header" Style="{StaticResource HeaderBackground}" Height="50">
+            <TextBlock Text="Accounts" Style="{StaticResource HeaderStyle}"/>
+        </Border>
+        <Image Source="Images/man.png"/>
+        <ScrollViewer Grid.Row="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <ListView Grid.Row="1" x:Name="AccountsList" ItemClick="AccountsList_ItemClick" IsItemClickEnabled="True" SelectionMode="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Grid Height="Auto">
@@ -48,9 +56,8 @@
                             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
                         </Style>
                     </ListView.ItemContainerStyle>
-
                 </ListView>
-            </StackPanel>
+            </Grid>
         </ScrollViewer>
     </Grid>
 </Page>

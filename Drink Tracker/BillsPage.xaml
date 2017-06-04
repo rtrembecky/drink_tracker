@@ -31,16 +31,25 @@
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <ScrollViewer>
-            <StackPanel>
-                <Border x:Name="Header" Style="{StaticResource HeaderBackground}" Height="50">
-                    <TextBlock Name="BillsHeaderTitle" Text="XAccountY" Style="{StaticResource HeaderStyle}"/>
-                </Border>
-                <ListView x:Name="BillsList" ItemTemplate="{StaticResource BillsItemTemplate}" SelectionMode="None" IsItemClickEnabled="True" ItemClick="BillsList_ItemClick" ContainerContentChanging="BillsListView_ContainerContentChanging">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Border x:Name="Header" Style="{StaticResource HeaderBackground}" Height="50">
+                <TextBlock Name="BillsHeaderTitle" Text="XAccountY" Style="{StaticResource HeaderStyle}"/>
+        </Border>
+        <ScrollViewer Grid.Row="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <ListView Grid.Row="1" x:Name="BillsList" ItemTemplate="{StaticResource BillsItemTemplate}" SelectionMode="None" IsItemClickEnabled="True" ItemClick="BillsList_ItemClick" ContainerContentChanging="BillsListView_ContainerContentChanging">
                     <!-- ItemsSource="{Binding Source={StaticResource BillsGroupedByAccountsItem}}" -->
                 </ListView>
-            </StackPanel>
+            </Grid>
         </ScrollViewer>
+        
 
         <!-- for future maybe -->
         <VisualStateManager.VisualStateGroups>

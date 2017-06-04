@@ -29,16 +29,26 @@
     </Page.Resources>
 
 
-    <ScrollViewer>
-        <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" DataContext="{Binding Source={StaticResource AccountsSampleDataSource}}">
-            <Border x:Name="Header" Style="{StaticResource HeaderBackground}" Height="30">
-                <TextBlock Name="HeaderText" Text="Pick a DRINK_TYPE to add to bill" Style="{StaticResource BaseTextBlockStyle}"/>
-            </Border>
-            <ListView x:Name="DrinksList" ItemTemplate="{StaticResource DrinksItemTemplate}" ItemClick="DrinksList_ItemClick" IsItemClickEnabled="True" SelectionMode="None">
-            
-            </ListView>
-        </StackPanel>
-    </ScrollViewer>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>       
+        <Border x:Name="Header" Style="{StaticResource HeaderBackground}" Height="30">
+            <TextBlock Name="HeaderText" Text="Pick a DRINK_TYPE to add to bill" Style="{StaticResource BaseTextBlockStyle}"/>
+        </Border>
+        <ScrollViewer Grid.Row="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <ListView Grid.Row="1" x:Name="DrinksList" ItemTemplate="{StaticResource DrinksItemTemplate}" ItemClick="DrinksList_ItemClick" IsItemClickEnabled="True" SelectionMode="None">
+
+                </ListView>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
 
             <Page.BottomAppBar>
         <CommandBar>

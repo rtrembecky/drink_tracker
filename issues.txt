@@ -1,4 +1,3 @@
-drinkspage, billspage, accountspage prerobit na grid a hodit do scrollvieweru (ytemspage done)
 drinkspage, billspage, accountspage pridat edit obrazovky
 ytemspage vytvorit rozklikavacie polozky
 ytems pridat mnozstva napojov
