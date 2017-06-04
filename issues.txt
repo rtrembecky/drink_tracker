@@ -1,0 +1,8 @@
+drinkspage, billspage, accountspage prerobit na grid a hodit do scrollvieweru (ytemspage done)
+drinkspage, billspage, accountspage pridat edit obrazovky
+ytemspage vytvorit rozklikavacie polozky
+ytems pridat mnozstva napojov
+ytems pridat kalkulaciu ceny
+drinkspage rozdelit ceny v popise podla zloziek (podobne riesene ako pri deletebuttone)
+backbutton ide?
+ui
