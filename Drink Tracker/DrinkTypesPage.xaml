@@ -13,7 +13,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Border x:Name="Header" Grid.Row="0" Style="{StaticResource HeaderBackground}">
-            <TextBlock Text="Which type of drink to add?" Style="{StaticResource BaseTextBlockStyle}"/>
+            <TextBlock Text="Pick a drink type to add" Style="{StaticResource BaseTextBlockStyle}"/>
         </Border>
         
         <Grid x:Name="InsideGrid" Grid.Row="1">
