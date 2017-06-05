@@ -35,6 +35,40 @@ namespace Drink_Tracker
             base.OnNavigatedTo(e);
 
             HeaderText.Text = "New custom " + billAndType.type;
+            
+            switch (billAndType.type)
+            {
+                case "Beer":
+                    ABV.Text = "4";
+                    Volume.Text = "5";
+                    Cost.Text = "30";
+                    break;
+                case "Wine":
+                    ABV.Text = "12";
+                    Volume.Text = "2";
+                    Cost.Text = "40";
+                    break;
+                case "Shot":
+                    ABV.Text = "38";
+                    Volume.Text = "0.4";
+                    Cost.Text = "40";
+                    break;
+                case "Nonalco":
+                    ABV.Text = "0";
+                    Volume.Text = "5";
+                    Cost.Text = "30";
+                    break;
+                case "Cocktail":
+                    ABV.Text = "15";
+                    Volume.Text = "1.8";
+                    Cost.Text = "80";
+                    break;
+                case "Other":
+                    ABV.Text = "0";
+                    Volume.Text = "0";
+                    Cost.Text = "20";
+                    break;
+            }
         }
 
         private void Create_Click(object sender, RoutedEventArgs e)
@@ -47,7 +81,7 @@ namespace Drink_Tracker
                     ABV = float.Parse(ABV.Text),
                     PriceInKc = int.Parse(Cost.Text),
                     Type = billAndType.type,
-                    VolumeInMl = int.Parse(Volume.Text)
+                    VolumeInMl = int.Parse(Volume.Text)*100
                 };
                 db.Drinks.Add(drink);
                 db.SaveChanges();

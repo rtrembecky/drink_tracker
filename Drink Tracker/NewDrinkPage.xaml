@@ -10,18 +10,18 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel>
             <Border x:Name="Header" Style="{StaticResource HeaderBackground}">
-                <TextBlock Name="HeaderText" Text="New custom beer" Style="{StaticResource HeaderStyle}"/>
+                <TextBlock Name="HeaderText" Text="New custom DRINK_TYPE" Style="{StaticResource HeaderStyle}"/>
             </Border>
             <TextBox Name="DrinkName" PlaceholderText="Name"/>
             <TextBlock Text="Alcohol by volume:" Style="{StaticResource BaseTextBlockStyle}"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <TextBox Name="ABV" Text="38"/>
-                <TextBlock Text="  ‰ " VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <TextBlock Text="  ‰" VerticalAlignment="Center" Margin="10,0,0,0"/>
             </StackPanel>
             <TextBlock Text="Volume:" Style="{StaticResource BaseTextBlockStyle}"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBox Name="Volume" Text="500"/>
-                <TextBlock Text="ml" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <TextBox x:Name="Volume" Text="500"/>
+                <TextBlock Text="   dl " VerticalAlignment="Center" Margin="10,0,0,0"/>
             </StackPanel>
             <TextBlock Text="Cost:" Style="{StaticResource BaseTextBlockStyle}"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">

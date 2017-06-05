@@ -57,7 +57,7 @@ namespace Drink_Tracker
 
         private void ButtonCocktails_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(DrinksPage), new BillAndType { bill = currentBill, type = "Coctail" } );
+            this.Frame.Navigate(typeof(DrinksPage), new BillAndType { bill = currentBill, type = "Cocktail" } );
         }
 
         private void ButtonOther_Click(object sender, RoutedEventArgs e)
