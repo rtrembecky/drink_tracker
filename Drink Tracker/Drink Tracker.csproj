@@ -99,6 +99,7 @@
     <Compile Include="BillsPage.xaml.cs">
       <DependentUpon>BillsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\DrinkBillType.cs" />
     <Compile Include="Converters\SexBoolToImage.cs" />
     <Compile Include="Converters\DrinkToPrice.cs" />
     <Compile Include="Converters\DrinkToName.cs" />
@@ -110,6 +111,9 @@
     </Compile>
     <Compile Include="AccountsPage.xaml.cs">
       <DependentUpon>AccountsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditDrinkPage.xaml.cs">
+      <DependentUpon>EditDrinkPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Migrations\20170603194725_Initial.cs" />
     <Compile Include="Migrations\20170603194725_Initial.designer.cs">
@@ -176,6 +180,10 @@
     <Page Include="AccountsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EditDrinkPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="NewAccountPage.xaml">
       <SubType>Designer</SubType>

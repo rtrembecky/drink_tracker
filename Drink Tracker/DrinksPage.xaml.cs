@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Drink_Tracker.Converters;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -88,7 +89,9 @@ namespace Drink_Tracker
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-
+            Drink drink = (sender as FrameworkElement).DataContext as Drink;
+            DrinkBillType dab = new DrinkBillType(drink, billAndType);
+            this.Frame.Navigate(typeof(EditDrinkPage), dab);
         }
 
         private async void DeleteDialog(object sender)
