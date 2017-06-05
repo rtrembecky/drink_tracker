@@ -5,3 +5,5 @@ ytems pridat kalkulaciu ceny
 drinkspage rozdelit ceny v popise podla zloziek (podobne riesene ako pri deletebuttone)
 backbutton ide?
 ui
+duplikaty v databazi
+drink nech ma kolekciu cien, z ktorych sa bude dat vyberat v dropdowne
