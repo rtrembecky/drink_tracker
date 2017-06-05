@@ -9,7 +9,7 @@
 
     <Page.Resources>
         <DataTemplate x:Key="DrinksItemTemplate">
-            <Grid Height="Auto" Width="300" Margin="10" >
+            <Grid Height="Auto" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
@@ -22,8 +22,7 @@
                     <TextBlock Text="{Binding VolumeInMl}" Style="{StaticResource CaptionTextBlockStyle}"/>
                     <TextBlock Text="{Binding PriceInKc}" Style="{StaticResource CaptionTextBlockStyle}"/>
                 </StackPanel>
-                <AppBarButton Grid.Column="2" Icon="Edit" Click="Edit_Click"/>
-                <AppBarButton Grid.Column="3" Icon="Delete" Click="Delete_Click"/>
+                <AppBarButton Grid.Column="2" Icon="Delete" Click="Delete_Click"/>
             </Grid>
         </DataTemplate>
     </Page.Resources>
@@ -44,7 +43,12 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <ListView Grid.Row="1" x:Name="DrinksList" ItemTemplate="{StaticResource DrinksItemTemplate}" ItemClick="DrinksList_ItemClick" IsItemClickEnabled="True" SelectionMode="None">
-
+                    <!-- ItemsSource="{Binding Source={StaticResource DrinksItemTemplate}}" -->
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
                 </ListView>
             </Grid>
         </ScrollViewer>

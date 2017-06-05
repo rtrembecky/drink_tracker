@@ -57,7 +57,6 @@ namespace Drink_Tracker
 
             using (var db = new AccountContext())
             {
-                //TODO: osetrit, ci item uz je na liste a nejak zgrupit? premysliet
                 bill.Items = db.Items
                     .Where(i => i.BillId == bill.BillId)
                     .ToList();
@@ -86,10 +85,10 @@ namespace Drink_Tracker
             DeleteDialog(sender);
         }
 
-        private void Edit_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        // if we decide editing drinks is a good idea
+        //<AppBarButton Grid.Column="2" Icon="Edit" Click="Edit_Click"/>
+        //private void Edit_Click(object sender, RoutedEventArgs e)
+        //{ }
 
         private async void DeleteDialog(object sender)
         {
