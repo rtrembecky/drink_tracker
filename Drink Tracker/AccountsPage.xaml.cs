@@ -39,7 +39,7 @@ namespace Drink_Tracker
                 AccountsList.ItemsSource = db.Accounts.ToList();
                 foreach (var acc in AccountsList.Items)
                 {
-                    //som myslel, ze nejak pridam obrazok... asi ne
+                    // perhaps some pic could be added in the future
                 }
             }
         }
@@ -65,7 +65,8 @@ namespace Drink_Tracker
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-
+            var acc = (sender as FrameworkElement).DataContext as Account;
+            this.Frame.Navigate(typeof(EditAccountPage), acc);
         }
 
         private async void DeleteDialog(object sender)

@@ -1,0 +1,30 @@
+﻿<Page
+    x:Class="Drink_Tracker.EditAccountPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Drink_Tracker"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel>
+            <Border x:Name="Header" Style="{StaticResource HeaderBackground}">
+                <TextBlock Name="EditAccountHeader" Text="Edit account" Style="{StaticResource HeaderStyle}"/>
+            </Border>
+            <TextBlock Text="Name:" Style="{StaticResource BaseTextBlockStyle}"/>
+            <TextBox Name="Username" PlaceholderText="John Doe"/>
+            <TextBlock Text="Sex:" Style="{StaticResource BaseTextBlockStyle}"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <RadioButton Name="Man" Grid.Column="0" Content="Man" IsChecked="True"/>
+                <RadioButton Name="Woman" Grid.Column="1" Content="Woman" Tag="Woman"/>
+            </StackPanel>
+            <TextBlock Text="Weight:" Style="{StaticResource BaseTextBlockStyle}"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBox Name="Weight" Text="70"/>
+                <TextBlock Text="kg" VerticalAlignment="Center" Margin="10,0,0,0"/>
+            </StackPanel>
+            <AppBarButton Label="Confirm" Icon="Accept" Click="Edit_click" HorizontalAlignment="Right"/>
+        </StackPanel>
+    </Grid>
+</Page>
