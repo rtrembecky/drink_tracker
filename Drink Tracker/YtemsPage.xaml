@@ -33,15 +33,17 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Border Name="Header" Style="{StaticResource HeaderBackground}" Height="50">
+        <Border Grid.Row="1" Name="Header" Style="{StaticResource HeaderBackground}" Height="50">
             <TextBlock Name="YtemsHeaderTitle" Text="XY bill" Style="{StaticResource HeaderStyle}"/>
         </Border>
-        <Button Name="ButtonAdd" Background="LightGreen" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Click="ButtonAdd_Click">
+        <Button Grid.Row="2" Name="ButtonAdd" Background="LightGreen" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Click="ButtonAdd_Click">
             <TextBlock Text="Add" Margin="10"/>
         </Button>
-        <ScrollViewer Grid.Row="1">
+        <ScrollViewer Grid.Row="3">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
