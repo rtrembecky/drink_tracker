@@ -150,6 +150,39 @@ namespace Drink_Tracker
         private void BackToAccount(object s, BackRequestedEventArgs e)
         {
            this.Frame.Navigate(typeof(AccountsPage), account);
-        } 
+        }
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            DeleteDialog(sender);
+        }
+
+        private async void DeleteDialog(object sender)
+        {
+            ContentDialog deleteDialog = new ContentDialog
+            {
+                Title = "Delete bill?",
+                Content = "If you delete this bill, you won't be able to recover it. Are you sure you want to delete it?",
+                SecondaryButtonText = "No",
+                PrimaryButtonText = "Yes"
+            };
+
+            ContentDialogResult result = await deleteDialog.ShowAsync();
+            if (result == ContentDialogResult.Primary)
+            {
+                using (var db = new AccountContext())
+                {
+                    var bill = (sender as FrameworkElement).DataContext as Bill;
+                    db.Bills.Remove(bill);
+                    db.SaveChanges();
+                }
+                this.Frame.Navigate(typeof(BillsPage), account);
+            }
+        }
     }
 }

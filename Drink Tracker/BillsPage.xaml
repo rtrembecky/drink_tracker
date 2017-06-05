@@ -17,15 +17,19 @@
     <Page.Resources>
         <CollectionViewSource x:Key="BillsGroupedByAccountsItem" IsSourceGrouped="True" ItemsPath="Bills" Source="{Binding Accounts, Source={StaticResource AccountsSampleDataSource}}"/>
         <DataTemplate x:Key="BillsItemTemplate">
-            <Grid Height="50" Width="480" Margin="10" >
+            <Grid Height="Auto" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="1" Margin="0,0,0,0">
                     <TextBlock Text="{Binding Name}" Style="{StaticResource BaseTextBlockStyle}"/>
                     <TextBlock Text="{Binding Created}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap"/>
                 </StackPanel>
+                <AppBarButton Grid.Column="2" Icon="Edit" Click="Edit_Click"/>
+                <AppBarButton Grid.Column="3" Icon="Delete" Click="Delete_Click"/>
             </Grid>
         </DataTemplate>
     </Page.Resources>
@@ -46,7 +50,12 @@
                 </Grid.RowDefinitions>
                 <ListView Grid.Row="1" x:Name="BillsList" ItemTemplate="{StaticResource BillsItemTemplate}" SelectionMode="None" IsItemClickEnabled="True" ItemClick="BillsList_ItemClick" ContainerContentChanging="BillsListView_ContainerContentChanging">
                     <!-- ItemsSource="{Binding Source={StaticResource BillsGroupedByAccountsItem}}" -->
-                </ListView>
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                </ListView>                
             </Grid>
         </ScrollViewer>
     </Grid>
