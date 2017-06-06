@@ -26,7 +26,7 @@
                         <TextBlock Text="{Binding PriceInKc}" Style="{StaticResource CaptionTextBlockStyle}"/>
                         <TextBlock Text=" CZK" Style="{StaticResource CaptionTextBlockStyle}" Margin="0,0,8,0"/>
                     </StackPanel>
-                    </StackPanel>
+                </StackPanel>
                 <AppBarButton Grid.Column="2" Icon="Delete" Click="Delete_Click"/>
             </Grid>
         </DataTemplate>
