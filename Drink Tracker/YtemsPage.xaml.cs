@@ -30,6 +30,8 @@ namespace Drink_Tracker
 
         Bill currentbill;
         Account account;
+        List<Item> items;
+        float TotalPrice = 0;
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -39,7 +41,7 @@ namespace Drink_Tracker
 
             using (var db = new AccountContext())
             {
-                var items = db.Items
+                items = db.Items
                     .Where(item => item.BillId == currentbill.BillId)
                     .ToList();
 
@@ -56,7 +58,6 @@ namespace Drink_Tracker
 
                     item.Ytems = db.Ytems
                         .Where(y => y.ItemId == item.ItemId)
-                        .ToList()
                         .OrderByDescending(y => y.Added)
                         .ToList();
                 }
@@ -71,7 +72,20 @@ namespace Drink_Tracker
 
             YtemsHeaderTitle.Text = currentbill.Name + " bill";
 
+            Calculation();
+
+            ToPay.Text = "To pay: " + TotalPrice.ToString("0.00") + " CZK";
+
             base.OnNavigatedTo(e);
+        }
+
+        private void Calculation()
+        {
+            TotalPrice = 0;
+            foreach (var i in items)
+            {
+                TotalPrice += i.DrinkPrice * i.Ytems.Count;
+            }
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
