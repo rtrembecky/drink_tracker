@@ -98,6 +98,7 @@
     <Compile Include="BillsPage.xaml.cs">
       <DependentUpon>BillsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\BoolToExpandedIcon.cs" />
     <Compile Include="Converters\BoolToNonVis.cs" />
     <Compile Include="Converters\BoolToVis.cs" />
     <Compile Include="Converters\ItemToName.cs" />
