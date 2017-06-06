@@ -1,11 +1,9 @@
-billspage pridat edit mena
+billspage sfunkcnit edit mena
+drink nech ma kolekciu cien, z ktorych sa bude dat vyberat v dropdowne
 ytemspage vytvorit rozklikavacie polozky
 ytems pridat mnozstva napojov
 ytems pridat kalkulaciu ceny
-backbutton ide?
-ui
-duplikaty v databazi
-drink nech ma kolekciu cien, z ktorych sa bude dat vyberat v dropdowne
 overovanie hodnot
 - prazdne nazvy veci
 - neciselne hodnoty v ciselnych polickach
+duplikaty v databazi
