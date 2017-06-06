@@ -58,6 +58,10 @@ namespace Drink_Tracker
                             .Where(d => d.DrinkId == item.DrinkId)
                             .ToList()
                             .First();
+
+                        item.Ytems = db.Ytems
+                            .Where(y => y.ItemId == item.ItemId)
+                            .ToList();
                     }
 
                     bill.Edited = false;
