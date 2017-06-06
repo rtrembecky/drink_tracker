@@ -2,7 +2,6 @@ billspage pridat edit mena
 ytemspage vytvorit rozklikavacie polozky
 ytems pridat mnozstva napojov
 ytems pridat kalkulaciu ceny
-drinkspage rozdelit ceny v popise podla zloziek
 backbutton ide?
 ui
 duplikaty v databazi

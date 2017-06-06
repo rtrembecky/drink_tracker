@@ -18,10 +18,15 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="1" Margin="10,0,0,0">
                     <TextBlock Text="{Binding Name}" Style="{StaticResource BaseTextBlockStyle}"/>
-                    <TextBlock Text="{Binding ABV}" Style="{StaticResource CaptionTextBlockStyle}"/>
-                    <TextBlock Text="{Binding VolumeInMl}" Style="{StaticResource CaptionTextBlockStyle}"/>
-                    <TextBlock Text="{Binding PriceInKc}" Style="{StaticResource CaptionTextBlockStyle}"/>
-                </StackPanel>
+                    <StackPanel Grid.Column="1" Margin="10,0,0,0" Orientation="Horizontal">
+                        <TextBlock Text="{Binding ABV}" Style="{StaticResource CaptionTextBlockStyle}"/>
+                        <TextBlock Text=" ‰," Style="{StaticResource CaptionTextBlockStyle}" Margin="0,0,8,0"/>
+                        <TextBlock Text="{Binding VolumeInMl}" Style="{StaticResource CaptionTextBlockStyle}"/>
+                        <TextBlock Text=" ml," Style="{StaticResource CaptionTextBlockStyle}" Margin="0,0,8,0"/>
+                        <TextBlock Text="{Binding PriceInKc}" Style="{StaticResource CaptionTextBlockStyle}"/>
+                        <TextBlock Text=" CZK" Style="{StaticResource CaptionTextBlockStyle}" Margin="0,0,8,0"/>
+                    </StackPanel>
+                    </StackPanel>
                 <AppBarButton Grid.Column="2" Icon="Delete" Click="Delete_Click"/>
             </Grid>
         </DataTemplate>
