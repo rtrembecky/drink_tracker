@@ -82,8 +82,9 @@ namespace Drink_Tracker
                     ABV = float.Parse(ABV.Text),
                     Prices = new List<Price>(),
                     Type = billAndType.Type,
-                    VolumeInMl = int.Parse(Volume.Text)*100
+                    VolumeInMl = (int)(float.Parse(Volume.Text) * 100)
                 };
+                
                 //TODO: ak takyto drink uz je v databazi (porovnat vsetky hodnoty okrem prices), tak
                 // drink = najdeny drink
 
