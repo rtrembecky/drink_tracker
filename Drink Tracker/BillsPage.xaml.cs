@@ -32,6 +32,7 @@ namespace Drink_Tracker
         List<Bill> bills;
         float promille;
         DateTime sober;
+        Bill editedbill;
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -154,7 +155,25 @@ namespace Drink_Tracker
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
+            editedbill = (sender as FrameworkElement).DataContext as Bill;
+            using (var db = new AccountContext())
+            {
+                foreach (Bill bill in db.Bills)
+                {
+                    if (bill.BillId == editedbill.BillId)
+                    {
 
+                        //bill.ShownName.Visibility = Visibility.Visible;
+                        break;
+                    }
+                };
+                db.SaveChanges();
+            }
+        }
+
+        private void Confirm_Edit_Click(object sender, RoutedEventArgs e)
+        {
+            //revert edit_click settings
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
