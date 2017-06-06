@@ -36,7 +36,7 @@ namespace Drink_Tracker
             
             HeaderText.Text = "New custom " + billAndType.Type;
             
-            switch (billAndType.type)
+            switch (billAndType.Type)
             {
                 case "Beer":
                     ABV.Text = "4";
