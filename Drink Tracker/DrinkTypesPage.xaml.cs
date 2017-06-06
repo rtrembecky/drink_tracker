@@ -37,32 +37,32 @@ namespace Drink_Tracker
 
         private void ButtonBeer_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(DrinksPage), new BillAndType { bill = currentBill, type = "Beer" } );
+            this.Frame.Navigate(typeof(DrinksPage), new BillAndType { Bill = currentBill, Type = "Beer" } );
         }
 
         private void ButtonWine_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(DrinksPage), new BillAndType { bill = currentBill, type = "Wine" } );
+            this.Frame.Navigate(typeof(DrinksPage), new BillAndType { Bill = currentBill, Type = "Wine" } );
         }
 
         private void ButtonShots_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(DrinksPage), new BillAndType { bill = currentBill, type = "Shot" } );
+            this.Frame.Navigate(typeof(DrinksPage), new BillAndType { Bill = currentBill, Type = "Shot" } );
         }
 
         private void ButtonNonalco_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(DrinksPage), new BillAndType { bill = currentBill, type = "Nonalco" } );
+            this.Frame.Navigate(typeof(DrinksPage), new BillAndType { Bill = currentBill, Type = "Nonalco" } );
         }
 
         private void ButtonCocktails_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(DrinksPage), new BillAndType { bill = currentBill, type = "Cocktail" } );
+            this.Frame.Navigate(typeof(DrinksPage), new BillAndType { Bill = currentBill, Type = "Cocktail" } );
         }
 
         private void ButtonOther_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(DrinksPage), new BillAndType { bill = currentBill, type = "Other" } );
+            this.Frame.Navigate(typeof(DrinksPage), new BillAndType { Bill = currentBill, Type = "Other" } );
         }
     }
 }

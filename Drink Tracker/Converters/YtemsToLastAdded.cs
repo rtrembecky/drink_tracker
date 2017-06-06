@@ -7,12 +7,12 @@ using Windows.UI.Xaml.Data;
 
 namespace Drink_Tracker.Converters
 {
-    public class DrinkToPrice : IValueConverter
+    class YtemsToLastAdded : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            Drink drink = value as Drink;
-            return drink.Prices.First();
+            var ytems = value as List<Ytem>;
+            return ytems.OrderByDescending(y => y.Added).First().Added;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)

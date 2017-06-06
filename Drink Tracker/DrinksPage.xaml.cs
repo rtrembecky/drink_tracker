@@ -34,8 +34,8 @@ namespace Drink_Tracker
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             billAndType = (BillAndType)e.Parameter;
-            type = billAndType.type;
-            bill = billAndType.bill;
+            type = billAndType.Type;
+            bill = billAndType.Bill;
 
             using (var db = new AccountContext())
             {
@@ -62,10 +62,11 @@ namespace Drink_Tracker
                     .ToList();
                 var item = new Item
                 {
-                    Added = DateTime.Now,
+                    Ytems = new List<Ytem>(),
                     BillId = bill.BillId,
                     DrinkId = drink.DrinkId
                 };
+                item.Ytems.Add(new Ytem { Added = DateTime.Now });
                 //bill.Items.Add(item);
                 db.Items.Add(item);
                 //db.Bills.Update(bill);

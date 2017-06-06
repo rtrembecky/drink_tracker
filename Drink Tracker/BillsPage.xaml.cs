@@ -134,11 +134,14 @@ namespace Drink_Tracker
                         {
                             foreach (var item in bill.Items)
                             {
-                                alcograms = (float)(item.Drink.VolumeInMl * item.Drink.ABV * 0.01 * 0.789);
-                                elapsedTime = t.Subtract(item.Added);
-                                bac = (float)(halfbac * alcograms - (elapsedTime.TotalMinutes * 0.00025));
-                                if (bac > 0)
-                                    totalbac = (float)(totalbac + bac);
+                                foreach (var ytem in item.Ytems)
+                                {
+                                    alcograms = (float)(item.Drink.VolumeInMl * item.Drink.ABV * 0.01 * 0.789);
+                                    elapsedTime = t.Subtract(ytem.Added);
+                                    bac = (float)(halfbac * alcograms - (elapsedTime.TotalMinutes * 0.00025));
+                                    if (bac > 0)
+                                        totalbac = (float)(totalbac + bac);
+                                }
                             }
                             promille = (float)(10 * totalbac);
                             sober = DateTime.Now.AddMinutes(totalbac / 0.00025);

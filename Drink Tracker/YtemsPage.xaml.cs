@@ -49,6 +49,16 @@ namespace Drink_Tracker
                         .Where(drink => item.DrinkId == drink.DrinkId)
                         .ToList()
                         .First();
+
+                    item.Drink.Prices = db.Prices
+                        .Where(p => p.DrinkId == item.Drink.DrinkId)
+                        .ToList();
+
+                    item.Ytems = db.Ytems
+                        .Where(y => y.ItemId == item.ItemId)
+                        .ToList()
+                        .OrderByDescending(y => y.Added)
+                        .ToList();
                 }
 
                 YtemsList.ItemsSource = items;
@@ -103,6 +113,11 @@ namespace Drink_Tracker
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Collapse_Toggle(object sender, RoutedEventArgs e)
         {
 
         }

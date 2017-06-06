@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Drink_Tracker.Migrations
 {
-    public partial class Initial : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -31,7 +31,6 @@ namespace Drink_Tracker.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     ABV = table.Column<float>(nullable: false),
                     Name = table.Column<string>(nullable: true),
-                    PriceInKc = table.Column<float>(nullable: false),
                     Type = table.Column<string>(nullable: true),
                     VolumeInMl = table.Column<int>(nullable: false)
                 },
@@ -62,15 +61,34 @@ namespace Drink_Tracker.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Prices",
+                columns: table => new
+                {
+                    PriceId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    DrinkId = table.Column<int>(nullable: false),
+                    Value = table.Column<float>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Prices", x => x.PriceId);
+                    table.ForeignKey(
+                        name: "FK_Prices_Drinks_DrinkId",
+                        column: x => x.DrinkId,
+                        principalTable: "Drinks",
+                        principalColumn: "DrinkId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Items",
                 columns: table => new
                 {
                     ItemId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Added = table.Column<DateTime>(nullable: false),
                     BillId = table.Column<int>(nullable: false),
                     DrinkId = table.Column<int>(nullable: false),
-                    ImageSource = table.Column<string>(nullable: true)
+                    DrinkPrice = table.Column<float>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -89,6 +107,26 @@ namespace Drink_Tracker.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Ytems",
+                columns: table => new
+                {
+                    YtemId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Added = table.Column<DateTime>(nullable: false),
+                    ItemId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Ytems", x => x.YtemId);
+                    table.ForeignKey(
+                        name: "FK_Ytems_Items_ItemId",
+                        column: x => x.ItemId,
+                        principalTable: "Items",
+                        principalColumn: "ItemId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Bills_AccountId",
                 table: "Bills",
@@ -103,10 +141,26 @@ namespace Drink_Tracker.Migrations
                 name: "IX_Items_DrinkId",
                 table: "Items",
                 column: "DrinkId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Prices_DrinkId",
+                table: "Prices",
+                column: "DrinkId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Ytems_ItemId",
+                table: "Ytems",
+                column: "ItemId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Prices");
+
+            migrationBuilder.DropTable(
+                name: "Ytems");
+
             migrationBuilder.DropTable(
                 name: "Items");
 

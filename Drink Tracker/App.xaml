@@ -7,8 +7,6 @@
     RequestedTheme="Light">
 
     <Application.Resources>
-        <SampleData:AccountsSampleDataSource x:Key="AccountsSampleDataSource" d:IsDataSource="True"/>
-
         <GridLength x:Key="HeaderHeight">80</GridLength>
         <GridLength x:Key="SearchBarHeight">64</GridLength>
         <Style x:Key="ListViewItemBackground" TargetType="Border">
