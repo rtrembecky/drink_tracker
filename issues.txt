@@ -7,3 +7,4 @@ overovanie hodnot
 - prazdne nazvy veci
 - neciselne hodnoty v ciselnych polickach
 duplikaty v databazi
+drinkspage CZK nezobrazuje, mal by
