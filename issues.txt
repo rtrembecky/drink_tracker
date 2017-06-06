@@ -6,3 +6,6 @@ backbutton ide?
 ui
 duplikaty v databazi
 drink nech ma kolekciu cien, z ktorych sa bude dat vyberat v dropdowne
+overovanie hodnot
+- prazdne nazvy veci
+- neciselne hodnoty v ciselnych polickach
