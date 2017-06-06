@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel;
 
 namespace Drink_Tracker
 {
@@ -32,7 +33,7 @@ namespace Drink_Tracker
         public List<Bill> Bills { get; set; }
     }
 
-    public class Bill
+    public class Bill : INotifyPropertyChanged
     {
         public int BillId { get; set; }
         public string Name { get; set; }
@@ -43,7 +44,25 @@ namespace Drink_Tracker
         public Account Account { get; set; }
 
         [NotMapped]
-        public bool Edited { get; set; }
+        private bool edited;
+        [NotMapped]
+        public bool Edited
+        {
+            get { return edited; }
+            set
+            {
+                edited = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void NotifyPropertyChanged(string propertyName = "")
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 
     public class Item

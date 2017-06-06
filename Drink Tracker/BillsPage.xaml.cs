@@ -77,7 +77,7 @@ namespace Drink_Tracker
             if (promille == 0)
                 CalculationTitle.Text = "You should be sober.";
             else
-                CalculationTitle.Text = "Around " + Math.Round((decimal)promille, 3) + "‰. Estimated zero at " + sober.ToString("HH:mm:ss") + ", " + sober.ToString("dd.MM") + ".";
+                CalculationTitle.Text = "Around " + Math.Round((decimal)promille, 3) + "‰. Sober at " + sober.ToString("HH:mm:ss") + ", " + sober.ToString("dd.MM") + ".";
 
             base.OnNavigatedTo(e);
         }

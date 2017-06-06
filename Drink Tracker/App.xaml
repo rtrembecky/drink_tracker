@@ -7,8 +7,7 @@
     RequestedTheme="Light">
 
     <Application.Resources>
-        <GridLength x:Key="HeaderHeight">80</GridLength>
-        <GridLength x:Key="SearchBarHeight">64</GridLength>
+        <GridLength x:Key="HeaderHeight">50</GridLength>
         <Style x:Key="ListViewItemBackground" TargetType="Border">
             <Setter Property="Background" Value="Transparent"/>
         </Style>
