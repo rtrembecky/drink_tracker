@@ -94,7 +94,7 @@
     <Page.BottomAppBar>
         <CommandBar>
             <CommandBar.Content>
-                <TextBlock Text="To pay: XX CZK (Total: YY CZK)" Margin="12,14"/>
+                <TextBlock Name="ToPay" Text="To pay: XX CZK (Total: YY CZK)" Margin="12,14"/>
             </CommandBar.Content>
             <AppBarButton Icon="Add" Label="Add drink" Click="Add_Click" />
         </CommandBar>
