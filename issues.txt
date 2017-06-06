@@ -2,7 +2,7 @@ billspage sfunkcnit edit mena
 drink nech ma kolekciu cien, z ktorych sa bude dat vyberat v dropdowne
 ytemspage vytvorit rozklikavacie polozky
 ytems pridat mnozstva napojov
-ytems pridat kalkulaciu ceny
+ytems pridat kalkulaciu ceny + flagovanie
 overovanie hodnot
 - prazdne nazvy veci
 - neciselne hodnoty v ciselnych polickach

@@ -44,7 +44,6 @@
                                 <Image Grid.Column="0" Name="SexImage" Source="{Binding Man, Converter={StaticResource BoolToImage}}"/>
                                 <StackPanel Grid.Column="1" Margin="10,0,0,0">
                                     <TextBlock Text="{Binding Username}" Style="{StaticResource TitleTextBlockStyle}"/>
-                                    <TextBlock Text="{Binding WeightInKg}" Style="{StaticResource BodyTextBlockStyle}"/>
                                 </StackPanel>
                                 <AppBarButton Grid.Column="2" Icon="Edit" Click="Edit_Click"/>
                                 <AppBarButton Grid.Column="3" Icon="Delete" Click="Delete_Click"/>
