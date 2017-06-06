@@ -46,8 +46,6 @@ namespace Drink_Tracker
                     .Where(bill => bill.AccountId == account.AccountId)
                     .ToList();
 
-                BillsList.ItemsSource = bills;
-
                 foreach (var bill in bills)
                 {
                     bill.Items = db.Items
@@ -61,7 +59,11 @@ namespace Drink_Tracker
                             .ToList()
                             .First();
                     }
+
+                    bill.Edited = false;
                 }
+
+                BillsList.ItemsSource = bills;
             }
 
             BillsHeaderTitle.Text = account.Username;
@@ -159,24 +161,14 @@ namespace Drink_Tracker
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
             editedbill = (sender as FrameworkElement).DataContext as Bill;
-            using (var db = new AccountContext())
-            {
-                foreach (Bill bill in db.Bills)
-                {
-                    if (bill.BillId == editedbill.BillId)
-                    {
-
-                        //bill.ShownName.Visibility = Visibility.Visible;
-                        break;
-                    }
-                };
-                db.SaveChanges();
-            }
+            editedbill.Edited = true;
         }
 
         private void Confirm_Edit_Click(object sender, RoutedEventArgs e)
         {
-            //revert edit_click settings
+            editedbill = (sender as FrameworkElement).DataContext as Bill;
+            editedbill.Name = "Text field input";
+            editedbill.Edited = false;
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)

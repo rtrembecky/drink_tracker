@@ -41,6 +41,9 @@ namespace Drink_Tracker
 
         public int AccountId { get; set; }
         public Account Account { get; set; }
+
+        [NotMapped]
+        public bool Edited { get; set; }
     }
 
     public class Item
