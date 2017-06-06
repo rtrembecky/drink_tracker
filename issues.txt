@@ -11,4 +11,5 @@ drinkspage CZK nezobrazuje, mal by
 
 
 low prio napady
+ytemspage pisat okrem casu polozky aj jej dalsie udaje aby sa neplietli male a velke piva v zozname atd
 new drink page pri vytvarani ak existuje drink co pridavam tak nepovoli accept a ukaze warning iba vtedy
