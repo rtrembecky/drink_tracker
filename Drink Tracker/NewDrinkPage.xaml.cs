@@ -75,41 +75,114 @@ namespace Drink_Tracker
         {
             using (var db = new AccountContext())
             {
-                var drink = new Drink
-                {
-                    Name = DrinkName.Text,
-                    ABV = float.Parse(ABV.Text),
-                    Prices = new List<Price>(),
-                    Type = billAndType.Type,
-                    VolumeInMl = (int)(float.Parse(Volume.Text) * 100)
-                };
+                bool viable = true;
 
-                foreach (Drink existingdrink in db.Drinks)
+                String dName = DrinkName.Text;
+                if (dName.Length > 30)
                 {
-                    if (drink.Name == existingdrink.Name && drink.ABV == existingdrink.ABV && drink.Type == existingdrink.Type && drink.VolumeInMl == existingdrink.VolumeInMl)
+                    TooLongText.Visibility = Visibility.Visible;
+                    EmptyText.Visibility = Visibility.Collapsed;
+                    viable = false;
+                }
+                else
+                {
+                    TooLongText.Visibility = Visibility.Collapsed;
+                    if (dName.Length == 0)
                     {
-                        ExistenceText.Visibility = Visibility.Visible;
-                        break;
+                        EmptyText.Visibility = Visibility.Visible;
+                        viable = false;
                     }
-                    ExistenceText.Visibility = Visibility.Collapsed;
-                };
-
-                Price price = new Price() { Value = float.Parse(Cost.Text) };
-                //TODO: ak price uz je v db, tak
-                // price = najdeny price
-                // inak ho tam pridaj
-                price.Drink = drink;
+                    else
+                    {
+                        EmptyText.Visibility = Visibility.Collapsed;
+                    }
+                }
                 
-                //price = db.Prices.Where(p => p.Value == price.Value).ToList().First();
-
-                drink.Prices.Add(price);
-
-                db.Prices.Add(price);
-                if (ExistenceText.Visibility == Visibility.Collapsed)
+                float foo = (float)0;
+                float dABV = (float)0;
+                if (!float.TryParse(ABV.Text, out foo))
                 {
-                    db.Drinks.Add(drink);
-                    db.SaveChanges();
-                    this.Frame.Navigate(typeof(DrinksPage), billAndType);
+                    NotNumberABVText.Visibility = Visibility.Visible;
+                    NotValidABVText.Visibility = Visibility.Collapsed;
+                    viable = false;
+                }
+                else
+                {
+                    NotNumberABVText.Visibility = Visibility.Collapsed;
+                    dABV = float.Parse(ABV.Text);
+                    if (dABV < 0 || dABV > 100)
+                    {
+                        NotValidABVText.Visibility = Visibility.Visible;
+                        viable = false;
+                    }
+                    else
+                    {
+                        NotValidABVText.Visibility = Visibility.Collapsed;
+                    }
+                }
+
+                int dVolume = 0;
+                if (!float.TryParse(Volume.Text, out foo))
+                {
+                    NotNumberVolumeText.Visibility = Visibility.Visible;
+                    NotValidVolumeText.Visibility = Visibility.Collapsed;
+                    viable = false;
+                }
+                else
+                {
+                    NotNumberVolumeText.Visibility = Visibility.Collapsed;
+                    dVolume = (int)(float.Parse(Volume.Text) * 100);
+                    if (dVolume < 0 || dVolume > 25000)
+                    {
+                        NotValidVolumeText.Visibility = Visibility.Visible;
+                        viable = false;
+                    }
+                    else
+                    {
+                        NotValidVolumeText.Visibility = Visibility.Collapsed;
+                    }
+                }
+
+                String dType = billAndType.Type;
+
+                if (viable)
+                {
+                    var drink = new Drink
+                    {
+                        Name = dName,
+                        ABV = dABV,
+                        Prices = new List<Price>(),
+                        Type = dType,
+                        VolumeInMl = dVolume
+                    };
+
+                    foreach (Drink existingdrink in db.Drinks)
+                    {
+                        if (dName == existingdrink.Name && dABV == existingdrink.ABV && dType == existingdrink.Type && dVolume == existingdrink.VolumeInMl)
+                        {
+                            ExistenceText.Visibility = Visibility.Visible;
+                            break;
+                        }
+                        ExistenceText.Visibility = Visibility.Collapsed;
+                    };
+
+                    Price price = new Price() { Value = float.Parse(Cost.Text) };
+                    //TODO: ak price uz je v db, tak
+                    // price = najdeny price
+                    // inak ho tam pridaj
+                    price.Drink = drink;
+                
+                    //price = db.Prices.Where(p => p.Value == price.Value).ToList().First();
+
+                    drink.Prices.Add(price);
+
+                    db.Prices.Add(price);
+                    if (ExistenceText.Visibility == Visibility.Collapsed)
+                    {
+                        db.Drinks.Add(drink);
+                        db.SaveChanges();
+                        this.Frame.Navigate(typeof(DrinksPage), billAndType);
+                    }
                 }
             }
         }

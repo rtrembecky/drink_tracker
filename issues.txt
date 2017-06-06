@@ -3,11 +3,8 @@ drink nech ma kolekciu cien, z ktorych sa bude dat vyberat v dropdowne
 ytemspage vytvorit rozklikavacie polozky
 ytems pridat mnozstva napojov
 ytems pridat kalkulaciu ceny + flagovanie
-overovanie hodnot
-- prazdne nazvy veci
-- neciselne hodnoty v ciselnych polickach
-duplikaty v databazi
-drinkspage CZK nezobrazuje, mal by
+duplikaty v databazi (pri drinks to krici uz)
+drinkspage CZK nezobrazuje, mal by + zobrazuje v mililitroch miesto v decilitroch
 
 
 low prio napady

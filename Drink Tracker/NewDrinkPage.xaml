@@ -20,7 +20,7 @@
             </StackPanel>
             <TextBlock Text="Volume:" Style="{StaticResource BaseTextBlockStyle}"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBox x:Name="Volume" Text="500"/>
+                <TextBox x:Name="Volume" Text="0.5"/>
                 <TextBlock Text="   dl " VerticalAlignment="Center" Margin="10,0,0,0"/>
             </StackPanel>
             <TextBlock Text="Cost:" Style="{StaticResource BaseTextBlockStyle}"/>
@@ -32,6 +32,12 @@
                 <AppBarButton Label="Create" Icon="Accept" Click="Create_Click" HorizontalAlignment="Right"/>
                 <AppBarButton Label="Cancel" Icon="Cancel" Click="Cancel_Click" HorizontalAlignment="Right"/>
             </StackPanel>
+            <TextBlock Name="TooLongText" Text="The name is too long." Visibility="Collapsed" Style="{StaticResource BaseTextBlockStyle}" HorizontalAlignment="Center" Foreground="Red" />
+            <TextBlock Name="EmptyText" Text="The name can't be empty." Visibility="Collapsed" Style="{StaticResource BaseTextBlockStyle}" HorizontalAlignment="Center" Foreground="Red" />
+            <TextBlock Name="NotNumberABVText" Text="Alcohol by volume must be a number." Visibility="Collapsed" Style="{StaticResource BaseTextBlockStyle}" HorizontalAlignment="Center" Foreground="Red" />
+            <TextBlock Name="NotValidABVText" Text="Alcohol by volume must be between 0 and 100." Visibility="Collapsed" Style="{StaticResource BaseTextBlockStyle}" HorizontalAlignment="Center" Foreground="Red" />
+            <TextBlock Name="NotNumberVolumeText" Text="Volume must be a number." Visibility="Collapsed" Style="{StaticResource BaseTextBlockStyle}" HorizontalAlignment="Center" Foreground="Red" />
+            <TextBlock Name="NotValidVolumeText" Text="Volume must be between 0 and 250 dl." Visibility="Collapsed" Style="{StaticResource BaseTextBlockStyle}" HorizontalAlignment="Center" Foreground="Red" />
             <TextBlock Name="ExistenceText" Text="This drink already exists." Visibility="Collapsed" Style="{StaticResource BaseTextBlockStyle}" HorizontalAlignment="Center" Foreground="Red" />            
         </StackPanel>
     </Grid>
