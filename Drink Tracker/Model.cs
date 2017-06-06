@@ -56,6 +56,9 @@ namespace Drink_Tracker
 
         public int BillId { get; set; }
         public Bill Bill { get; set; }
+
+        [NotMapped]
+        public bool Expanded { get; set; }
     }
 
     public class Ytem
