@@ -120,6 +120,12 @@ namespace Drink_Tracker
         public string Type { get; set; }
     }
 
+    public class DrinkAndPrice
+    {
+        public Drink Drink { get; set; }
+        public Price Price { get; set; }
+    }
+
     public abstract class ViewModelBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
