@@ -33,7 +33,7 @@ namespace Drink_Tracker
         {
             billAndType = (BillAndType)e.Parameter;
             base.OnNavigatedTo(e);
-            
+
             HeaderText.Text = "New custom " + billAndType.Type;
             
             switch (billAndType.Type)
@@ -75,7 +75,6 @@ namespace Drink_Tracker
         {
             using (var db = new AccountContext())
             {
-                
                 var drink = new Drink
                 {
                     Name = DrinkName.Text,
@@ -84,9 +83,16 @@ namespace Drink_Tracker
                     Type = billAndType.Type,
                     VolumeInMl = (int)(float.Parse(Volume.Text) * 100)
                 };
-                
-                //TODO: ak takyto drink uz je v databazi (porovnat vsetky hodnoty okrem prices), tak
-                // drink = najdeny drink
+
+                foreach (Drink existingdrink in db.Drinks)
+                {
+                    if (drink.Name == existingdrink.Name && drink.ABV == existingdrink.ABV && drink.Type == existingdrink.Type && drink.VolumeInMl == existingdrink.VolumeInMl)
+                    {
+                        ExistenceText.Visibility = Visibility.Visible;
+                        break;
+                    }
+                    ExistenceText.Visibility = Visibility.Collapsed;
+                };
 
                 Price price = new Price() { Value = float.Parse(Cost.Text) };
                 //TODO: ak price uz je v db, tak
@@ -99,15 +105,18 @@ namespace Drink_Tracker
                 drink.Prices.Add(price);
 
                 db.Prices.Add(price);
-                //db.SaveChanges();
-                // ak bol v db
-                if (true)
+                if (ExistenceText.Visibility == Visibility.Collapsed)
+                {
                     db.Drinks.Add(drink);
-                else
-                    db.Drinks.Update(drink);
-
-                db.SaveChanges();
+                    db.SaveChanges();
+                    this.Frame.Navigate(typeof(DrinksPage), billAndType);
+                }
             }
+        }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO set as proper back instead of redirect
             this.Frame.Navigate(typeof(DrinksPage), billAndType);
         }
     }

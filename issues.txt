@@ -8,3 +8,7 @@ overovanie hodnot
 - neciselne hodnoty v ciselnych polickach
 duplikaty v databazi
 drinkspage CZK nezobrazuje, mal by
+
+
+low prio napady
+new drink page pri vytvarani ak existuje drink co pridavam tak nepovoli accept a ukaze warning iba vtedy

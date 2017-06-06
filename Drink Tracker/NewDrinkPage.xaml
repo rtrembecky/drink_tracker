@@ -28,7 +28,11 @@
                 <TextBox Name="Cost" Text="35"/>
                 <TextBlock Text="CZK" VerticalAlignment="Center" Margin="10,0,0,0"/>
             </StackPanel>
-            <AppBarButton Label="Create" Icon="Accept" Click="Create_Click" HorizontalAlignment="Right"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <AppBarButton Label="Create" Icon="Accept" Click="Create_Click" HorizontalAlignment="Right"/>
+                <AppBarButton Label="Cancel" Icon="Cancel" Click="Cancel_Click" HorizontalAlignment="Right"/>
+            </StackPanel>
+            <TextBlock Name="ExistenceText" Text="This drink already exists." Visibility="Collapsed" Style="{StaticResource BaseTextBlockStyle}" HorizontalAlignment="Center" Foreground="Red" />            
         </StackPanel>
     </Grid>
 </Page>
