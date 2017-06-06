@@ -19,13 +19,14 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="1" Margin="0,0,0,0">
-                    <TextBlock Name="ShownName" Text="{Binding Name}" Visibility="{Binding Edited, Converter={StaticResource BoolToVis}}" Style="{StaticResource BaseTextBlockStyle}"/>
-                    <TextBox Name="EditName" Text="{Binding Name}" Visibility="{Binding Edited, Converter={StaticResource BoolToNonVis}}"/>
+                    <TextBlock Name="ShownName" Text="{Binding Name}" Visibility="{Binding Edited, Converter={StaticResource BoolToNonVis}}" Style="{StaticResource BaseTextBlockStyle}"/>
+                    <TextBox Name="EditName" Text="{Binding Name}" Visibility="{Binding Edited, Converter={StaticResource BoolToVis}}"/>
                     <TextBlock Text="{Binding Created}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="NoWrap"/>
                 </StackPanel>
-                <AppBarButton Grid.Column="2" Name="EditBillIcon" Visibility="{Binding Edited, Converter={StaticResource BoolToVis}}" Icon="Edit" Click="Edit_Click"/>
-                <AppBarButton Grid.Column="2" Name="AcceptEditBillIcon" Visibility="{Binding Edited, Converter={StaticResource BoolToNonVis}}" Icon="Accept" Click="Confirm_Edit_Click"/>
-                <AppBarButton Grid.Column="3" Icon="Delete" Click="Delete_Click"/>
+                <AppBarButton Grid.Column="2" Name="EditBillIcon" Visibility="{Binding Edited, Converter={StaticResource BoolToNonVis}}" Icon="Edit" Click="Edit_Click"/>
+                <AppBarButton Grid.Column="2" Name="AcceptEditBillIcon" Visibility="{Binding Edited, Converter={StaticResource BoolToVis}}" Icon="Accept" Click="Confirm_Edit_Click"/>
+                <AppBarButton Grid.Column="3" Visibility="{Binding Edited, Converter={StaticResource BoolToNonVis}}" Icon="Delete" Click="Delete_Click"/>
+                <AppBarButton Grid.Column="3" Visibility="{Binding Edited, Converter={StaticResource BoolToVis}}" Icon="Cancel" Click="Cancel_Edit_Click"/>
             </Grid>
         </DataTemplate>
 

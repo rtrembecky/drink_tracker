@@ -198,5 +198,10 @@ namespace Drink_Tracker
                 this.Frame.Navigate(typeof(BillsPage), account);
             }
         }
+
+        private void Cancel_Edit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace Drink_Tracker.Converters
         public object Convert(object value, Type targetType, object parameter, string language)
         {
             bool boolean = (bool)value;
-            return boolean ? Visibility.Collapsed : Visibility.Visible;
+            return boolean ? Visibility.Visible : Visibility.Collapsed;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
