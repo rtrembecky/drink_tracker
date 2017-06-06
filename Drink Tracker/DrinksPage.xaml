@@ -14,11 +14,10 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="1" Margin="10,0,0,0">
                     <TextBlock Text="{Binding Name}" Style="{StaticResource BaseTextBlockStyle}"/>
-                    <StackPanel Grid.Column="1" Margin="10,0,0,0" Orientation="Horizontal">
+                    <StackPanel Margin="10,0,0,0" Orientation="Horizontal">
                         <TextBlock Text="{Binding ABV}" Style="{StaticResource CaptionTextBlockStyle}"/>
                         <TextBlock Text=" ‰," Style="{StaticResource CaptionTextBlockStyle}" Margin="0,0,8,0"/>
                         <TextBlock Text="{Binding VolumeInMl}" Style="{StaticResource CaptionTextBlockStyle}"/>
@@ -35,31 +34,31 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="{StaticResource HeaderHeight}"/>
             <RowDefinition/>
         </Grid.RowDefinitions>       
-        <Border x:Name="Header" Style="{StaticResource HeaderBackground}" Height="30">
+        <Border x:Name="Header" Style="{StaticResource HeaderBackground}">
             <TextBlock Name="HeaderText" Text="Pick a DRINK_TYPE to add to bill" Style="{StaticResource BaseTextBlockStyle}"/>
         </Border>
-        <ScrollViewer Grid.Row="1">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <ListView Grid.Row="1" x:Name="DrinksList" ItemTemplate="{StaticResource DrinksItemTemplate}" ItemClick="DrinksList_ItemClick" IsItemClickEnabled="True" SelectionMode="None">
-                    <!-- ItemsSource="{Binding Source={StaticResource DrinksItemTemplate}}" -->
-                    <ListView.ItemContainerStyle>
-                        <Style TargetType="ListViewItem">
-                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                        </Style>
-                    </ListView.ItemContainerStyle>
-                </ListView>
-            </Grid>
+        <Button Grid.Row="1" Name="ButtonAdd" Background="LightGreen" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Click="Add_Click">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Create a custom drink" Margin="0,0,10,0"/>
+                <SymbolIcon Symbol="Add"/>
+            </StackPanel>
+        </Button>
+        <ScrollViewer Grid.Row="2">
+            <ListView Grid.Row="1" x:Name="DrinksList" ItemTemplate="{StaticResource DrinksItemTemplate}" ItemClick="DrinksList_ItemClick" IsItemClickEnabled="True" SelectionMode="None">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
         </ScrollViewer>
     </Grid>
 
-            <Page.BottomAppBar>
+    <Page.BottomAppBar>
         <CommandBar>
             <AppBarButton Icon="Add" Label="Custom drink" Click="Add_Click" />
         </CommandBar>
