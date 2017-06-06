@@ -7,7 +7,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
     <Page.Resources>
         <conv:ItemToName x:Key="ItemToName"/>
         <conv:ItemToPrice x:Key="ItemToPrice"/>
@@ -59,7 +58,7 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="{StaticResource HeaderHeight}"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
@@ -74,19 +73,13 @@
             </StackPanel>
         </Button>
         <ScrollViewer Grid.Row="2">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <ListView Grid.Row="1" Name="YtemsList" ItemTemplate="{StaticResource YtemsItemTemplate}" SelectionMode="None" IsItemClickEnabled="True" ItemClick="Collapse_Toggle" ContainerContentChanging="YtemsListView_ContainerContentChanging">
-                    <ListView.ItemContainerStyle>
-                        <Style TargetType="ListViewItem">
-                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                        </Style>
-                    </ListView.ItemContainerStyle>
-                </ListView>
-            </Grid>
+            <ListView Name="YtemsList" ItemTemplate="{StaticResource YtemsItemTemplate}" SelectionMode="None" IsItemClickEnabled="True" ItemClick="Collapse_Toggle" ContainerContentChanging="YtemsListView_ContainerContentChanging">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
         </ScrollViewer>
     </Grid>
 

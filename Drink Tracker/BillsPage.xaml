@@ -29,7 +29,6 @@
                 <AppBarButton Grid.Column="3" Visibility="{Binding Edited, Converter={StaticResource BoolToVis}}" Icon="Cancel" Click="Cancel_Edit_Click"/>
             </Grid>
         </DataTemplate>
-
     </Page.Resources>
     <Page.BottomAppBar>
         <CommandBar>
@@ -41,27 +40,20 @@
     </Page.BottomAppBar>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="{StaticResource HeaderHeight}"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Border x:Name="Header" Style="{StaticResource HeaderBackground}" Height="50">
-                <TextBlock Name="BillsHeaderTitle" Text="XAccountY" Style="{StaticResource HeaderStyle}"/>
+        <Border Grid.Row="0" x:Name="Header" Style="{StaticResource HeaderBackground}">
+            <TextBlock Name="BillsHeaderTitle" Text="XAccountY" Style="{StaticResource HeaderStyle}"/>
         </Border>
         <ScrollViewer Grid.Row="1">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <ListView Grid.Row="1" x:Name="BillsList" ItemTemplate="{StaticResource BillsItemTemplate}" SelectionMode="None" IsItemClickEnabled="True" ItemClick="BillsList_ItemClick" ContainerContentChanging="BillsListView_ContainerContentChanging">
-                    <!-- ItemsSource="{Binding Source={StaticResource BillsGroupedByAccountsItem}}" -->
-                    <ListView.ItemContainerStyle>
-                        <Style TargetType="ListViewItem">
-                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                        </Style>
-                    </ListView.ItemContainerStyle>
-                </ListView>                
-            </Grid>
+            <ListView x:Name="BillsList" ItemTemplate="{StaticResource BillsItemTemplate}" SelectionMode="None" IsItemClickEnabled="True" ItemClick="BillsList_ItemClick" ContainerContentChanging="BillsListView_ContainerContentChanging">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>   
         </ScrollViewer>
     </Grid>
 </Page>
