@@ -205,7 +205,8 @@ namespace Drink_Tracker
 
         private void Cancel_Edit_Click(object sender, RoutedEventArgs e)
         {
-
+            editedbill = (sender as FrameworkElement).DataContext as Bill;
+            editedbill.Edited = false;
         }
     }
 }
