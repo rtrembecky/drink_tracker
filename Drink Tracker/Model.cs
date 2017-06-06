@@ -58,7 +58,7 @@ namespace Drink_Tracker
         }
     }
 
-    public class Item
+    public class Item : ViewModelBase
     {
         public int ItemId { get; set; }
         public int DrinkId { get; set; }
@@ -70,7 +70,17 @@ namespace Drink_Tracker
         public Bill Bill { get; set; }
 
         [NotMapped]
-        public bool Expanded { get; set; }
+        private bool expanded;
+        [NotMapped]
+        public bool Expanded
+        {
+            get { return expanded; }
+            set
+            {
+                expanded = value;
+                NotifyPropertyChanged();
+            }
+        }
     }
 
     public class Ytem
