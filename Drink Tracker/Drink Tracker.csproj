@@ -122,9 +122,9 @@
     <Compile Include="EditAccountPage.xaml.cs">
       <DependentUpon>EditAccountPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20170606000401_Init.cs" />
-    <Compile Include="Migrations\20170606000401_Init.designer.cs">
-      <DependentUpon>20170606000401_Init.cs</DependentUpon>
+    <Compile Include="Migrations\20170606152242_Init.cs" />
+    <Compile Include="Migrations\20170606152242_Init.designer.cs">
+      <DependentUpon>20170606152242_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\AccountContextModelSnapshot.cs" />
     <Compile Include="Model.cs" />

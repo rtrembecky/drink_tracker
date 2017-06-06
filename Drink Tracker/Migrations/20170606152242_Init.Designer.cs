@@ -8,7 +8,7 @@ using Drink_Tracker;
 namespace Drink_Tracker.Migrations
 {
     [DbContext(typeof(AccountContext))]
-    [Migration("20170606000401_Init")]
+    [Migration("20170606152242_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
