@@ -90,7 +90,6 @@
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <None Include="project.json" />
-    <None Include="SampleData\AccountsSampleDataSource\AccountsSampleDataSource.xsd" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -102,6 +101,8 @@
     <Compile Include="Converters\SexBoolToImage.cs" />
     <Compile Include="Converters\DrinkToPrice.cs" />
     <Compile Include="Converters\DrinkToName.cs" />
+    <Compile Include="Converters\YtemsToLastAdded.cs" />
+    <Compile Include="Converters\YtemsToTotalPrice.cs" />
     <Compile Include="DrinksPage.xaml.cs">
       <DependentUpon>DrinksPage.xaml</DependentUpon>
     </Compile>
@@ -114,9 +115,9 @@
     <Compile Include="EditAccountPage.xaml.cs">
       <DependentUpon>EditAccountPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20170603194725_Initial.cs" />
-    <Compile Include="Migrations\20170603194725_Initial.designer.cs">
-      <DependentUpon>20170603194725_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\20170606000401_Init.cs" />
+    <Compile Include="Migrations\20170606000401_Init.designer.cs">
+      <DependentUpon>20170606000401_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\AccountContextModelSnapshot.cs" />
     <Compile Include="Model.cs" />
@@ -130,9 +131,6 @@
       <DependentUpon>NewDrinkPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SampleData\AccountsSampleDataSource\AccountsSampleDataSource.xaml.cs">
-      <DependentUpon>AccountsSampleDataSource.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\BillsViewModel.cs" />
     <Compile Include="YtemsPage.xaml.cs">
       <DependentUpon>YtemsPage.xaml</DependentUpon>
@@ -153,11 +151,6 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
-    <Content Include="SampleData\AccountsSampleDataSource\AccountsSampleDataSource_Files\image01.png" />
-    <Content Include="SampleData\AccountsSampleDataSource\AccountsSampleDataSource_Files\image02.png" />
-    <Content Include="SampleData\AccountsSampleDataSource\AccountsSampleDataSource_Files\image03.png" />
-    <Content Include="SampleData\AccountsSampleDataSource\AccountsSampleDataSource_Files\image04.png" />
-    <Content Include="SampleData\AccountsSampleDataSource\AccountsSampleDataSource_Files\image05.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -195,10 +188,6 @@
     <Page Include="NewDrinkPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="SampleData\AccountsSampleDataSource\AccountsSampleDataSource.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="YtemsPage.xaml">
       <SubType>Designer</SubType>

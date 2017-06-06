@@ -8,8 +8,8 @@ using Drink_Tracker;
 namespace Drink_Tracker.Migrations
 {
     [DbContext(typeof(AccountContext))]
-    [Migration("20170603194725_Initial")]
-    partial class Initial
+    [Migration("20170606000401_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -59,8 +59,6 @@ namespace Drink_Tracker.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<float>("PriceInKc");
-
                     b.Property<string>("Type");
 
                     b.Property<int>("VolumeInMl");
@@ -75,13 +73,11 @@ namespace Drink_Tracker.Migrations
                     b.Property<int>("ItemId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("Added");
-
                     b.Property<int>("BillId");
 
                     b.Property<int>("DrinkId");
 
-                    b.Property<string>("ImageSource");
+                    b.Property<float>("DrinkPrice");
 
                     b.HasKey("ItemId");
 
@@ -90,6 +86,38 @@ namespace Drink_Tracker.Migrations
                     b.HasIndex("DrinkId");
 
                     b.ToTable("Items");
+                });
+
+            modelBuilder.Entity("Drink_Tracker.Price", b =>
+                {
+                    b.Property<int>("PriceId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("DrinkId");
+
+                    b.Property<float>("Value");
+
+                    b.HasKey("PriceId");
+
+                    b.HasIndex("DrinkId");
+
+                    b.ToTable("Prices");
+                });
+
+            modelBuilder.Entity("Drink_Tracker.Ytem", b =>
+                {
+                    b.Property<int>("YtemId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("Added");
+
+                    b.Property<int>("ItemId");
+
+                    b.HasKey("YtemId");
+
+                    b.HasIndex("ItemId");
+
+                    b.ToTable("Ytems");
                 });
 
             modelBuilder.Entity("Drink_Tracker.Bill", b =>
@@ -110,6 +138,22 @@ namespace Drink_Tracker.Migrations
                     b.HasOne("Drink_Tracker.Drink", "Drink")
                         .WithMany()
                         .HasForeignKey("DrinkId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Drink_Tracker.Price", b =>
+                {
+                    b.HasOne("Drink_Tracker.Drink", "Drink")
+                        .WithMany("Prices")
+                        .HasForeignKey("DrinkId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Drink_Tracker.Ytem", b =>
+                {
+                    b.HasOne("Drink_Tracker.Item", "Item")
+                        .WithMany("Ytems")
+                        .HasForeignKey("ItemId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
         }

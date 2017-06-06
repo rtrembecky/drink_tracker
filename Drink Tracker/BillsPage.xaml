@@ -15,7 +15,6 @@
         </CommandBar>
     </Page.BottomAppBar>
     <Page.Resources>
-        <CollectionViewSource x:Key="BillsGroupedByAccountsItem" IsSourceGrouped="True" ItemsPath="Bills" Source="{Binding Accounts, Source={StaticResource AccountsSampleDataSource}}"/>
         <DataTemplate x:Key="BillsItemTemplate">
             <Grid Height="Auto" >
                 <Grid.ColumnDefinitions>

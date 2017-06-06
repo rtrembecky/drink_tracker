@@ -33,8 +33,8 @@ namespace Drink_Tracker
         {
             billAndType = (BillAndType)e.Parameter;
             base.OnNavigatedTo(e);
-
-            HeaderText.Text = "New custom " + billAndType.type;
+            
+            HeaderText.Text = "New custom " + billAndType.Type;
             
             switch (billAndType.type)
             {
@@ -75,15 +75,36 @@ namespace Drink_Tracker
         {
             using (var db = new AccountContext())
             {
+                
                 var drink = new Drink
                 {
                     Name = DrinkName.Text,
                     ABV = float.Parse(ABV.Text),
-                    PriceInKc = int.Parse(Cost.Text),
-                    Type = billAndType.type,
+                    Prices = new List<Price>(),
+                    Type = billAndType.Type,
                     VolumeInMl = int.Parse(Volume.Text)*100
                 };
-                db.Drinks.Add(drink);
+                //TODO: ak takyto drink uz je v databazi (porovnat vsetky hodnoty okrem prices), tak
+                // drink = najdeny drink
+
+                Price price = new Price() { Value = float.Parse(Cost.Text) };
+                //TODO: ak price uz je v db, tak
+                // price = najdeny price
+                // inak ho tam pridaj
+                price.Drink = drink;
+                
+                //price = db.Prices.Where(p => p.Value == price.Value).ToList().First();
+
+                drink.Prices.Add(price);
+
+                db.Prices.Add(price);
+                //db.SaveChanges();
+                // ak bol v db
+                if (true)
+                    db.Drinks.Add(drink);
+                else
+                    db.Drinks.Update(drink);
+
                 db.SaveChanges();
             }
             this.Frame.Navigate(typeof(DrinksPage), billAndType);
