@@ -1,4 +1,4 @@
-billspage sfunkcnit edit mena
+accountspage a ytemspage poposuvat ikonky
 drink nech ma kolekciu cien, z ktorych sa bude dat vyberat v dropdowne
 ytemspage vytvorit rozklikavacie polozky
 ytems pridat mnozstva napojov
@@ -7,5 +7,6 @@ drinkspage CZK nezobrazuje, mal by + zobrazuje v mililitroch miesto v decilitroc
 newaccount a editaccount over ci nie je duplikatne meno alebo zaporna / megavelka vaha
 
 low prio napady
+set cancel clicks on "new X" and "edit X" pages to proper back, not redirect
 ytemspage pisat okrem casu polozky aj jej dalsie udaje aby sa neplietli male a velke piva v zozname atd
 new drink page pri vytvarani ak existuje drink co pridavam tak nepovoli accept a ukaze warning iba vtedy

@@ -41,7 +41,7 @@ namespace Drink_Tracker
             base.OnNavigatedTo(e);
         }
 
-        private void Edit_click(object sender, RoutedEventArgs e)
+        private void Edit_Click(object sender, RoutedEventArgs e)
         {
             using (var db = new AccountContext())
             {
@@ -57,6 +57,11 @@ namespace Drink_Tracker
                 };
                 db.SaveChanges();
             }
+            this.Frame.Navigate(typeof(AccountsPage));
+        }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
             this.Frame.Navigate(typeof(AccountsPage));
         }
     }

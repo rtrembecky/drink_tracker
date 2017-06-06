@@ -189,7 +189,6 @@ namespace Drink_Tracker
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            //TODO set as proper back instead of redirect
             this.Frame.Navigate(typeof(DrinksPage), billAndType);
         }
     }

@@ -24,7 +24,10 @@
                 <TextBox Name="Weight" Text="70"/>
                 <TextBlock Text="kg" VerticalAlignment="Center" Margin="10,0,0,0"/>
             </StackPanel>
-            <AppBarButton Label="Confirm" Icon="Accept" Click="Edit_click" HorizontalAlignment="Right"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <AppBarButton Label="Create" Icon="Accept" Click="Edit_Click" HorizontalAlignment="Right"/>
+                <AppBarButton Label="Cancel" Icon="Cancel" Click="Cancel_Click" HorizontalAlignment="Right"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Page>
