@@ -30,23 +30,22 @@
             </Grid>
         </DataTemplate>
     </Page.Resources>
-    <Page.BottomAppBar>
-        <CommandBar>
-            <AppBarButton Icon="Add" Label="New bill" Click="Add_Click" />
-            <CommandBar.Content>
-                <TextBlock Name="CalculationTitle" Text="Around XX.XX‰. Estimated 0‰ at YY:YY." Margin="12,14"/>
-            </CommandBar.Content>
-        </CommandBar>
-    </Page.BottomAppBar>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
+            <RowDefinition Height="{StaticResource HeaderHeight}"/>
             <RowDefinition Height="{StaticResource HeaderHeight}"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Border Grid.Row="0" x:Name="Header" Style="{StaticResource HeaderBackground}">
             <TextBlock Name="BillsHeaderTitle" Text="XAccountY" Style="{StaticResource HeaderStyle}"/>
         </Border>
-        <ScrollViewer Grid.Row="1">
+        <Button Grid.Row="1" Background="LightGreen" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Click="Add_Click">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="New bill" Margin="0,0,10,0"/>
+                <SymbolIcon Symbol="Add"/>
+            </StackPanel>
+        </Button>
+        <ScrollViewer Grid.Row="2">
             <ListView x:Name="BillsList" ItemTemplate="{StaticResource BillsItemTemplate}" SelectionMode="None" IsItemClickEnabled="True" ItemClick="BillsList_ItemClick" ContainerContentChanging="BillsListView_ContainerContentChanging">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
@@ -56,4 +55,12 @@
             </ListView>   
         </ScrollViewer>
     </Grid>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Icon="Add" Label="New bill" Click="Add_Click" />
+            <CommandBar.Content>
+                <TextBlock Name="CalculationTitle" Text="Around XX.XX‰. Estimated 0‰ at YY:YY." Margin="12,14"/>
+            </CommandBar.Content>
+        </CommandBar>
+    </Page.BottomAppBar>
 </Page>
