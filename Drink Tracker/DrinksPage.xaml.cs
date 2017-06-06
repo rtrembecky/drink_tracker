@@ -43,6 +43,13 @@ namespace Drink_Tracker
                     .Where(drink => drink.Type == type)
                     .ToList();
 
+                foreach (var d in drinksByType)
+                {
+                    d.Prices = db.Prices
+                        .Where(p => p.DrinkId == d.DrinkId)
+                        .ToList();
+                }
+
                 DrinksList.ItemsSource = drinksByType;
             }
 
@@ -64,7 +71,8 @@ namespace Drink_Tracker
                 {
                     Ytems = new List<Ytem>(),
                     BillId = bill.BillId,
-                    DrinkId = drink.DrinkId
+                    DrinkId = drink.DrinkId,
+                    DrinkPrice = drink.Prices.First().Value
                 };
                 item.Ytems.Add(new Ytem { Added = DateTime.Now });
                 //bill.Items.Add(item);

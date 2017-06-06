@@ -21,7 +21,7 @@ namespace Drink_Tracker
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=a.db");
+            optionsBuilder.UseSqlite("Data Source=b.db");
         }
     }
 
@@ -118,6 +118,12 @@ namespace Drink_Tracker
     {
         public Bill Bill { get; set; }
         public string Type { get; set; }
+    }
+
+    public class DrinkAndPrice
+    {
+        public Drink Drink { get; set; }
+        public Price Price { get; set; }
     }
 
     public abstract class ViewModelBase : INotifyPropertyChanged

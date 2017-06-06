@@ -54,7 +54,7 @@
                     <TextBlock Grid.Column="2" Text="{Binding Ytems, Converter={StaticResource YtemsToCount}}" Style="{StaticResource BaseTextBlockStyle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     <FontIcon Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe MDL2 Assets" Glyph="{Binding Expanded, Converter={StaticResource BoolToIcon}}" FontSize="20"/>
                 </Grid>
-                <ListView Grid.Row="1" Name="SecondLevelList" Visibility="{Binding Expanded, Converter={StaticResource BoolToVis}}" ItemsSource="{Binding Ytems}" ItemTemplate="{StaticResource YtemTemplate}" SelectionMode="None" IsItemClickEnabled="True" ItemClick="Collapse_Toggle">
+                <ListView Grid.Row="1" Name="SecondLevelList" Visibility="{Binding Expanded, Converter={StaticResource BoolToVis}}" ItemsSource="{Binding Ytems}" ItemTemplate="{StaticResource YtemTemplate}" IsItemClickEnabled="False" SelectionMode="None" ItemClick="Collapse_Toggle">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
