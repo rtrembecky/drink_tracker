@@ -80,11 +80,6 @@ namespace Drink_Tracker
             base.OnNavigatedFrom(e);
         }
 
-        private void YtemsList_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            //this.Frame.Navigate(typeof(DrinkTypesPage), e.ClickedItem);
-        }
-
         private void YtemsListView_ContainerContentChanging(ListViewBase sender, ContainerContentChangingEventArgs args)
         {
             if (args.ItemIndex % 2 == 0)
@@ -97,7 +92,7 @@ namespace Drink_Tracker
             }
         }
         
-        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        private void Add_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(DrinkTypesPage), currentbill);
         }
@@ -117,9 +112,10 @@ namespace Drink_Tracker
 
         }
 
-        private void Collapse_Toggle(object sender, RoutedEventArgs e)
+        private void Collapse_Toggle(object sender, ItemClickEventArgs e)
         {
-
+            var item = e.ClickedItem as Item;
+            item.Expanded = !item.Expanded;
         }
     }
 }
