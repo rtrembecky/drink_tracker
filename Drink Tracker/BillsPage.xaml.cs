@@ -14,13 +14,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace Drink_Tracker
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class BillsPage : Page
     {
         public BillsPage()
@@ -87,8 +82,7 @@ namespace Drink_Tracker
             SystemNavigationManager.GetForCurrentView().BackRequested -= BackToAccount;
             base.OnNavigatedFrom(e);
         }
-
-        // nebude viest na drinktypes ale na konkretny ucet z vecera
+        
         private void BillsList_ItemClick(object sender, ItemClickEventArgs e)
         {
             this.Frame.Navigate(typeof(YtemsPage), e.ClickedItem);
@@ -129,7 +123,6 @@ namespace Drink_Tracker
             sober = DateTime.Now;
             if (bills != null && bills.Count != 0)
             {
-                //TODO: fix this
                 foreach (var bill in bills)
                 {
                     if ((t.Subtract(bill.Created)).TotalDays >= 1)
