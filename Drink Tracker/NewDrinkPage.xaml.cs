@@ -75,6 +75,8 @@ namespace Drink_Tracker
         {
             using (var db = new AccountContext())
             {
+                ExistenceText.Visibility = Visibility.Collapsed;
+
                 bool viable = true;
 
                 String dName = DrinkName.Text;

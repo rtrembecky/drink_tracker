@@ -25,9 +25,14 @@
                 <TextBlock Text="kg" VerticalAlignment="Center" Margin="10,0,0,0"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <AppBarButton Label="Create" Icon="Accept" Click="Edit_Click" HorizontalAlignment="Right"/>
+                <AppBarButton Label="Confirm" Icon="Accept" Click="Edit_Click" HorizontalAlignment="Right"/>
                 <AppBarButton Label="Cancel" Icon="Cancel" Click="Cancel_Click" HorizontalAlignment="Right"/>
             </StackPanel>
+            <TextBlock Name="TooLongText" Text="Name is too long." Visibility="Collapsed" Style="{StaticResource BaseTextBlockStyle}" HorizontalAlignment="Center" Foreground="Red" />
+            <TextBlock Name="EmptyText" Text="Name can't be empty." Visibility="Collapsed" Style="{StaticResource BaseTextBlockStyle}" HorizontalAlignment="Center" Foreground="Red" />
+            <TextBlock Name="NotNumberWeightText" Text="Weight must be a number." Visibility="Collapsed" Style="{StaticResource BaseTextBlockStyle}" HorizontalAlignment="Center" Foreground="Red" />
+            <TextBlock Name="NotValidWeightText" Text="Weight must be between 20 and 500 kg." Visibility="Collapsed" Style="{StaticResource BaseTextBlockStyle}" HorizontalAlignment="Center" Foreground="Red" />
+            <TextBlock Name="ExistenceText" Text="This name already exists." Visibility="Collapsed" Style="{StaticResource BaseTextBlockStyle}" HorizontalAlignment="Center" Foreground="Red" />
         </StackPanel>
     </Grid>
 </Page>

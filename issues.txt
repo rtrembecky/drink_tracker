@@ -1,11 +1,13 @@
 drink nech ma kolekciu cien, z ktorych sa bude dat vyberat v dropdowne
-ytemspage vytvorit rozklikavacie polozky
+ytemspage zgrupit rovnake napoje
 ytems pridat mnozstva napojov
-ytems pridat kalkulaciu ceny + flagovanie
-drinkspage CZK nezobrazuje, mal by + zobrazuje v mililitroch miesto v decilitroch
-newaccount a editaccount over ci nie je duplikatne meno alebo zaporna / megavelka vaha
+ytems sfunkcnit flagovanie
+bill nejde premenovat, po premenovani sa iba pokazi ytems page nazov
 
 low prio napady
 set cancel clicks on "new X" and "edit X" pages to proper back, not redirect
 ytemspage pisat okrem casu polozky aj jej dalsie udaje aby sa neplietli male a velke piva v zozname atd
-new drink page pri vytvarani ak existuje drink co pridavam tak nepovoli accept a ukaze warning iba vtedy
+
+wontfix
+drinkspage zobrazuje v mililitroch miesto v decilitroch - zbytocne by tam bol dalsi converter, takto to nevadi
+nejake lepsie error message pri add/edit a branenie confirm stlaceniu
