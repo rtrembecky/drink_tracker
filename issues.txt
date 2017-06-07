@@ -2,7 +2,7 @@ drink nech ma kolekciu cien, z ktorych sa bude dat vyberat v dropdowne
 ytemspage zgrupit rovnake napoje
 ytems pridat mnozstva napojov
 ytems sfunkcnit flagovanie
-bill nejde premenovat, po premenovani sa iba pokazi ytems page nazov
+bill sa premenuje iba na fixny string a nie na to co ho premenujes, neobnovi sa nazov priamo po premene
 
 low prio napady
 set cancel clicks on "new X" and "edit X" pages to proper back, not redirect

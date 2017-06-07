@@ -163,9 +163,16 @@ namespace Drink_Tracker
 
         private void Confirm_Edit_Click(object sender, RoutedEventArgs e)
         {
-            editedbill = (sender as FrameworkElement).DataContext as Bill;
-            editedbill.Name = "Text field input";
+            String newname = "Successfully edited name";
+            //newname = EditName.text;
             editedbill.Edited = false;
+            editedbill.Name = newname;
+
+            using (var db = new AccountContext())
+            {
+                db.Bills.Update(editedbill);
+                db.SaveChanges();
+            }
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
