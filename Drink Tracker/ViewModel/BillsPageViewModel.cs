@@ -36,7 +36,7 @@ namespace Drink_Tracker.ViewModel
                     }
                 }
 
-                bills = new ObservableCollection<BillViewModel>(billList.Select(b => new BillViewModel(b)));
+                bills = new ObservableCollection<BillViewModel>(billList.Select(b => new BillViewModel(b)).OrderByDescending(b => b.Created));
             }
 
             if (account.Man)
