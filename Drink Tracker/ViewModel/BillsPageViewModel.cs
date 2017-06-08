@@ -114,7 +114,7 @@ namespace Drink_Tracker.ViewModel
                 foreach (var bill in bills)
                 {
                     if ((t.Subtract(bill.Created)).TotalDays >= 1)
-                        break;
+                        continue;
                     else
                     {
                         if (bill.Items != null && bill.Items.Count != 0)
