@@ -15,6 +15,7 @@ namespace Drink_Tracker.ViewModel
             bill = b;
             edited = false;
             editField = Name;
+            createdText = Created.ToString("HH:mm:ss") + ", " + Created.ToString("dd.MM");
         }
 
         public Bill Bill
@@ -39,6 +40,17 @@ namespace Drink_Tracker.ViewModel
             set
             {
                 editField = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        private String createdText;
+        public String CreatedText
+        {
+            get { return createdText; }
+            set
+            {
+                createdText = value;
                 NotifyPropertyChanged();
             }
         }
