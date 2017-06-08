@@ -25,6 +25,7 @@ namespace Drink_Tracker
         string type;
         Bill bill;
         BillAndType billAndType;
+        List<Drink> drinksByType;
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -34,7 +35,7 @@ namespace Drink_Tracker
 
             using (var db = new AccountContext())
             {
-                var drinksByType = db.Drinks
+                drinksByType = db.Drinks
                     .Where(drink => drink.Type == type)
                     .ToList();
 
@@ -60,19 +61,30 @@ namespace Drink_Tracker
             using (var db = new AccountContext())
             {
                 bill.Items = db.Items
-                    .Where(i => i.BillId == bill.BillId)
+                    .Where(it => it.BillId == bill.BillId)
                     .ToList();
-                var item = new Item
+
+                foreach (var i in bill.Items)
                 {
-                    Ytems = new List<Ytem>(),
-                    BillId = bill.BillId,
-                    DrinkId = drink.DrinkId,
-                    DrinkPrice = drink.Prices.First().Value
-                };
+                    i.Ytems = db.Ytems
+                        .Where(y => y.ItemId == i.ItemId)
+                        .ToList();
+                }
+
+                var item = bill.Items.Find(it => it.DrinkId == drink.DrinkId && it.DrinkPrice == drink.Prices.First().Value);
+                if (item == null)
+                {
+                    item = new Item
+                    {
+                        Ytems = new List<Ytem>(),
+                        BillId = bill.BillId,
+                        DrinkId = drink.DrinkId,
+                        DrinkPrice = drink.Prices.First().Value
+                    };
+                    db.Items.Add(item);
+                }
                 item.Ytems.Add(new Ytem { Added = DateTime.Now });
-                //bill.Items.Add(item);
-                db.Items.Add(item);
-                //db.Bills.Update(bill);
+                db.Items.Update(item);
                 db.SaveChanges();
             }
 
