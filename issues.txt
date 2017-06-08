@@ -1,11 +1,8 @@
-drink nech ma kolekciu cien, z ktorych sa bude dat vyberat v dropdowne
-tak ako sobernost, aj samotny drink a bill by mohol mat cas vo formate ("HH:mm:ss") + ("dd.MM") 
-ytems sfunkcnit flagovanie
-pridat sex image alebo odstranit jeho column
-
 low prio napady
 set cancel clicks on "new X" and "edit X" pages to proper back, not redirect
 ytemspage pisat okrem casu polozky aj jej dalsie udaje aby sa neplietli male a velke piva v zozname atd
+vyberanie drinkspage cien v dropdowne
+ytems sfunkcnit flagovanie
 
 wontfix
 drinkspage zobrazuje v mililitroch miesto v decilitroch
