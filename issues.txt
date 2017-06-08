@@ -1,6 +1,4 @@
 drink nech ma kolekciu cien, z ktorych sa bude dat vyberat v dropdowne
-ytemspage zgrupit rovnake napoje
-nefunguje vypocet sobernosti
 tak ako sobernost, aj samotny drink a bill by mohol mat cas vo formate ("HH:mm:ss") + ("dd.MM") 
 ytems sfunkcnit flagovanie a hlavne odstranovanie
 pridat sex image alebo odstranit jeho column
