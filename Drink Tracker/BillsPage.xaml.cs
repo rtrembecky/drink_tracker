@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Drink_Tracker.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -23,62 +24,25 @@ namespace Drink_Tracker
             this.InitializeComponent();
         }
 
+        BillsPageViewModel viewModel;
+
         Account account;
-        List<Bill> bills;
-        float promille;
-        DateTime sober;
-        Bill editedbill;
+        BillViewModel editedBill;
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             SystemNavigationManager.GetForCurrentView().BackRequested += BackToAccount;
 
-            account = (Account)e.Parameter;
-
-            using (var db = new AccountContext())
-            {
-                bills = db.Bills
-                    .Where(bill => bill.AccountId == account.AccountId)
-                    .ToList();
-
-                foreach (var bill in bills)
-                {
-                    bill.Items = db.Items
-                        .Where(i => i.BillId == bill.BillId)
-                        .ToList();
-
-                    foreach (var item in bill.Items)
-                    {
-                        item.Drink = db.Drinks
-                            .Where(d => d.DrinkId == item.DrinkId)
-                            .ToList()
-                            .First();
-
-                        item.Ytems = db.Ytems
-                            .Where(y => y.ItemId == item.ItemId)
-                            .ToList();
-                    }
-
-                    bill.Edited = false;
-                }
-
-                BillsList.ItemsSource = bills;
-            }
-
-            BillsHeaderTitle.Text = account.Username;
+            viewModel = new BillsPageViewModel((Account)e.Parameter);
+            this.DataContext = viewModel;
+            
             if (account.Man)
                 BillsHeaderStats.Text = "Male, " + account.WeightInKg + " kg";
             else
                 BillsHeaderStats.Text = "Female, " + account.WeightInKg + " kg";
 
-
-            Calculation();
+            account = (Account)e.Parameter;
             
-            if (promille == 0)
-                CalculationTitle.Text = "You should be sober.";
-            else
-                CalculationTitle.Text = "Around " + Math.Round((decimal)promille, 3) + "‰. Sober at " + sober.ToString("HH:mm:ss") + ", " + sober.ToString("dd.MM") + ".";
-
             base.OnNavigatedTo(e);
         }
 
@@ -87,10 +51,10 @@ namespace Drink_Tracker
             SystemNavigationManager.GetForCurrentView().BackRequested -= BackToAccount;
             base.OnNavigatedFrom(e);
         }
-        
+
         private void BillsList_ItemClick(object sender, ItemClickEventArgs e)
         {
-            this.Frame.Navigate(typeof(YtemsPage), e.ClickedItem);
+            this.Frame.Navigate(typeof(YtemsPage), (e.ClickedItem as BillViewModel).Bill);
         }
 
         private void BillsListView_ContainerContentChanging(ListViewBase sender, ContainerContentChangingEventArgs args)
@@ -110,51 +74,6 @@ namespace Drink_Tracker
             this.Frame.Navigate(typeof(NewBillPage), account);
         }
 
-        private void Calculation()
-        {
-            int r;
-            if (account.Man == true)
-                r = 68;
-            else
-                r = 55;
-            float bac = 0;
-            float totalbac = 0;
-            float halfbac = (float)(10f / (account.WeightInKg * r));
-            float alcograms = 0;
-            DateTime t = DateTime.Now;
-            TimeSpan elapsedTime = new TimeSpan(0, 0, 0);
-
-            promille = 0;
-            sober = DateTime.Now;
-            if (bills != null && bills.Count != 0)
-            {
-                foreach (var bill in bills)
-                {
-                    if ((t.Subtract(bill.Created)).TotalDays >= 1)
-                        break;
-                    else
-                    {
-                        if (bill.Items != null && bill.Items.Count != 0)
-                        {
-                            foreach (var item in bill.Items)
-                            {
-                                foreach (var ytem in item.Ytems)
-                                {
-                                    alcograms = (float)(item.Drink.VolumeInMl * item.Drink.ABV * 0.01 * 0.789);
-                                    elapsedTime = t.Subtract(ytem.Added);
-                                    bac = (float)(halfbac * alcograms - (elapsedTime.TotalMinutes * 0.00025));
-                                    if (bac > 0)
-                                        totalbac = (float)(totalbac + bac);
-                                }
-                            }
-                            promille = (float)(10 * totalbac);
-                            sober = DateTime.Now.AddMinutes(totalbac / 0.00025);
-                        }
-                    }
-                }
-            }
-        }
-
         private void BackToAccount(object s, BackRequestedEventArgs e)
         {
            this.Frame.Navigate(typeof(AccountsPage), account);
@@ -162,20 +81,18 @@ namespace Drink_Tracker
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            editedbill = (sender as FrameworkElement).DataContext as Bill;
-            editedbill.Edited = true;
+            editedBill = (sender as FrameworkElement).DataContext as BillViewModel;
+            editedBill.Edited = true;
         }
 
         private void Confirm_Edit_Click(object sender, RoutedEventArgs e)
         {
-            String newname = "Successfully edited name";
-            //newname = EditName.text;
-            editedbill.Edited = false;
-            editedbill.Name = newname;
+            editedBill.Edited = false;
+            editedBill.Name = editedBill.EditField;
 
             using (var db = new AccountContext())
             {
-                db.Bills.Update(editedbill);
+                db.Bills.Update(editedBill.Bill);
                 db.SaveChanges();
             }
         }
@@ -200,8 +117,8 @@ namespace Drink_Tracker
             {
                 using (var db = new AccountContext())
                 {
-                    var bill = (sender as FrameworkElement).DataContext as Bill;
-                    db.Bills.Remove(bill);
+                    var bill = (sender as FrameworkElement).DataContext as BillViewModel;
+                    db.Bills.Remove(bill.Bill);
                     db.SaveChanges();
                 }
                 this.Frame.Navigate(typeof(BillsPage), account);
@@ -210,8 +127,14 @@ namespace Drink_Tracker
 
         private void Cancel_Edit_Click(object sender, RoutedEventArgs e)
         {
-            editedbill = (sender as FrameworkElement).DataContext as Bill;
-            editedbill.Edited = false;
+            editedBill = (sender as FrameworkElement).DataContext as BillViewModel;
+            editedBill.Edited = false;
+        }
+
+        private void EditName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var binding = ((TextBox)sender).GetBindingExpression(TextBox.TextProperty);
+            binding.UpdateSource();
         }
     }
 }

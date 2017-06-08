@@ -8,7 +8,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Page.Resources>
-        <conv:SexBoolToImage x:Key="BoolToImage"/>
         <DataTemplate x:Key="AccountTemplate">
             <Grid Height="Auto">
                 <Grid.ColumnDefinitions>
@@ -18,7 +17,7 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <Image Source="Images/man.png"/>
-                <Image Grid.Column="0" Name="SexImage" Source="{Binding Man, Converter={StaticResource BoolToImage}}"/>
+                <Image Grid.Column="0" Name="SexImage" Source="{Binding Sex}"/>
                 <TextBlock Grid.Column="1" Text="{Binding Username}" Style="{StaticResource TitleTextBlockStyle}"/>
                 <AppBarButton Grid.Column="2" Icon="Edit" Click="Edit_Click" />
                 <AppBarButton Grid.Column="3" Icon="Delete" Click="Delete_Click"/>
@@ -41,7 +40,7 @@
             </StackPanel>
         </Button>
         <ScrollViewer Grid.Row="2">
-            <ListView x:Name="AccountsList" ItemTemplate="{StaticResource AccountTemplate}" ItemClick="AccountsList_ItemClick" IsItemClickEnabled="True" SelectionMode="None">
+            <ListView x:Name="AccountsList" ItemTemplate="{StaticResource AccountTemplate}" ItemsSource="{Binding Accounts}" ItemClick="AccountsList_ItemClick" IsItemClickEnabled="True" SelectionMode="None">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>

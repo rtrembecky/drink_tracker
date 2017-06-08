@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Drink_Tracker.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,6 +18,8 @@ namespace Drink_Tracker
 {
     public sealed partial class AccountsPage : Page
     {
+        AccountsPageViewModel viewModel;
+
         public AccountsPage()
         {
             this.InitializeComponent();
@@ -24,21 +27,9 @@ namespace Drink_Tracker
 
         private void AccountsList_ItemClick(object sender, ItemClickEventArgs e)
         {
-            this.Frame.Navigate(typeof(BillsPage), e.ClickedItem);
+            this.Frame.Navigate(typeof(BillsPage), (e.ClickedItem as AccountViewModel).Account);
         }
-
-        private void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-            using (var db = new AccountContext())
-            {
-                AccountsList.ItemsSource = db.Accounts.ToList();
-                foreach (var acc in AccountsList.Items)
-                {
-                    // perhaps some pic could be added in the future
-                }
-            }
-        }
-
+        
         private void Add_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(NewAccountPage));
@@ -46,10 +37,8 @@ namespace Drink_Tracker
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            using (var db = new AccountContext())
-            {
-                AccountsList.ItemsSource = db.Accounts.ToList();
-            }
+            viewModel = new AccountsPageViewModel();
+            this.DataContext = viewModel;
             base.OnNavigatedTo(e);
         }
 
@@ -60,8 +49,8 @@ namespace Drink_Tracker
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            var acc = (sender as FrameworkElement).DataContext as Account;
-            this.Frame.Navigate(typeof(EditAccountPage), acc);
+            var acc = (sender as FrameworkElement).DataContext as AccountViewModel;
+            this.Frame.Navigate(typeof(EditAccountPage), acc.Account);
         }
 
         private async void DeleteDialog(object sender)
@@ -79,8 +68,8 @@ namespace Drink_Tracker
             {
                 using (var db = new AccountContext())
                 {
-                    var acc = (sender as FrameworkElement).DataContext as Account;
-                    db.Accounts.Remove(acc);
+                    var acc = (sender as FrameworkElement).DataContext as AccountViewModel;
+                    db.Accounts.Remove(acc.Account);
                     db.SaveChanges();
                 }
                 this.Frame.Navigate(typeof(AccountsPage));

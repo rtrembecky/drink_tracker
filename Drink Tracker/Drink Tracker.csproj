@@ -138,6 +138,11 @@
       <DependentUpon>NewDrinkPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\AccountsPageViewModel.cs" />
+    <Compile Include="ViewModel\AccountViewModel.cs" />
+    <Compile Include="ViewModel\BillsPageViewModel.cs" />
+    <Compile Include="ViewModel\BillViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="YtemsPage.xaml.cs">
       <DependentUpon>YtemsPage.xaml</DependentUpon>
     </Compile>

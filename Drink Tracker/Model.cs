@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using Drink_Tracker.ViewModel;
 
 namespace Drink_Tracker
 {
@@ -34,7 +33,7 @@ namespace Drink_Tracker
         public List<Bill> Bills { get; set; }
     }
 
-    public class Bill : ViewModelBase
+    public class Bill
     {
         public int BillId { get; set; }
         public string Name { get; set; }
@@ -43,19 +42,6 @@ namespace Drink_Tracker
 
         public int AccountId { get; set; }
         public Account Account { get; set; }
-
-        [NotMapped]
-        private bool edited;
-        [NotMapped]
-        public bool Edited
-        {
-            get { return edited; }
-            set
-            {
-                edited = value;
-                NotifyPropertyChanged();
-            }
-        }
     }
 
     public class Item : ViewModelBase
@@ -124,17 +110,5 @@ namespace Drink_Tracker
     {
         public Drink Drink { get; set; }
         public Price Price { get; set; }
-    }
-
-    public abstract class ViewModelBase : INotifyPropertyChanged
-    {
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void NotifyPropertyChanged([CallerMemberName]string propertyName = "")
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
     }
 }
