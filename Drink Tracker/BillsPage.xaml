@@ -42,7 +42,7 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="1" Name="BillsHeaderStats" Text="Male, 5 kg" Style="{StaticResource BodyTextBlockStyle}"/>
+                <TextBlock Grid.Column="1" Name="BillsHeaderStats" Text="{Binding HeaderStats}" Style="{StaticResource BodyTextBlockStyle}"/>
                 <TextBlock Grid.Column="2" Name="BillsHeaderTitle" Text="{Binding Username}" Style="{StaticResource HeaderStyle}"  HorizontalAlignment="Center"/>
             </Grid>
         </Border>

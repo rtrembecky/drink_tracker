@@ -39,6 +39,11 @@ namespace Drink_Tracker.ViewModel
                 bills = new ObservableCollection<BillViewModel>(billList.Select(b => new BillViewModel(b)));
             }
 
+            if (account.Man)
+                headerStats = "Male, " + account.WeightInKg + " kg";
+            else
+                headerStats = "Female, " + account.WeightInKg + " kg";
+
             Calculation();
         }
 
@@ -75,6 +80,18 @@ namespace Drink_Tracker.ViewModel
                 NotifyPropertyChanged();
             }
         }
+
+        string headerStats;
+        public string HeaderStats
+        {
+            get { return headerStats; }
+            set
+            {
+                headerStats = value;
+                NotifyPropertyChanged();
+            }
+        }
+
 
         private void Calculation()
         {

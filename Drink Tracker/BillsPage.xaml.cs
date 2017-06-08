@@ -36,11 +36,6 @@ namespace Drink_Tracker
             viewModel = new BillsPageViewModel((Account)e.Parameter);
             this.DataContext = viewModel;
             
-            if (account.Man)
-                BillsHeaderStats.Text = "Male, " + account.WeightInKg + " kg";
-            else
-                BillsHeaderStats.Text = "Female, " + account.WeightInKg + " kg";
-
             account = (Account)e.Parameter;
             
             base.OnNavigatedTo(e);
