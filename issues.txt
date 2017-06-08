@@ -3,6 +3,7 @@ ytemspage zgrupit rovnake napoje
 nefunguje vypocet sobernosti
 tak ako sobernost, aj samotny drink a bill by mohol mat cas vo formate ("HH:mm:ss") + ("dd.MM") 
 ytems sfunkcnit flagovanie a hlavne odstranovanie
+pridat sex image alebo odstranit jeho column
 
 low prio napady
 set cancel clicks on "new X" and "edit X" pages to proper back, not redirect
