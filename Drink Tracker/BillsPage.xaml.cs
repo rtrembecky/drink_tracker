@@ -66,6 +66,11 @@ namespace Drink_Tracker
             }
 
             BillsHeaderTitle.Text = account.Username;
+            if (account.Man)
+                BillsHeaderStats.Text = "Male, " + account.WeightInKg + " kg";
+            else
+                BillsHeaderStats.Text = "Female, " + account.WeightInKg + " kg";
+
 
             Calculation();
             

@@ -32,12 +32,19 @@
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="{StaticResource HeaderHeight}"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="{StaticResource HeaderHeight}"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Border Grid.Row="0" x:Name="Header" Style="{StaticResource HeaderBackground}">
-            <TextBlock Name="BillsHeaderTitle" Text="XAccountY" Style="{StaticResource HeaderStyle}"/>
+            <Grid Height="Auto" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="1" Name="BillsHeaderStats" Text="Male, 5 kg" Style="{StaticResource BodyTextBlockStyle}"/>
+                <TextBlock Grid.Column="2" Name="BillsHeaderTitle" Text="XAccountY" Style="{StaticResource HeaderStyle}"  HorizontalAlignment="Center"/>
+            </Grid>
         </Border>
         <Button Grid.Row="1" Background="LightGreen" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Click="Add_Click">
             <StackPanel Orientation="Horizontal">
