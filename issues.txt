@@ -1,11 +1,12 @@
 drink nech ma kolekciu cien, z ktorych sa bude dat vyberat v dropdowne
 ytemspage zgrupit rovnake napoje
-ytems sfunkcnit flagovanie
+nefunguje vypocet sobernosti
+tak ako sobernost, aj samotny drink a bill by mohol mat cas vo formate ("HH:mm:ss") + ("dd.MM") 
+ytems sfunkcnit flagovanie a hlavne odstranovanie
 
 low prio napady
 set cancel clicks on "new X" and "edit X" pages to proper back, not redirect
 ytemspage pisat okrem casu polozky aj jej dalsie udaje aby sa neplietli male a velke piva v zozname atd
 
 wontfix
-drinkspage zobrazuje v mililitroch miesto v decilitroch - zbytocne by tam bol dalsi converter, takto to nevadi
-nejake lepsie error message pri add/edit a branenie confirm stlaceniu
+drinkspage zobrazuje v mililitroch miesto v decilitroch
