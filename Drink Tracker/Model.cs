@@ -20,7 +20,7 @@ namespace Drink_Tracker
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=b.db");
+            optionsBuilder.UseSqlite("Data Source=c.db");
         }
     }
 

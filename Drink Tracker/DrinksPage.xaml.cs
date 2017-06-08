@@ -81,10 +81,15 @@ namespace Drink_Tracker
                         DrinkId = drink.DrinkId,
                         DrinkPrice = drink.Prices.First().Value
                     };
+                    item.Ytems.Add(new Ytem { Added = DateTime.Now });
                     db.Items.Add(item);
                 }
-                item.Ytems.Add(new Ytem { Added = DateTime.Now });
-                db.Items.Update(item);
+                else
+                {
+                    item.Ytems.Add(new Ytem { Added = DateTime.Now });
+                    db.Items.Update(item);
+                }
+                
                 db.SaveChanges();
             }
 

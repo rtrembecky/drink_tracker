@@ -25,7 +25,6 @@ namespace Drink_Tracker
 
         Bill currentbill;
         Account account;
-        List<Item> items;
         float TotalPrice = 0;
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -36,11 +35,11 @@ namespace Drink_Tracker
 
             using (var db = new AccountContext())
             {
-                items = db.Items
+                currentbill.Items = db.Items
                     .Where(item => item.BillId == currentbill.BillId)
                     .ToList();
 
-                foreach (var item in items)
+                foreach (var item in currentbill.Items)
                 {
                     item.Drink = db.Drinks
                         .Where(drink => item.DrinkId == drink.DrinkId)
@@ -57,7 +56,7 @@ namespace Drink_Tracker
                         .ToList();
                 }
 
-                YtemsList.ItemsSource = items;
+                YtemsList.ItemsSource = currentbill.Items;
 
                 account = db.Accounts
                     .Where(a => a.AccountId == currentbill.AccountId)
@@ -77,7 +76,7 @@ namespace Drink_Tracker
         private void Calculation()
         {
             TotalPrice = 0;
-            foreach (var i in items)
+            foreach (var i in currentbill.Items)
             {
                 TotalPrice += i.DrinkPrice * i.Ytems.Count;
             }
@@ -118,7 +117,34 @@ namespace Drink_Tracker
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
+            DeleteDialog(sender);
+        }
 
+        private async void DeleteDialog(object sender)
+        {
+            ContentDialog deleteDialog = new ContentDialog
+            {
+                Title = "Delete drink?",
+                Content = "Are you sure you want to delete this drink from the bill?",
+                SecondaryButtonText = "No",
+                PrimaryButtonText = "Yes"
+            };
+
+            ContentDialogResult result = await deleteDialog.ShowAsync();
+            if (result == ContentDialogResult.Primary)
+            {
+                using (var db = new AccountContext())
+                {
+                    var ytem = (sender as FrameworkElement).DataContext as Ytem;
+                    var item = currentbill.Items.Find(i => i.ItemId == ytem.ItemId);
+                    if (item.Ytems.Count == 1)
+                        db.Items.Remove(item);
+                    else
+                        db.Ytems.Remove(ytem);
+                    db.SaveChanges();
+                }
+                this.Frame.Navigate(typeof(YtemsPage), currentbill);
+            }
         }
 
         private void Collapse_Toggle(object sender, ItemClickEventArgs e)

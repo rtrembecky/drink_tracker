@@ -12,7 +12,7 @@ namespace Drink_Tracker.Converters
         public object Convert(object value, Type targetType, object parameter, string language)
         {
             var ytems = value as List<Ytem>;
-            return ytems.Count * ytems.First().Item.DrinkPrice;
+            return ytems.Count == 0 ? 0 : ytems.Count * ytems.First().Item.DrinkPrice;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
