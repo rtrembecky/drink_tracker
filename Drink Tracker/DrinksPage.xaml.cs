@@ -24,7 +24,7 @@ namespace Drink_Tracker
         }
 
         //string type;
-        //Bill bill;
+        Bill bill;
         BillAndType billAndType;
         //List<Drink> drinksByType;
         DrinksPageViewModel viewModel;
@@ -44,7 +44,6 @@ namespace Drink_Tracker
         private void DrinksList_ItemClick(object sender, ItemClickEventArgs e)
         {
             Drink drink = (Drink)e.ClickedItem;
-
 
             this.Frame.Navigate(typeof(DrinksPage), (e.ClickedItem as DrinkViewModel).Drink);
 
@@ -116,8 +115,8 @@ namespace Drink_Tracker
             {
                 using (var db = new AccountContext())
                 {
-                    var drink = (sender as FrameworkElement).DataContext as Drink;
-                    db.Drinks.Remove(drink);
+                    var drink = (sender as FrameworkElement).DataContext as DrinkViewModel;
+                    db.Drinks.Remove(drink.Drink);
                     db.SaveChanges();
                 }
                 this.Frame.Navigate(typeof(DrinksPage), billAndType);
