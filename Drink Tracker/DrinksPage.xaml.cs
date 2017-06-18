@@ -45,8 +45,9 @@ namespace Drink_Tracker
         {
             Drink drink = (Drink)e.ClickedItem;
 
-            this.Frame.Navigate(typeof(DrinksPage), (e.ClickedItem as DrinkViewModel).Drink);
             //sprav buydrink
+            this.Frame.Navigate(typeof(DrinksPage), (e.ClickedItem as DrinkViewModel).Drink);
+            //
 
             this.Frame.Navigate(typeof(YtemsPage), bill);
         }
