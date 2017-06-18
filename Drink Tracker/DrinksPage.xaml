@@ -49,7 +49,7 @@
             </StackPanel>
         </Button>
         <ScrollViewer Grid.Row="2">
-            <ListView Grid.Row="1" x:Name="DrinksList" ItemTemplate="{StaticResource DrinksItemTemplate}" ItemClick="DrinksList_ItemClick" IsItemClickEnabled="True" SelectionMode="None">
+            <ListView Grid.Row="1" x:Name="DrinksList" ItemTemplate="{StaticResource DrinksItemTemplate}" ItemsSource="{Binding Drinks}" ItemClick="DrinksList_ItemClick" IsItemClickEnabled="True" SelectionMode="None">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
