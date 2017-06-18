@@ -78,7 +78,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Border Grid.Row="0" Name="Header" Style="{StaticResource HeaderBackground}">
-            <TextBlock Name="YtemsHeaderTitle" Text="XY bill" Style="{StaticResource HeaderStyle}"/>
+            <TextBlock Name="YtemsHeaderTitle" Text="{Binding ytemsHeaderTitleText}" Style="{StaticResource HeaderStyle}"/>
         </Border>
         <Button Grid.Row="1" Name="ButtonAdd" Background="LightGreen" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Click="Add_Click">
             <StackPanel Orientation="Horizontal">
@@ -100,7 +100,7 @@
     <Page.BottomAppBar>
         <CommandBar>
             <CommandBar.Content>
-                <TextBlock Name="ToPay" Text="To pay: XX CZK (Total: YY CZK)" Margin="12,14"/>
+                <TextBlock Name="ToPay" Text="{Binding toPayText}" Margin="12,14"/>
             </CommandBar.Content>
             <AppBarButton Icon="Add" Label="Add drink" Click="Add_Click" />
         </CommandBar>

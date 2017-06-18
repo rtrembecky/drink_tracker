@@ -122,5 +122,46 @@ namespace Drink_Tracker.ViewModel
                 db.SaveChanges();
             }
         }
+
+
+        Bill currentbill;
+        float TotalPrice = 0;
+
+        public ObservableCollection<YtemViewModel> ShowYtems(Bill b)
+        {
+            currentbill = b;
+
+            using (var db = new AccountContext())
+            {
+                currentbill.Items = db.Items
+                    .Where(item => item.BillId == currentbill.BillId)
+                    .ToList();
+
+                foreach (var item in currentbill.Items)
+                {
+                    item.Drink = db.Drinks
+                        .Where(drink => item.DrinkId == drink.DrinkId)
+                        .ToList()
+                        .First();
+
+                    item.Drink.Prices = db.Prices
+                        .Where(p => p.DrinkId == item.Drink.DrinkId)
+                        .ToList();
+
+                    item.Ytems = db.Ytems
+                        .Where(y => y.ItemId == item.ItemId)
+                        .OrderByDescending(y => y.Added)
+                        .ToList();
+                }
+
+                account = db.Accounts
+                    .Where(a => a.AccountId == currentbill.AccountId)
+                    .ToList()
+                    .First();
+            }
+
+            return new ObservableCollection<YtemViewModel>(currentbill.Items.Select(item => new YtemViewModel(item)));
+
+        }
     }
 }

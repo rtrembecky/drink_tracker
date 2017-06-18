@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Drink_Tracker.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -26,60 +27,16 @@ namespace Drink_Tracker
         Bill currentbill;
         Account account;
         float TotalPrice = 0;
+        YtemsPageViewModel viewModel;
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             SystemNavigationManager.GetForCurrentView().BackRequested += BackToBills;
 
-            currentbill = (Bill)e.Parameter;
-
-            using (var db = new AccountContext())
-            {
-                currentbill.Items = db.Items
-                    .Where(item => item.BillId == currentbill.BillId)
-                    .ToList();
-
-                foreach (var item in currentbill.Items)
-                {
-                    item.Drink = db.Drinks
-                        .Where(drink => item.DrinkId == drink.DrinkId)
-                        .ToList()
-                        .First();
-
-                    item.Drink.Prices = db.Prices
-                        .Where(p => p.DrinkId == item.Drink.DrinkId)
-                        .ToList();
-
-                    item.Ytems = db.Ytems
-                        .Where(y => y.ItemId == item.ItemId)
-                        .OrderByDescending(y => y.Added)
-                        .ToList();
-                }
-
-                YtemsList.ItemsSource = currentbill.Items;
-
-                account = db.Accounts
-                    .Where(a => a.AccountId == currentbill.AccountId)
-                    .ToList()
-                    .First();
-            }
-
-            YtemsHeaderTitle.Text = currentbill.Name + " bill";
-
-            Calculation();
-
-            ToPay.Text = "To pay: " + TotalPrice.ToString("0.00") + " CZK";
+            viewModel = new YtemsPageViewModel((Bill)e.Parameter);
+            this.DataContext = viewModel;            
 
             base.OnNavigatedTo(e);
-        }
-
-        private void Calculation()
-        {
-            TotalPrice = 0;
-            foreach (var i in currentbill.Items)
-            {
-                TotalPrice += i.DrinkPrice * i.Ytems.Count;
-            }
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
