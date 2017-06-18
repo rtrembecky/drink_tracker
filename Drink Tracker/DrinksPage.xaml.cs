@@ -23,7 +23,7 @@ namespace Drink_Tracker
             this.InitializeComponent();
         }
 
-        //string type;
+        string type;
         Bill bill;
         BillAndType billAndType;
         //List<Drink> drinksByType;
@@ -35,8 +35,8 @@ namespace Drink_Tracker
             this.DataContext = viewModel;
 
             billAndType = (BillAndType)e.Parameter;
-            Bill bill = billAndType.Bill;
-            string type = billAndType.Type;
+            bill = billAndType.Bill;
+            type = billAndType.Type;
 
             base.OnNavigatedTo(e);
         }
@@ -46,41 +46,7 @@ namespace Drink_Tracker
             Drink drink = (Drink)e.ClickedItem;
 
             this.Frame.Navigate(typeof(DrinksPage), (e.ClickedItem as DrinkViewModel).Drink);
-
-            using (var db = new AccountContext())
-            {
-                bill.Items = db.Items
-                    .Where(it => it.BillId == bill.BillId)
-                    .ToList();
-
-                foreach (var i in bill.Items)
-                {
-                    i.Ytems = db.Ytems
-                        .Where(y => y.ItemId == i.ItemId)
-                        .ToList();
-                }
-
-                var item = bill.Items.Find(it => it.DrinkId == drink.DrinkId && it.DrinkPrice == drink.Prices.First().Value);
-                if (item == null)
-                {
-                    item = new Item
-                    {
-                        Ytems = new List<Ytem>(),
-                        BillId = bill.BillId,
-                        DrinkId = drink.DrinkId,
-                        DrinkPrice = drink.Prices.First().Value
-                    };
-                    item.Ytems.Add(new Ytem { Added = DateTime.Now });
-                    db.Items.Add(item);
-                }
-                else
-                {
-                    item.Ytems.Add(new Ytem { Added = DateTime.Now });
-                    db.Items.Update(item);
-                }
-                
-                db.SaveChanges();
-            }
+            //sprav buydrink
 
             this.Frame.Navigate(typeof(YtemsPage), bill);
         }
@@ -94,11 +60,6 @@ namespace Drink_Tracker
         {
             DeleteDialog(sender);
         }
-
-        // if we decide editing drinks is a good idea
-        //<AppBarButton Grid.Column="2" Icon="Edit" Click="Edit_Click"/>
-        //private void Edit_Click(object sender, RoutedEventArgs e)
-        //{ }
 
         private async void DeleteDialog(object sender)
         {

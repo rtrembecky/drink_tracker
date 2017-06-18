@@ -9,15 +9,14 @@ namespace Drink_Tracker.ViewModel
 {
     public class DrinksPageViewModel : ViewModelBase
     {
-        private Bill bill;
-        private string type;
-        List<Drink> drinksByType;
+        DatabaseManager manager;
 
         public DrinksPageViewModel(BillAndType b)
         {
             HeaderDesc = "Pick a " + b.Type + " to add to bill";
 
-            drinks = new DatabaseManager.ShowDrinks(drinksByType);
+            DatabaseManager manager = new DatabaseManager();
+            drinks = manager.ShowDrinks(b);
         }
 
         string headerDesc;

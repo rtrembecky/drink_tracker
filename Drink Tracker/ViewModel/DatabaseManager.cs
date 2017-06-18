@@ -11,7 +11,7 @@ namespace Drink_Tracker.ViewModel
     {
         private Account account;
 
-        public ObservableCollection<BillViewModel> ShowDrinks(Account a)
+        public ObservableCollection<BillViewModel> ShowBills(Account a)
         {
             account = a;
 
@@ -41,7 +41,7 @@ namespace Drink_Tracker.ViewModel
                 return new ObservableCollection<BillViewModel>(billList.Select(b => new BillViewModel(b)).OrderByDescending(b => b.Created));
             }
         }
-        
+
         private Bill bill;
         private string type;
         List<Drink> drinksByType;
@@ -62,11 +62,64 @@ namespace Drink_Tracker.ViewModel
                     d.Prices = db.Prices
                         .Where(p => p.DrinkId == d.DrinkId)
                         .ToList();
-                }
-
-                //drinksList.ItemsSource = drinksByType;                
+                }       
 
                 return new ObservableCollection<DrinkViewModel>(drinksByType.Select(d => new DrinkViewModel(d)));
+            }
+        }
+
+        public void BuyDrink(Drink d)
+        {
+            using (var db = new AccountContext())
+            {
+                bill.Items = db.Items
+                    .Where(it => it.BillId == bill.BillId)
+                    .ToList();
+
+                foreach (var i in bill.Items)
+                {
+                    i.Ytems = db.Ytems
+                        .Where(y => y.ItemId == i.ItemId)
+                        .ToList();
+                }
+
+                var item = bill.Items.Find(it => it.DrinkId == d.DrinkId && it.DrinkPrice == d.Prices.First().Value);
+                if (item == null)
+                {
+                    item = new Item
+                    {
+                        Ytems = new List<Ytem>(),
+                        BillId = bill.BillId,
+                        DrinkId = d.DrinkId,
+                        DrinkPrice = d.Prices.First().Value
+                    };
+                    item.Ytems.Add(new Ytem { Added = DateTime.Now });
+                    db.Items.Add(item);
+                }
+                else
+                {
+                    item.Ytems.Add(new Ytem { Added = DateTime.Now });
+                    db.Items.Update(item);
+                }
+                
+                db.SaveChanges();
+            }
+        }
+
+        public void CreateBill(Account a)
+        {
+            using (var db = new AccountContext())
+            {
+                var bill = new Bill
+                {
+                    Created = DateTime.Now,
+                    //Name = Bill_name.Text
+                    Name = "TBD"
+                };
+                account.Bills = new List<Bill>();
+                account.Bills.Add(bill);
+                db.Accounts.Update(account);
+                db.SaveChanges();
             }
         }
     }

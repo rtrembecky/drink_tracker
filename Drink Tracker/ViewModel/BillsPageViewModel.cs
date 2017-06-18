@@ -13,7 +13,8 @@ namespace Drink_Tracker.ViewModel
         {
             account = a;
 
-            bills = DatabaseManager.ShowDrinks(a);
+            DatabaseManager manager = new DatabaseManager();
+            bills = manager.ShowBills(a);
 
             if (account.Man)
                 headerStats = "Male, " + account.WeightInKg + " kg";
