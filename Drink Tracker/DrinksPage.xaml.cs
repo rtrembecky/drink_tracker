@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Drink_Tracker.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,34 +23,20 @@ namespace Drink_Tracker
             this.InitializeComponent();
         }
 
-        string type;
-        Bill bill;
+        //string type;
+        //Bill bill;
         BillAndType billAndType;
-        List<Drink> drinksByType;
+        //List<Drink> drinksByType;
+        DrinksPageViewModel viewModel;
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            viewModel = new DrinksPageViewModel((BillAndType)e.Parameter);
+            this.DataContext = viewModel;
+
             billAndType = (BillAndType)e.Parameter;
-            type = billAndType.Type;
-            bill = billAndType.Bill;
-
-            using (var db = new AccountContext())
-            {
-                drinksByType = db.Drinks
-                    .Where(drink => drink.Type == type)
-                    .ToList();
-
-                foreach (var d in drinksByType)
-                {
-                    d.Prices = db.Prices
-                        .Where(p => p.DrinkId == d.DrinkId)
-                        .ToList();
-                }
-
-                DrinksList.ItemsSource = drinksByType;
-            }
-
-            HeaderText.Text = "Pick a " + type + " to add to bill";
+            Bill bill = billAndType.Bill;
+            string type = billAndType.Type;
 
             base.OnNavigatedTo(e);
         }
@@ -57,6 +44,9 @@ namespace Drink_Tracker
         private void DrinksList_ItemClick(object sender, ItemClickEventArgs e)
         {
             Drink drink = (Drink)e.ClickedItem;
+
+
+            this.Frame.Navigate(typeof(DrinksPage), (e.ClickedItem as DrinkViewModel).Drink);
 
             using (var db = new AccountContext())
             {
