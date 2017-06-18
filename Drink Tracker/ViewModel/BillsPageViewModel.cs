@@ -13,31 +13,7 @@ namespace Drink_Tracker.ViewModel
         {
             account = a;
 
-            using (var db = new AccountContext())
-            {
-                List<Bill> billList = db.Bills
-                    .Where(bill => bill.AccountId == account.AccountId)
-                    .ToList();
-
-                foreach (var bill in billList)
-                {
-                    bill.Items = db.Items
-                        .Where(i => i.BillId == bill.BillId)
-                        .ToList();
-
-                    foreach (var item in bill.Items)
-                    {
-                        item.Drink = db.Drinks
-                            .Find(item.DrinkId);
-
-                        item.Ytems = db.Ytems
-                            .Where(y => y.ItemId == item.ItemId)
-                            .ToList();
-                    }
-                }
-
-                bills = new ObservableCollection<BillViewModel>(billList.Select(b => new BillViewModel(b)).OrderByDescending(b => b.Created));
-            }
+            bills = DatabaseManager.ShowDrinks(a);
 
             if (account.Man)
                 headerStats = "Male, " + account.WeightInKg + " kg";

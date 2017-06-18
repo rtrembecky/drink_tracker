@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Drink_Tracker.ViewModel
 {
-    class DrinkViewModel : ViewModelBase
+    public class DrinkViewModel : ViewModelBase
     {
         Drink drink;
 

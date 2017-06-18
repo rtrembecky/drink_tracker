@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Drink_Tracker.ViewModel
 {
-    class DrinksPageViewModel : ViewModelBase
+    public class DrinksPageViewModel : ViewModelBase
     {
         private Bill bill;
         private string type;
@@ -15,28 +15,9 @@ namespace Drink_Tracker.ViewModel
 
         public DrinksPageViewModel(BillAndType b)
         {
-            bill = b.Bill;
-            type = b.Type;
+            HeaderDesc = "Pick a " + b.Type + " to add to bill";
 
-            using (var db = new AccountContext())
-            {
-                drinksByType = db.Drinks
-                    .Where(drink => drink.Type == type)
-                    .ToList();
-
-                foreach (var d in drinksByType)
-                {
-                    d.Prices = db.Prices
-                        .Where(p => p.DrinkId == d.DrinkId)
-                        .ToList();
-                }
-                
-                //drinksList.ItemsSource = drinksByType;
-
-                HeaderDesc = "Pick a " + type + " to add to bill";
-
-                drinks = new ObservableCollection<DrinkViewModel>(drinksByType.Select(d => new DrinkViewModel(d)));
-            }
+            drinks = new DatabaseManager.ShowDrinks(drinksByType);
         }
 
         string headerDesc;
