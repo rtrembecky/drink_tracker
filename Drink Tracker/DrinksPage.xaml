@@ -8,7 +8,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Page.Resources>
-        <conv:PricesToLastOne x:Key="PricesToLastOne"/>
         <DataTemplate x:Key="DrinksItemTemplate">
             <Grid Height="Auto" >
                 <Grid.ColumnDefinitions>
