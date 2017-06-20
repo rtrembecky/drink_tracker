@@ -101,13 +101,8 @@
     <Compile Include="Converters\BoolToExpandedIcon.cs" />
     <Compile Include="Converters\BoolToNonVis.cs" />
     <Compile Include="Converters\BoolToVis.cs" />
-    <Compile Include="Converters\ItemToName.cs" />
-    <Compile Include="Converters\ItemToPrice.cs" />
     <Compile Include="Converters\SexBoolToImage.cs" />
     <Compile Include="Converters\DrinkToPrice.cs" />
-    <Compile Include="Converters\YtemsToCount.cs" />
-    <Compile Include="Converters\YtemsToLastAdded.cs" />
-    <Compile Include="Converters\YtemsToTotalPrice.cs" />
     <Compile Include="DrinksPage.xaml.cs">
       <DependentUpon>DrinksPage.xaml</DependentUpon>
     </Compile>

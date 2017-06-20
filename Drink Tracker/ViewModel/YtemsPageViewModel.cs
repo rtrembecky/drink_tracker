@@ -21,7 +21,7 @@ namespace Drink_Tracker.ViewModel
             toPayText = "To pay: " + totalPrice.ToString("0.00") + " CZK";
 
             DatabaseManager manager = new DatabaseManager();
-            ytemsList = manager.ShowYtems(b);
+            ytemsList = manager.GetYtems(b);
         }
 
         private void Calculation(Bill b)
@@ -64,6 +64,21 @@ namespace Drink_Tracker.ViewModel
                 ytemsList = value;
                 NotifyPropertyChanged();
             }
+        }
+
+        public int YtemsCount
+        {
+            get { return ytemsList.Count; }
+        }
+
+        public DateTime YtemsLastAdded
+        {
+            get { return ytemsList.OrderByDescending(y => y.Added).First().Added; }
+        }
+
+        public float YtemsTotalPrice
+        {
+            get { return ytemsList.Count == 0 ? 0 : ytemsList.Count * ytemsList.First().Item.DrinkPrice; }
         }
     }
 }
