@@ -9,8 +9,6 @@ namespace Drink_Tracker.ViewModel
 {
     public class DrinksPageViewModel : ViewModelBase
     {
-        DatabaseManager manager;
-
         public DrinksPageViewModel(BillAndType b)
         {
             HeaderDesc = "Pick a " + b.Type + " to add to bill";

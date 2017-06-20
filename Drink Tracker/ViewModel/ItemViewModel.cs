@@ -6,30 +6,15 @@ using System.Threading.Tasks;
 
 namespace Drink_Tracker.ViewModel
 {
-    public class YtemViewModel : ViewModelBase
+    public class ItemViewModel : ViewModelBase
     {
         Ytem ytem;
         Item item;
 
-        public YtemViewModel(Ytem y)
+        public ItemViewModel(Item i)
         {
-            ytem = y;
+            item = i;
             //createdText = Created.ToString("HH:mm:ss") + ", " + Created.ToString("dd.MM");
-        }
-
-        public Ytem Ytem
-        {
-            get { return ytem; }
-        }
-
-        public DateTime Added
-        {
-            get { return ytem.Added; }
-            set
-            {
-                ytem.Added = value;
-                NotifyPropertyChanged();
-            }
         }
 
         public Item Item
@@ -45,6 +30,26 @@ namespace Drink_Tracker.ViewModel
         public String ItemName
         {
             get { return item.Drink.Name; }
+        }
+
+        public List<Ytem> Ytems
+        {
+            get { return item.Ytems; }
+            set
+            {
+                item.Ytems = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        public DateTime Added
+        {
+            get { return ytem.Added; }
+            set
+            {
+                ytem.Added = value;
+                NotifyPropertyChanged();
+            }
         }
     }
 }

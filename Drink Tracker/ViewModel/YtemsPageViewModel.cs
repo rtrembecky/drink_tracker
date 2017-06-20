@@ -9,7 +9,6 @@ namespace Drink_Tracker.ViewModel
 {
     public class YtemsPageViewModel : ViewModelBase
     {
-        DatabaseManager manager;
         float totalPrice;
 
         public YtemsPageViewModel(Bill b)
@@ -55,8 +54,19 @@ namespace Drink_Tracker.ViewModel
             }
         }
         
-        private ObservableCollection<YtemViewModel> ytemsList;
-        public ObservableCollection<YtemViewModel> YtemsList
+        private ObservableCollection<ItemViewModel> itemsList;
+        public ObservableCollection<ItemViewModel> ItemsList
+        {
+            get { return itemsList; }
+            set
+            {
+                itemsList = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        private ObservableCollection<ItemViewModel> ytemsList;
+        public ObservableCollection<ItemViewModel> YtemsList
         {
             get { return ytemsList; }
             set

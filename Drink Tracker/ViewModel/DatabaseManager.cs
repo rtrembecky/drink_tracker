@@ -124,9 +124,8 @@ namespace Drink_Tracker.ViewModel
 
 
         Bill currentbill;
-        float TotalPrice = 0;
 
-        public ObservableCollection<YtemViewModel> GetYtems(Bill b)
+        public ObservableCollection<ItemViewModel> GetYtems(Bill b)
         {
             currentbill = b;
 
@@ -159,7 +158,7 @@ namespace Drink_Tracker.ViewModel
                     .First();
             }
 
-            return new ObservableCollection<YtemViewModel>(currentbill.Items.Select(item => new YtemViewModel(item)));
+            return new ObservableCollection<ItemViewModel>(currentbill.Items.Select(item => new ItemViewModel(item)));
 
         }
     }

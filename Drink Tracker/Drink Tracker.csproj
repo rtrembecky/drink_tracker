@@ -140,7 +140,7 @@
     <Compile Include="ViewModel\DrinkViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="ViewModel\YtemsPageViewModel.cs" />
-    <Compile Include="ViewModel\YtemViewModel.cs" />
+    <Compile Include="ViewModel\ItemViewModel.cs" />
     <Compile Include="YtemsPage.xaml.cs">
       <DependentUpon>YtemsPage.xaml</DependentUpon>
     </Compile>
