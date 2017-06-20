@@ -23,7 +23,7 @@
                         <TextBlock Text=" ‰," Style="{StaticResource CaptionTextBlockStyle}" Margin="0,0,4,0"/>
                         <TextBlock Text="{Binding VolumeInMl}" Style="{StaticResource CaptionTextBlockStyle}"/>
                         <TextBlock Text=" ml," Style="{StaticResource CaptionTextBlockStyle}" Margin="0,0,4,0"/>
-                        <TextBlock Text="{Binding Prices, Converter={StaticResource PricesToLastOne}}" Style="{StaticResource CaptionTextBlockStyle}"/>
+                        <TextBlock Text="{Binding FirstPrice}" Style="{StaticResource CaptionTextBlockStyle}"/>
                         <TextBlock Text=" CZK" Style="{StaticResource CaptionTextBlockStyle}" Margin="0,0,4,0"/>
                     </StackPanel>
                 </StackPanel>

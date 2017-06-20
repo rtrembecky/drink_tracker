@@ -20,7 +20,7 @@ namespace Drink_Tracker.ViewModel
             get { return drink; }
         }
 
-        public string Name
+        public string DrinkName
         {
             get { return drink.Name; }
             set
@@ -68,6 +68,12 @@ namespace Drink_Tracker.ViewModel
                 drink.Prices = value;
                 NotifyPropertyChanged();
             }
+        }
+
+        public float FirstPrice
+        {
+            get { return drink.Prices.First().Value; }
+            set { }
         }
     }
 }
