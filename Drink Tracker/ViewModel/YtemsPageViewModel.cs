@@ -21,7 +21,7 @@ namespace Drink_Tracker.ViewModel
             toPayText = "To pay: " + totalPrice.ToString("0.00") + " CZK";
 
             DatabaseManager manager = new DatabaseManager();
-            ytems = manager.ShowYtems(b);
+            ytemsList = manager.ShowYtems(b);
         }
 
         private void Calculation(Bill b)
@@ -54,25 +54,14 @@ namespace Drink_Tracker.ViewModel
                 NotifyPropertyChanged();
             }
         }
-
-        string ytemsList;
-        public string YtemsList
+        
+        private ObservableCollection<YtemViewModel> ytemsList;
+        public ObservableCollection<YtemViewModel> YtemsList
         {
             get { return ytemsList; }
             set
             {
                 ytemsList = value;
-                NotifyPropertyChanged();
-            }
-        }
-
-        private ObservableCollection<YtemViewModel> ytems;
-        public ObservableCollection<YtemViewModel> Ytems
-        {
-            get { return ytems; }
-            set
-            {
-                ytems = value;
                 NotifyPropertyChanged();
             }
         }

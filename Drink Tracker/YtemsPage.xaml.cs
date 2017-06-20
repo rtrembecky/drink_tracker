@@ -34,7 +34,7 @@ namespace Drink_Tracker
             SystemNavigationManager.GetForCurrentView().BackRequested += BackToBills;
 
             viewModel = new YtemsPageViewModel((Bill)e.Parameter);
-            this.DataContext = viewModel;            
+            this.DataContext = viewModel;
 
             base.OnNavigatedTo(e);
         }

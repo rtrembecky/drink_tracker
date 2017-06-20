@@ -87,7 +87,7 @@
             </StackPanel>
         </Button>
         <ScrollViewer Grid.Row="2">
-            <ListView Grid.Row="0" Name="YtemsList" ItemTemplate="{StaticResource YtemsItemTemplate}" SelectionMode="None" IsItemClickEnabled="True" ItemClick="Collapse_Toggle" ContainerContentChanging="YtemsListView_ContainerContentChanging">
+            <ListView Grid.Row="0" Name="YtemsList" ItemTemplate="{StaticResource YtemsItemTemplate}" ItemsSource="{Binding ytemsList}" SelectionMode="None" IsItemClickEnabled="True" ItemClick="Collapse_Toggle" ContainerContentChanging="YtemsListView_ContainerContentChanging">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
