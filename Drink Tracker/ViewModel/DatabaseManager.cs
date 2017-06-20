@@ -106,15 +106,14 @@ namespace Drink_Tracker.ViewModel
             }
         }
 
-        public void CreateBill(Account a)
+        public void CreateBill(Account a, String billname)
         {
             using (var db = new AccountContext())
             {
                 var bill = new Bill
                 {
                     Created = DateTime.Now,
-                    //Name = Bill_name.Text
-                    Name = "TBD"
+                    Name = billname
                 };
                 account.Bills = new List<Bill>();
                 account.Bills.Add(bill);
