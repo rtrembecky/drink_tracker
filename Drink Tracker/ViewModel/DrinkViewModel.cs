@@ -73,7 +73,10 @@ namespace Drink_Tracker.ViewModel
         public float FirstPrice
         {
             get { return drink.Prices.First().Value; }
-            set { }
+            set
+            {
+                NotifyPropertyChanged();
+            }
         }
     }
 }
