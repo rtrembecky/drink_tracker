@@ -33,10 +33,11 @@ namespace Drink_Tracker
         {
             SystemNavigationManager.GetForCurrentView().BackRequested += BackToAccount;
 
-            viewModel = new BillsPageViewModel((Account)e.Parameter);
+            account = (Account)e.Parameter;
+
+            viewModel = new BillsPageViewModel(account);
             this.DataContext = viewModel;
             
-            //account = (Account)e.Parameter;
             
             base.OnNavigatedTo(e);
         }

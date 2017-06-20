@@ -26,14 +26,16 @@ namespace Drink_Tracker
 
         Bill currentbill;
         Account account;
-        float TotalPrice = 0;
         YtemsPageViewModel viewModel;
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             SystemNavigationManager.GetForCurrentView().BackRequested += BackToBills;
 
-            viewModel = new YtemsPageViewModel((Bill)e.Parameter);
+            currentbill = (Bill)e.Parameter;
+            account = currentbill.Account;
+
+            viewModel = new YtemsPageViewModel(currentbill);
             this.DataContext = viewModel;
 
             base.OnNavigatedTo(e);
