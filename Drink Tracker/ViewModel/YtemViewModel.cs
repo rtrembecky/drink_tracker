@@ -36,5 +36,15 @@ namespace Drink_Tracker.ViewModel
         {
             get { return item; }
         }
+
+        public float ItemPrice
+        {
+            get { return item.DrinkPrice; }
+        }
+
+        public String ItemName
+        {
+            get { return item.Drink.Name; }
+        }
     }
 }
