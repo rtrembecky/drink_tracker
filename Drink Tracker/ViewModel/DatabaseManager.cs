@@ -11,7 +11,7 @@ namespace Drink_Tracker.ViewModel
     {
         private Account account;
 
-        public ObservableCollection<BillViewModel> ShowBills(Account a)
+        public ObservableCollection<BillViewModel> GetBills(Account a)
         {
             account = a;
 
@@ -46,7 +46,7 @@ namespace Drink_Tracker.ViewModel
         private string type;
         List<Drink> drinksByType;
 
-        public ObservableCollection<DrinkViewModel> ShowDrinks(BillAndType b)
+        public ObservableCollection<DrinkViewModel> GetDrinks(BillAndType b)
         {
             bill = b.Bill;
             type = b.Type;
@@ -126,7 +126,7 @@ namespace Drink_Tracker.ViewModel
         Bill currentbill;
         float TotalPrice = 0;
 
-        public ObservableCollection<YtemViewModel> ShowYtems(Bill b)
+        public ObservableCollection<YtemViewModel> GetYtems(Bill b)
         {
             currentbill = b;
 

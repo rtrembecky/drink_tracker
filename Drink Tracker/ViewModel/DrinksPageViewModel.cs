@@ -16,7 +16,7 @@ namespace Drink_Tracker.ViewModel
             HeaderDesc = "Pick a " + b.Type + " to add to bill";
 
             DatabaseManager manager = new DatabaseManager();
-            drinks = manager.ShowDrinks(b);
+            drinks = manager.GetDrinks(b);
         }
 
         string headerDesc;
