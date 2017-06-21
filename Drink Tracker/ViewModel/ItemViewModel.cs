@@ -44,6 +44,8 @@ namespace Drink_Tracker.ViewModel
 
         public DateTime Added
         {
+            //get { return Ytems.OrderByDescending(y => y.Added).First().Added; }
+            // we need to get the current item.ytem's added here somehow and gg
             get { return ytem.Added; }
             set
             {
@@ -51,5 +53,15 @@ namespace Drink_Tracker.ViewModel
                 NotifyPropertyChanged();
             }
         }
+
+        //public List<DateTime> Addeds
+        //{
+        //    get { return ytems.Added; }
+        //    set
+        //    {
+        //        ytems.Added = value;
+        //        NotifyPropertyChanged();
+        //    }
+       // }
     }
 }
