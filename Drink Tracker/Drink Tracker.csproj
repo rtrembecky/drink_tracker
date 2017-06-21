@@ -102,7 +102,6 @@
     <Compile Include="Converters\BoolToNonVis.cs" />
     <Compile Include="Converters\BoolToVis.cs" />
     <Compile Include="Converters\SexBoolToImage.cs" />
-    <Compile Include="Converters\DrinkToPrice.cs" />
     <Compile Include="DrinksPage.xaml.cs">
       <DependentUpon>DrinksPage.xaml</DependentUpon>
     </Compile>
