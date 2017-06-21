@@ -37,8 +37,7 @@ namespace Drink_Tracker
 
             viewModel = new BillsPageViewModel(account);
             this.DataContext = viewModel;
-            
-            
+                        
             base.OnNavigatedTo(e);
         }
 
