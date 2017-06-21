@@ -31,19 +31,20 @@ namespace Drink_Tracker
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            viewModel = new DrinksPageViewModel((BillAndType)e.Parameter);
-            this.DataContext = viewModel;
-
             billAndType = (BillAndType)e.Parameter;
             bill = billAndType.Bill;
             type = billAndType.Type;
+
+            viewModel = new DrinksPageViewModel(billAndType);
+            this.DataContext = viewModel;
 
             base.OnNavigatedTo(e);
         }
 
         private void DrinksList_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Drink drink = (Drink)e.ClickedItem;
+            DrinkViewModel drinkvm = (DrinkViewModel)e.ClickedItem;
+            Drink drink = drinkvm.Drink;
 
             //sprav buydrink
             this.Frame.Navigate(typeof(DrinksPage), (e.ClickedItem as DrinkViewModel).Drink);
