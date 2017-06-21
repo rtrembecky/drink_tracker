@@ -13,14 +13,14 @@ namespace Drink_Tracker.ViewModel
 
         public YtemsPageViewModel(Bill b)
         {
+            DatabaseManager manager = new DatabaseManager();
+            ytemsList = manager.GetYtems(b);
+
             ytemsHeaderTitleText = b.Name + " bill";
 
             Calculation(b);
 
             toPayText = "To pay: " + totalPrice.ToString("0.00") + " CZK";
-
-            DatabaseManager manager = new DatabaseManager();
-            ytemsList = manager.GetYtems(b);
         }
 
         private void Calculation(Bill b)

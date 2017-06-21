@@ -72,7 +72,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Border Grid.Row="0" Name="Header" Style="{StaticResource HeaderBackground}">
-            <TextBlock Name="YtemsHeaderTitle" Text="{Binding ytemsHeaderTitleText}" Style="{StaticResource HeaderStyle}"/>
+            <TextBlock Name="YtemsHeaderTitle" Text="{Binding YtemsHeaderTitleText}" Style="{StaticResource HeaderStyle}"/>
         </Border>
         <Button Grid.Row="1" Name="ButtonAdd" Background="LightGreen" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Click="Add_Click">
             <StackPanel Orientation="Horizontal">
