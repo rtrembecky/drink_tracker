@@ -30,7 +30,7 @@ namespace Drink_Tracker
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            SystemNavigationManager.GetForCurrentView().BackRequested += BackToBills;
+            //SystemNavigationManager.GetForCurrentView().BackRequested += BackToBills;
 
             currentbill = (Bill)e.Parameter;
             account = currentbill.Account;
@@ -43,7 +43,7 @@ namespace Drink_Tracker
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            SystemNavigationManager.GetForCurrentView().BackRequested -= BackToBills;
+            //SystemNavigationManager.GetForCurrentView().BackRequested -= BackToBills;
             base.OnNavigatedFrom(e);
         }
 
@@ -64,10 +64,10 @@ namespace Drink_Tracker
             this.Frame.Navigate(typeof(DrinkTypesPage), currentbill);
         }
 
-        private void BackToBills(object s, BackRequestedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(BillsPage), account);
-        }
+        //private void BackToBills(object s, BackRequestedEventArgs e)
+        //{
+        //    this.Frame.Navigate(typeof(BillsPage), account);
+        //}
 
         private void Flag_Toggle(object sender, RoutedEventArgs e)
         {

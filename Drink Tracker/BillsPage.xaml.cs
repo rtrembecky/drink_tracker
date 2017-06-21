@@ -31,7 +31,7 @@ namespace Drink_Tracker
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            SystemNavigationManager.GetForCurrentView().BackRequested += BackToAccount;
+            //SystemNavigationManager.GetForCurrentView().BackRequested += BackToAccount;
 
             account = (Account)e.Parameter;
 
@@ -43,7 +43,7 @@ namespace Drink_Tracker
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            SystemNavigationManager.GetForCurrentView().BackRequested -= BackToAccount;
+            //SystemNavigationManager.GetForCurrentView().BackRequested -= BackToAccount;
             base.OnNavigatedFrom(e);
         }
 
@@ -69,10 +69,10 @@ namespace Drink_Tracker
             this.Frame.Navigate(typeof(NewBillPage), account);
         }
 
-        private void BackToAccount(object s, BackRequestedEventArgs e)
-        {
-           this.Frame.Navigate(typeof(AccountsPage), account);
-        }
+        //private void BackToAccount(object s, BackRequestedEventArgs e)
+        //{
+        //   this.Frame.Navigate(typeof(AccountsPage), account);
+        //}
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
