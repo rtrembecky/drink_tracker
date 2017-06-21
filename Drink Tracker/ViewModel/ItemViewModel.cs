@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,6 @@ namespace Drink_Tracker.ViewModel
 {
     public class ItemViewModel : ViewModelBase
     {
-        Ytem ytem;
         Item item;
 
         public ItemViewModel(Item i)
@@ -32,7 +32,13 @@ namespace Drink_Tracker.ViewModel
             get { return item.Drink.Name; }
         }
 
-        public List<Ytem> Ytems
+        public DateTime LastAdded
+        {
+            get { return ytems.OrderByDescending(y => y.Added).First().Added; }
+        }
+
+        //delete this
+        public List<Ytem> Ytemsx
         {
             get { return item.Ytems; }
             set
@@ -42,14 +48,13 @@ namespace Drink_Tracker.ViewModel
             }
         }
 
-        public DateTime Added
+        private ObservableCollection<YtemViewModel> ytems;
+        public ObservableCollection<YtemViewModel> Ytems
         {
-            //get { return Ytems.OrderByDescending(y => y.Added).First().Added; }
-            // we need to get the current item.ytem's added here somehow and gg
-            get { return ytem.Added; }
+            get { return ytems; }
             set
             {
-                ytem.Added = value;
+                ytems = value;
                 NotifyPropertyChanged();
             }
         }
@@ -62,6 +67,6 @@ namespace Drink_Tracker.ViewModel
         //        ytems.Added = value;
         //        NotifyPropertyChanged();
         //    }
-       // }
+        // }
     }
 }

@@ -81,10 +81,10 @@ namespace Drink_Tracker.ViewModel
             get { return ytemsList.Count; }
         }
 
-        public DateTime YtemsLastAdded
-        {
-            get { return ytemsList.OrderByDescending(y => y.Added).First().Added; }
-        }
+        //public DateTime YtemsLastAdded
+        //{
+        //    get { return ytems.OrderByDescending(y => y.Added).First().Added; }
+        //}
 
         public float YtemsTotalPrice
         {
