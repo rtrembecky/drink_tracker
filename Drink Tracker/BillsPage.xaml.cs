@@ -37,7 +37,7 @@ namespace Drink_Tracker
 
             viewModel = new BillsPageViewModel(account);
             this.DataContext = viewModel;
-                        
+
             base.OnNavigatedTo(e);
         }
 
@@ -85,11 +85,8 @@ namespace Drink_Tracker
             editedBill.Edited = false;
             editedBill.Name = editedBill.EditField;
 
-            using (var db = new AccountContext())
-            {
-                db.Bills.Update(editedBill.Bill);
-                db.SaveChanges();
-            }
+            DatabaseManager manager = new DatabaseManager();
+            manager.UpdateBill(editedBill.Bill);
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
@@ -110,12 +107,10 @@ namespace Drink_Tracker
             ContentDialogResult result = await deleteDialog.ShowAsync();
             if (result == ContentDialogResult.Primary)
             {
-                using (var db = new AccountContext())
-                {
-                    var bill = (sender as FrameworkElement).DataContext as BillViewModel;
-                    db.Bills.Remove(bill.Bill);
-                    db.SaveChanges();
-                }
+                var bill = (sender as FrameworkElement).DataContext as BillViewModel;
+                DatabaseManager manager = new DatabaseManager();
+                manager.RemoveBill(bill.Bill);
+
                 this.Frame.Navigate(typeof(BillsPage), account);
             }
         }
