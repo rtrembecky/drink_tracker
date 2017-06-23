@@ -77,6 +77,6 @@ namespace Drink_Tracker.ViewModel
             {
                 NotifyPropertyChanged();
             }
-        }
+        }        
     }
 }

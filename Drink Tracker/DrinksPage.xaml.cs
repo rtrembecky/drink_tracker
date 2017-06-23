@@ -46,8 +46,11 @@ namespace Drink_Tracker
             DrinkViewModel drinkvm = (DrinkViewModel)e.ClickedItem;
             Drink drink = drinkvm.Drink;
 
+            //this.Frame.Navigate(typeof(DrinksPage), (e.ClickedItem as DrinkViewModel).Drink);
+
             //sprav buydrink
-            this.Frame.Navigate(typeof(DrinksPage), (e.ClickedItem as DrinkViewModel).Drink);
+            DatabaseManager manager = new DatabaseManager();
+            manager.BuyDrink(drink, bill);
             //
 
             this.Frame.Navigate(typeof(YtemsPage), bill);

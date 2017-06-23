@@ -68,7 +68,7 @@ namespace Drink_Tracker.ViewModel
             }
         }
 
-        public void BuyDrink(Drink d)
+        public void BuyDrink(Drink d, Bill bill)
         {
             using (var db = new AccountContext())
             {
