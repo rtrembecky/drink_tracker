@@ -125,7 +125,7 @@ namespace Drink_Tracker
         {
             using (var db = new AccountContext())
             {
-                bill.Items = GetItemsList(bill);
+                bill.Items = GetItemsFullByBill(bill);
 
                 var item = bill.Items.Find(it => it.DrinkId == d.DrinkId && it.DrinkPrice == d.Prices.First().Value);
                 if (item == null)
@@ -159,9 +159,9 @@ namespace Drink_Tracker
                     Created = DateTime.Now,
                     Name = billname
                 };
-                account.Bills = new List<Bill>();
-                account.Bills.Add(bill);
-                db.Accounts.Update(account);
+                a.Bills = new List<Bill>();
+                a.Bills.Add(bill);
+                db.Accounts.Update(a);
                 db.SaveChanges();
             }
         }

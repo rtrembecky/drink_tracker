@@ -114,9 +114,9 @@
     <Compile Include="EditAccountPage.xaml.cs">
       <DependentUpon>EditAccountPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20170608205531_Init.cs" />
-    <Compile Include="Migrations\20170608205531_Init.designer.cs">
-      <DependentUpon>20170608205531_Init.cs</DependentUpon>
+    <Compile Include="Migrations\20170623173342_Init.cs" />
+    <Compile Include="Migrations\20170623173342_Init.Designer.cs">
+      <DependentUpon>20170623173342_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\AccountContextModelSnapshot.cs" />
     <Compile Include="Model.cs" />
@@ -134,7 +134,7 @@
     <Compile Include="ViewModel\AccountViewModel.cs" />
     <Compile Include="ViewModel\BillsPageViewModel.cs" />
     <Compile Include="ViewModel\BillViewModel.cs" />
-    <Compile Include="ViewModel\DatabaseManager.cs" />
+    <Compile Include="DatabaseManager.cs" />
     <Compile Include="ViewModel\DrinksPageViewModel.cs" />
     <Compile Include="ViewModel\DrinkViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />

@@ -49,7 +49,7 @@ namespace Drink_Tracker
 
         private void BillsList_ItemClick(object sender, ItemClickEventArgs e)
         {
-            this.Frame.Navigate(typeof(YtemsPage), (e.ClickedItem as BillViewModel).Bill);
+            this.Frame.Navigate(typeof(ItemsPage), (e.ClickedItem as BillViewModel).Bill);
         }
 
         private void BillsListView_ContainerContentChanging(ListViewBase sender, ContainerContentChangingEventArgs args)

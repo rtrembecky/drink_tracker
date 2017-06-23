@@ -103,20 +103,20 @@ namespace Drink_Tracker.Migrations
                     b.ToTable("Prices");
                 });
 
-            modelBuilder.Entity("Drink_Tracker.Ytem", b =>
+            modelBuilder.Entity("Drink_Tracker.Timestamp", b =>
                 {
-                    b.Property<int>("YtemId")
+                    b.Property<int>("TimestampId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("Added");
 
                     b.Property<int>("ItemId");
 
-                    b.HasKey("YtemId");
+                    b.HasKey("TimestampId");
 
                     b.HasIndex("ItemId");
 
-                    b.ToTable("Ytems");
+                    b.ToTable("Timestamps");
                 });
 
             modelBuilder.Entity("Drink_Tracker.Bill", b =>
@@ -148,10 +148,10 @@ namespace Drink_Tracker.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Drink_Tracker.Ytem", b =>
+            modelBuilder.Entity("Drink_Tracker.Timestamp", b =>
                 {
                     b.HasOne("Drink_Tracker.Item", "Item")
-                        .WithMany("Ytems")
+                        .WithMany("Timestamps")
                         .HasForeignKey("ItemId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

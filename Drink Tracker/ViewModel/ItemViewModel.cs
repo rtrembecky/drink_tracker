@@ -37,12 +37,17 @@ namespace Drink_Tracker.ViewModel
 
         public float TotalPrice
         {
-            get { return itemsList.Count == 0 ? 0 : itemsList.Count * itemsList.First().Item.DrinkPrice; }
+            get { return BoughtCount == 0 ? 0 : BoughtCount * LastPrice; }
         }
 
         public string DrinkName
         {
             get { return item.Drink.Name; }
+        }
+        
+        public float LastPrice
+        {
+            get { return item.Timestamps.OrderByDescending(t => t.Added).First().Item.DrinkPrice; }
         }
 
         public DateTime LastAdded

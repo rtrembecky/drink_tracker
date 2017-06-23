@@ -108,19 +108,19 @@ namespace Drink_Tracker.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Ytems",
+                name: "Timestamps",
                 columns: table => new
                 {
-                    YtemId = table.Column<int>(nullable: false)
+                    TimestampId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Added = table.Column<DateTime>(nullable: false),
                     ItemId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Ytems", x => x.YtemId);
+                    table.PrimaryKey("PK_Timestamps", x => x.TimestampId);
                     table.ForeignKey(
-                        name: "FK_Ytems_Items_ItemId",
+                        name: "FK_Timestamps_Items_ItemId",
                         column: x => x.ItemId,
                         principalTable: "Items",
                         principalColumn: "ItemId",
@@ -148,8 +148,8 @@ namespace Drink_Tracker.Migrations
                 column: "DrinkId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Ytems_ItemId",
-                table: "Ytems",
+                name: "IX_Timestamps_ItemId",
+                table: "Timestamps",
                 column: "ItemId");
         }
 
@@ -159,7 +159,7 @@ namespace Drink_Tracker.Migrations
                 name: "Prices");
 
             migrationBuilder.DropTable(
-                name: "Ytems");
+                name: "Timestamps");
 
             migrationBuilder.DropTable(
                 name: "Items");

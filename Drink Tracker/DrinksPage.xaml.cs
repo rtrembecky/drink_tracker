@@ -45,10 +45,10 @@ namespace Drink_Tracker
 
             //sprav buydrink
             DatabaseManager manager = new DatabaseManager();
-            manager.BuyDrink(drink, bill);
+            manager.BuyDrink(drink, billAndType.Bill);
             //
 
-            this.Frame.Navigate(typeof(YtemsPage), bill);
+            this.Frame.Navigate(typeof(ItemsPage), billAndType.Bill);
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)

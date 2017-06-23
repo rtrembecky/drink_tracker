@@ -16,7 +16,7 @@ namespace Drink_Tracker.ViewModel
             account = a;
 
             DatabaseManager manager = new DatabaseManager();
-            account.bills = manager.GetBillsFullByAccount(account);
+            account.Bills = manager.GetBillsFullByAccount(account);
             bills = new ObservableCollection<BillViewModel>(account.Bills.Select(b => new BillViewModel(b)).OrderByDescending(b => b.Created));
 
             if (account.Man)
