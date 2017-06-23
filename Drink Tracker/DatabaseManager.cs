@@ -201,5 +201,14 @@ namespace Drink_Tracker
                 db.SaveChanges();
             }
         }
+
+        public void UpdateBill(Bill bill)
+        {
+            using (var db = new AccountContext())
+            {
+                db.Bills.Update(bill);
+                db.SaveChanges();
+            }
+        }
     }
 }
