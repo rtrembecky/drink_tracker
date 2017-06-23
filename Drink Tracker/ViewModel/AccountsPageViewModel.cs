@@ -11,10 +11,9 @@ namespace Drink_Tracker.ViewModel
     {
         public AccountsPageViewModel()
         {
-            using (var db = new AccountContext())
-            {
-                Accounts = new ObservableCollection<AccountViewModel>(db.Accounts.ToList().Select(a => new AccountViewModel(a)));
-            }
+            DatabaseManager manager = new DatabaseManager();
+            List<Account> accountList = manager.GetAccounts();
+            Accounts = new ObservableCollection<AccountViewModel>(accountList.Select(a => new AccountViewModel(a)));
         }
 
         private ObservableCollection<AccountViewModel> accounts;

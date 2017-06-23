@@ -9,12 +9,15 @@ namespace Drink_Tracker.ViewModel
 {
     public class BillsPageViewModel : ViewModelBase
     {
+        Account account;
+
         public BillsPageViewModel(Account a)
         {
             account = a;
 
             DatabaseManager manager = new DatabaseManager();
-            bills = manager.GetBills(account);
+            account.bills = manager.GetBillsFullByAccount(account);
+            bills = new ObservableCollection<BillViewModel>(account.Bills.Select(b => new BillViewModel(b)).OrderByDescending(b => b.Created));
 
             if (account.Man)
                 headerStats = "Male, " + account.WeightInKg + " kg";
@@ -34,8 +37,6 @@ namespace Drink_Tracker.ViewModel
                 NotifyPropertyChanged();
             }
         }
-
-        private Account account;
 
         public string Username
         {
@@ -98,10 +99,10 @@ namespace Drink_Tracker.ViewModel
                         {
                             foreach (var item in bill.Items)
                             {
-                                foreach (var ytem in item.Ytems)
+                                foreach (var timestamp in item.Timestamps)
                                 {
                                     alcograms = (float)(item.Drink.VolumeInMl * item.Drink.ABV * 0.01 * 0.789);
-                                    elapsedTime = t.Subtract(ytem.Added);
+                                    elapsedTime = t.Subtract(timestamp.Added);
                                     bac = (float)(halfbac * alcograms - (elapsedTime.TotalMinutes * 0.00025));
                                     if (bac > 0)
                                         totalbac = (float)(totalbac + bac);

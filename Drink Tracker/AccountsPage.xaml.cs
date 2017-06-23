@@ -25,6 +25,13 @@ namespace Drink_Tracker
             this.InitializeComponent();
         }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            viewModel = new AccountsPageViewModel();
+            this.DataContext = viewModel;
+            base.OnNavigatedTo(e);
+        }
+
         private void AccountsList_ItemClick(object sender, ItemClickEventArgs e)
         {
             this.Frame.Navigate(typeof(BillsPage), (e.ClickedItem as AccountViewModel).Account);
@@ -34,14 +41,7 @@ namespace Drink_Tracker
         {
             this.Frame.Navigate(typeof(NewAccountPage));
         }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            viewModel = new AccountsPageViewModel();
-            this.DataContext = viewModel;
-            base.OnNavigatedTo(e);
-        }
-
+        
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
             DeleteDialog(sender);
@@ -66,12 +66,10 @@ namespace Drink_Tracker
             ContentDialogResult result = await deleteDialog.ShowAsync();
             if (result == ContentDialogResult.Primary)
             {
-                using (var db = new AccountContext())
-                {
-                    var acc = (sender as FrameworkElement).DataContext as AccountViewModel;
-                    db.Accounts.Remove(acc.Account);
-                    db.SaveChanges();
-                }
+                var acc = (sender as FrameworkElement).DataContext as AccountViewModel;
+                DatabaseManager manager = new DatabaseManager();
+                manager.RemoveAccount(acc.Account);
+                
                 this.Frame.Navigate(typeof(AccountsPage));
             }
         }

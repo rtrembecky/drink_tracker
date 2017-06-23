@@ -22,20 +22,15 @@ namespace Drink_Tracker
         {
             this.InitializeComponent();
         }
-
-        string type;
-        Bill bill;
+        
         BillAndType billAndType;
-        //List<Drink> drinksByType;
         DrinksPageViewModel viewModel;
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             billAndType = (BillAndType)e.Parameter;
-            bill = billAndType.Bill;
-            type = billAndType.Type;
 
-            viewModel = new DrinksPageViewModel(billAndType);
+            viewModel = new DrinksPageViewModel(billAndType.Type);
             this.DataContext = viewModel;
 
             base.OnNavigatedTo(e);

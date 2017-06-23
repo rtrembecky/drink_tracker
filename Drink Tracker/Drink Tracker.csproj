@@ -138,12 +138,10 @@
     <Compile Include="ViewModel\DrinksPageViewModel.cs" />
     <Compile Include="ViewModel\DrinkViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
-    <Compile Include="ViewModel\YtemsPageViewModel.cs" />
+    <Compile Include="ViewModel\ItemsPageViewModel.cs" />
     <Compile Include="ViewModel\ItemViewModel.cs" />
-    <Compile Include="ViewModel\YtemViewModel.cs" />
-    <Compile Include="YtemsPage.xaml.cs">
-      <DependentUpon>YtemsPage.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="ViewModel\TimestampViewModel.cs" />
+    <Compile Include="ItemsPage.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -198,7 +196,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="YtemsPage.xaml">
+    <Page Include="ItemsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

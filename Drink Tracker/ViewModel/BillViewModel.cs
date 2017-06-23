@@ -29,7 +29,7 @@ namespace Drink_Tracker.ViewModel
             set
             {
                 bill.Name = value;
-                    NotifyPropertyChanged();
+                NotifyPropertyChanged();
             }
         }
 

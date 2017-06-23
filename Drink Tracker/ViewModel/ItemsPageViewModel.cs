@@ -7,18 +7,19 @@ using System.Threading.Tasks;
 
 namespace Drink_Tracker.ViewModel
 {
-    public class YtemsPageViewModel : ViewModelBase
+    public class ItemsPageViewModel : ViewModelBase
     {
         float totalPrice;
 
-        public YtemsPageViewModel(Bill b)
+        public ItemsPageViewModel(Bill bill)
         {
             DatabaseManager manager = new DatabaseManager();
-            ytemsList = manager.GetYtems(b);
+            bill.Items = manager.GetItemsFullByBill(bill);
+            itemsList = new ObservableCollection<ItemViewModel>(bill.Items.Select(item => new ItemViewModel(item)));
 
-            ytemsHeaderTitleText = b.Name + " bill";
+            itemsTitleText = bill.Name + " bill";
 
-            Calculation(b);
+            Calculation(bill);
 
             toPayText = "To pay: " + totalPrice.ToString("0.00") + " CZK";
         }
@@ -28,17 +29,17 @@ namespace Drink_Tracker.ViewModel
             totalPrice = (float)0;
             foreach (var i in b.Items)
             {
-                totalPrice += i.DrinkPrice * i.Ytems.Count;
+                totalPrice += i.DrinkPrice * i.Timestamps.Count;
             }
         }
 
-        string ytemsHeaderTitleText;
-        public string YtemsHeaderTitleText
+        string itemsTitleText;
+        public string ItemsTitleText
         {
-            get { return ytemsHeaderTitleText; }
+            get { return itemsTitleText; }
             set
             {
-                ytemsHeaderTitleText = value;
+                itemsTitleText = value;
                 NotifyPropertyChanged();
             }
         }
@@ -63,32 +64,6 @@ namespace Drink_Tracker.ViewModel
                 itemsList = value;
                 NotifyPropertyChanged();
             }
-        }
-
-        private ObservableCollection<ItemViewModel> ytemsList;
-        public ObservableCollection<ItemViewModel> YtemsList
-        {
-            get { return ytemsList; }
-            set
-            {
-                ytemsList = value;
-                NotifyPropertyChanged();
-            }
-        }
-
-        public int YtemsCount
-        {
-            get { return ytemsList.Count; }
-        }
-
-        //public DateTime YtemsLastAdded
-        //{
-        //    get { return ytems.OrderByDescending(y => y.Added).First().Added; }
-        //}
-
-        public float YtemsTotalPrice
-        {
-            get { return ytemsList.Count == 0 ? 0 : ytemsList.Count * ytemsList.First().Item.DrinkPrice; }
         }
     }
 }

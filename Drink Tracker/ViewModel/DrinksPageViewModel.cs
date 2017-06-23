@@ -9,12 +9,13 @@ namespace Drink_Tracker.ViewModel
 {
     public class DrinksPageViewModel : ViewModelBase
     {
-        public DrinksPageViewModel(BillAndType b)
+        public DrinksPageViewModel(string type)
         {
-            HeaderDesc = "Pick a " + b.Type + " to add to bill";
+            HeaderDesc = "Pick a " + type + " to add to bill";
 
             DatabaseManager manager = new DatabaseManager();
-            drinks = manager.GetDrinks(b);
+            List<Drink> drinkList = manager.GetDrinksByType(type);
+            drinks = new ObservableCollection<DrinkViewModel>(drinkList.Select(d => new DrinkViewModel(d)));
         }
 
         string headerDesc;

@@ -17,25 +17,23 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Drink_Tracker
 {
-    public sealed partial class YtemsPage : Page
+    public sealed partial class ItemsPage : Page
     {
-        public YtemsPage()
+        public ItemsPage()
         {
             this.InitializeComponent();
         }
 
         Bill currentbill;
-        Account account;
-        YtemsPageViewModel viewModel;
+        ItemsPageViewModel viewModel;
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             //SystemNavigationManager.GetForCurrentView().BackRequested += BackToBills;
 
             currentbill = (Bill)e.Parameter;
-            account = currentbill.Account;
 
-            viewModel = new YtemsPageViewModel(currentbill);
+            viewModel = new ItemsPageViewModel(currentbill);
             this.DataContext = viewModel;
 
             base.OnNavigatedTo(e);
@@ -47,7 +45,7 @@ namespace Drink_Tracker
             base.OnNavigatedFrom(e);
         }
 
-        private void YtemsListView_ContainerContentChanging(ListViewBase sender, ContainerContentChangingEventArgs args)
+        private void ItemsListView_ContainerContentChanging(ListViewBase sender, ContainerContentChangingEventArgs args)
         {
             if (args.ItemIndex % 2 == 0)
             {
@@ -92,24 +90,24 @@ namespace Drink_Tracker
             ContentDialogResult result = await deleteDialog.ShowAsync();
             if (result == ContentDialogResult.Primary)
             {
-                using (var db = new AccountContext())
-                {
-                    var ytem = (sender as FrameworkElement).DataContext as Ytem;
-                    var item = currentbill.Items.Find(i => i.ItemId == ytem.ItemId);
-                    if (item.Ytems.Count == 1)
-                        db.Items.Remove(item);
-                    else
-                        db.Ytems.Remove(ytem);
-                    db.SaveChanges();
-                }
-                this.Frame.Navigate(typeof(YtemsPage), currentbill);
+                var timestampView = (sender as FrameworkElement).DataContext as TimestampViewModel;
+                Timestamp timestamp = timestampView.Timestamp;
+                var item = currentbill.Items.Find(i => i.ItemId == timestamp.ItemId);
+
+                DatabaseManager manager = new DatabaseManager();
+                if (item.Timestamps.Count == 1)
+                    manager.RemoveItem(item);
+                else
+                    manager.RemoveTimestamp(timestamp);
+                
+                this.Frame.Navigate(typeof(ItemsPage), currentbill);
             }
         }
 
         private void Collapse_Toggle(object sender, ItemClickEventArgs e)
         {
-            var item = e.ClickedItem as Item;
-            item.Expanded = !item.Expanded;
+            var itemView = e.ClickedItem as ItemViewModel;
+            itemView.Expanded = !itemView.Expanded;
         }
     }
 }

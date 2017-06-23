@@ -14,7 +14,20 @@ namespace Drink_Tracker.ViewModel
         public ItemViewModel(Item i)
         {
             item = i;
+            timestamps = new ObservableCollection<TimestampViewModel>(item.Timestamps.Select(timestamp => new TimestampViewModel(timestamp)));
+            expanded = false;
             //createdText = Created.ToString("HH:mm:ss") + ", " + Created.ToString("dd.MM");
+        }
+
+        private ObservableCollection<TimestampViewModel> timestamps;
+        public ObservableCollection<TimestampViewModel> Timestamps
+        {
+            get { return timestamps; }
+            set
+            {
+                timestamps = value;
+                NotifyPropertyChanged();
+            }
         }
 
         public Item Item
@@ -22,51 +35,35 @@ namespace Drink_Tracker.ViewModel
             get { return item; }
         }
 
-        public float ItemPrice
+        public float TotalPrice
         {
-            get { return item.DrinkPrice; }
+            get { return itemsList.Count == 0 ? 0 : itemsList.Count * itemsList.First().Item.DrinkPrice; }
         }
 
-        public String ItemName
+        public string DrinkName
         {
             get { return item.Drink.Name; }
         }
 
         public DateTime LastAdded
         {
-            get { return ytems.OrderByDescending(y => y.Added).First().Added; }
+            get { return item.Timestamps.OrderByDescending(t => t.Added).First().Added; }
         }
-
-        //delete this
-        public List<Ytem> Ytemsx
+        
+        public int BoughtCount
         {
-            get { return item.Ytems; }
+            get { return item.Timestamps.Count; }
+        }
+        
+        private bool expanded;
+        public bool Expanded
+        {
+            get { return expanded; }
             set
             {
-                item.Ytems = value;
+                expanded = value;
                 NotifyPropertyChanged();
             }
         }
-
-        private ObservableCollection<YtemViewModel> ytems;
-        public ObservableCollection<YtemViewModel> Ytems
-        {
-            get { return ytems; }
-            set
-            {
-                ytems = value;
-                NotifyPropertyChanged();
-            }
-        }
-
-        //public List<DateTime> Addeds
-        //{
-        //    get { return ytems.Added; }
-        //    set
-        //    {
-        //        ytems.Added = value;
-        //        NotifyPropertyChanged();
-        //    }
-        // }
     }
 }

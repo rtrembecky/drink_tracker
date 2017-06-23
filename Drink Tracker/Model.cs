@@ -14,13 +14,13 @@ namespace Drink_Tracker
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Bill> Bills { get; set; }
         public DbSet<Item> Items { get; set; }
-        public DbSet<Ytem> Ytems { get; set; }
+        public DbSet<Timestamp> Timestamps { get; set; }
         public DbSet<Drink> Drinks { get; set; }
         public DbSet<Price> Prices { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=c.db");
+            optionsBuilder.UseSqlite("Data Source=d.db");
         }
     }
 
@@ -44,34 +44,21 @@ namespace Drink_Tracker
         public Account Account { get; set; }
     }
 
-    public class Item : ViewModelBase
+    public class Item
     {
         public int ItemId { get; set; }
         public int DrinkId { get; set; }
         public Drink Drink { get; set; }
-        public List<Ytem> Ytems { get; set; }
+        public List<Timestamp> Timestamps { get; set; }
         public float DrinkPrice { get; set; }
 
         public int BillId { get; set; }
         public Bill Bill { get; set; }
-
-        [NotMapped]
-        private bool expanded;
-        [NotMapped]
-        public bool Expanded
-        {
-            get { return expanded; }
-            set
-            {
-                expanded = value;
-                NotifyPropertyChanged();
-            }
-        }
     }
 
-    public class Ytem
+    public class Timestamp
     {
-        public int YtemId { get; set; }
+        public int TimestampId { get; set; }
         public DateTime Added { get; set; }
 
         public int ItemId { get; set; }
@@ -85,8 +72,6 @@ namespace Drink_Tracker
         public string Name { get; set; }
         [InverseProperty("Drink")]
         public List<Price> Prices { get; set; }
-        //public int LastPriceId { get; set; }
-        //public Price LastPrice { get; set; }
         public string Type { get; set; }
         public int VolumeInMl { get; set; }
     }
