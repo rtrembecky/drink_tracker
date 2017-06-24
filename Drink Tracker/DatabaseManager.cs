@@ -166,7 +166,7 @@ namespace Drink_Tracker
             }
         }
 
-        public void EditAccount(Account account)
+        public void UpdateAccount(Account account)
         {
             using (var db = new AccountContext())
             {

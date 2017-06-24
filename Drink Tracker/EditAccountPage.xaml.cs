@@ -99,9 +99,7 @@ namespace Drink_Tracker
                     }
                     ExistenceText.Visibility = Visibility.Collapsed;
                 };
-
-                
-
+                               
                 if (ExistenceText.Visibility == Visibility.Collapsed)
                 {
                     foreach (Account acc in manager.GetAccounts())
@@ -111,14 +109,12 @@ namespace Drink_Tracker
                             acc.Username = Username.Text;
                             acc.Man = Man.IsChecked.Value;
                             acc.WeightInKg = int.Parse(Weight.Text);
+                            manager.UpdateAccount(acc);
                             break;
                         }
                     };
 
                 }
-
-                manager.EditAccount(account);
-
                 this.Frame.Navigate(typeof(AccountsPage));
             }
         }
