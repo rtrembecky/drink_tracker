@@ -86,36 +86,40 @@ namespace Drink_Tracker
                 }
             }
 
-            using (var db = new AccountContext())
+            if (viable)
             {
-                if (viable)
+                DatabaseManager manager = new DatabaseManager();
+
+                foreach (Account existingAcc in manager.GetAccounts())
                 {
-                    foreach (Account existingAcc in db.Accounts)
+                    if (aUsername == existingAcc.Username && account.AccountId != existingAcc.AccountId)
                     {
-                        if (aUsername == existingAcc.Username && account.AccountId != existingAcc.AccountId)
+                        ExistenceText.Visibility = Visibility.Visible;
+                        break;
+                    }
+                    ExistenceText.Visibility = Visibility.Collapsed;
+                };
+
+                
+
+                if (ExistenceText.Visibility == Visibility.Collapsed)
+                {
+                    foreach (Account acc in manager.GetAccounts())
+                    {
+                        if (acc.AccountId == account.AccountId)
                         {
-                            ExistenceText.Visibility = Visibility.Visible;
+                            acc.Username = Username.Text;
+                            acc.Man = Man.IsChecked.Value;
+                            acc.WeightInKg = int.Parse(Weight.Text);
                             break;
                         }
-                        ExistenceText.Visibility = Visibility.Collapsed;
                     };
 
-                    if (ExistenceText.Visibility == Visibility.Collapsed)
-                    {
-                        foreach (Account acc in db.Accounts)
-                        {
-                            if (acc.AccountId == account.AccountId)
-                            {
-                                acc.Username = Username.Text;
-                                acc.Man = Man.IsChecked.Value;
-                                acc.WeightInKg = int.Parse(Weight.Text);
-                                break;
-                            }
-                        };
-                        db.SaveChanges();
-                        this.Frame.Navigate(typeof(AccountsPage));
-                    }
                 }
+
+                manager.EditAccount(account);
+
+                this.Frame.Navigate(typeof(AccountsPage));
             }
         }
 

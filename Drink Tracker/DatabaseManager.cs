@@ -165,6 +165,15 @@ namespace Drink_Tracker
                 db.SaveChanges();
             }
         }
+
+        public void EditAccount(Account account)
+        {
+            using (var db = new AccountContext())
+            {
+                db.Accounts.Update(account);
+                db.SaveChanges();
+            }
+        }
         
         public void RemoveAccount(Account account)
         {
