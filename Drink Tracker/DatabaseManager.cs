@@ -17,6 +17,14 @@ namespace Drink_Tracker
             }
         }
 
+        public List<Drink> GetDrinks()
+        {
+            using (var db = new AccountContext())
+            {
+                return db.Drinks.ToList();
+            }
+        }
+
         public List<Bill> GetBillsByAccount(Account account)
         {
             using (var db = new AccountContext())
@@ -162,6 +170,25 @@ namespace Drink_Tracker
                 a.Bills = new List<Bill>();
                 a.Bills.Add(bill);
                 db.Accounts.Update(a);
+                db.SaveChanges();
+            }
+        }
+
+        public void CreatePrice(Price price)
+        {
+            using (var db = new AccountContext())
+            {
+                db.Prices.Add(price);
+                db.SaveChanges();
+            }
+        }
+
+        public void CreateDrink(Drink drink)
+        {
+            using (var db = new AccountContext())
+            {
+                db.Prices.Add(drink.Prices.ToList().First());
+                db.Drinks.Add(drink);
                 db.SaveChanges();
             }
         }

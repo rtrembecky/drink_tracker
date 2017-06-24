@@ -33,18 +33,15 @@ namespace Drink_Tracker
 
         private void Create_Click(object sender, RoutedEventArgs e)
         {
-            using (var db = new AccountContext())
+            var bill = new Bill
             {
-                var bill = new Bill
-                {
-                    Created = DateTime.Now,
-                    Name = Bill_name.Text
-                };
-                account.Bills = new List<Bill>();
-                account.Bills.Add(bill);
-                db.Accounts.Update(account);
-                db.SaveChanges();
-            }
+                Created = DateTime.Now,
+                Name = Bill_name.Text
+            };
+            account.Bills = new List<Bill>();
+            account.Bills.Add(bill);
+            DatabaseManager manager = new DatabaseManager();
+            manager.UpdateAccount(account);
             this.Frame.Navigate(typeof(BillsPage), account);
         }
 
