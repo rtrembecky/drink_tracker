@@ -174,6 +174,15 @@ namespace Drink_Tracker
             }
         }
 
+        public void CreateAccount(Account a)
+        {
+            using (var db = new AccountContext())
+            {                
+                db.Accounts.Add(a);
+                db.SaveChanges();
+            }
+        }
+
         public void CreatePrice(Price price)
         {
             using (var db = new AccountContext())

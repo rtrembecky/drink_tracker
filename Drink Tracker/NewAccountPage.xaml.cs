@@ -76,34 +76,37 @@ namespace Drink_Tracker
                     NotValidWeightText.Visibility = Visibility.Collapsed;
                 }
             }
-            using (var db = new AccountContext())
+
+            if (viable)
             {
-                if (viable)
+                var account = new Account
                 {
-                    var account = new Account
-                    {
-                        Username = aUsername,
-                        Man = Man.IsChecked.Value,
-                        WeightInKg = aWeight
-                    };
+                    Username = aUsername,
+                    Man = Man.IsChecked.Value,
+                    WeightInKg = aWeight
+                };
 
-                    foreach (Account existingAcc in db.Accounts)
-                    {
-                        if (aUsername == existingAcc.Username)
-                        {
-                            ExistenceText.Visibility = Visibility.Visible;
-                            break;
-                        }
-                        ExistenceText.Visibility = Visibility.Collapsed;
-                    };
+                DatabaseManager manager = new DatabaseManager();
 
-                    if (ExistenceText.Visibility == Visibility.Collapsed)
+                foreach (Account existingAcc in manager.GetAccounts())
+                {
+                    if (aUsername == existingAcc.Username)
                     {
-                        db.Accounts.Add(account);
-                        db.SaveChanges();
-                        this.Frame.Navigate(typeof(AccountsPage));
+                        ExistenceText.Visibility = Visibility.Visible;
+                        break;
                     }
+                    ExistenceText.Visibility = Visibility.Collapsed;
+                };
+
+                if (ExistenceText.Visibility == Visibility.Collapsed)
+                {
+                    account.Username = Username.Text;
+                    account.Man = Man.IsChecked.Value;
+                    account.WeightInKg = int.Parse(Weight.Text);
+                    manager.CreateAccount(account);
+                    this.Frame.Navigate(typeof(AccountsPage));
                 }
+
             }
         }
 
