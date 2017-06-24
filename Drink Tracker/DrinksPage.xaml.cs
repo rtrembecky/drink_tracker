@@ -74,12 +74,9 @@ namespace Drink_Tracker
             ContentDialogResult result = await deleteDialog.ShowAsync();
             if (result == ContentDialogResult.Primary)
             {
-                using (var db = new AccountContext())
-                {
-                    var drink = (sender as FrameworkElement).DataContext as DrinkViewModel;
-                    db.Drinks.Remove(drink.Drink);
-                    db.SaveChanges();
-                }
+                var drink = (sender as FrameworkElement).DataContext as DrinkViewModel;
+                DatabaseManager manager = new DatabaseManager();
+                manager.RemoveDrink(drink.Drink);
                 this.Frame.Navigate(typeof(DrinksPage), billAndType);
             }
         }

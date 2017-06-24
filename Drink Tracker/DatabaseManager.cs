@@ -184,6 +184,15 @@ namespace Drink_Tracker
             }
         }
 
+        public void RemoveDrink(Drink drink)
+        {
+            using (var db = new AccountContext())
+            {
+                db.Drinks.Remove(drink);
+                db.SaveChanges();
+            }
+        }
+
         public void RemoveItem(Item item)
         {
             using (var db = new AccountContext())
