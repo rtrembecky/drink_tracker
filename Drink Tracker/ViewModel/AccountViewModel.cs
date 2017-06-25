@@ -1,8 +1,5 @@
-﻿using System;
+﻿using Drink_Tracker.Model;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.UI.Xaml.Media;
 
 namespace Drink_Tracker.ViewModel

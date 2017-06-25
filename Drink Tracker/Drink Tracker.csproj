@@ -95,23 +95,23 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="BillsPage.xaml.cs">
+    <Compile Include="Pages\BillsPage.xaml.cs">
       <DependentUpon>BillsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\BoolToExpandedIcon.cs" />
     <Compile Include="Converters\BoolToNonVis.cs" />
     <Compile Include="Converters\BoolToVis.cs" />
     <Compile Include="Converters\SexBoolToImage.cs" />
-    <Compile Include="DrinksPage.xaml.cs">
+    <Compile Include="Pages\DrinksPage.xaml.cs">
       <DependentUpon>DrinksPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DrinkTypesPage.xaml.cs">
+    <Compile Include="Pages\DrinkTypesPage.xaml.cs">
       <DependentUpon>DrinkTypesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AccountsPage.xaml.cs">
+    <Compile Include="Pages\AccountsPage.xaml.cs">
       <DependentUpon>AccountsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EditAccountPage.xaml.cs">
+    <Compile Include="Pages\EditAccountPage.xaml.cs">
       <DependentUpon>EditAccountPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Migrations\20170623173342_Init.cs" />
@@ -119,14 +119,14 @@
       <DependentUpon>20170623173342_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\AccountContextModelSnapshot.cs" />
-    <Compile Include="Model.cs" />
-    <Compile Include="NewAccountPage.xaml.cs">
+    <Compile Include="Model\Model.cs" />
+    <Compile Include="Pages\NewAccountPage.xaml.cs">
       <DependentUpon>NewAccountPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NewBillPage.xaml.cs">
+    <Compile Include="Pages\NewBillPage.xaml.cs">
       <DependentUpon>NewBillPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NewDrinkPage.xaml.cs">
+    <Compile Include="Pages\NewDrinkPage.xaml.cs">
       <DependentUpon>NewDrinkPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -134,14 +134,14 @@
     <Compile Include="ViewModel\AccountViewModel.cs" />
     <Compile Include="ViewModel\BillsPageViewModel.cs" />
     <Compile Include="ViewModel\BillViewModel.cs" />
-    <Compile Include="DatabaseManager.cs" />
+    <Compile Include="Model\DatabaseManager.cs" />
     <Compile Include="ViewModel\DrinksPageViewModel.cs" />
     <Compile Include="ViewModel\DrinkViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="ViewModel\ItemsPageViewModel.cs" />
     <Compile Include="ViewModel\ItemViewModel.cs" />
     <Compile Include="ViewModel\TimestampViewModel.cs" />
-    <Compile Include="ItemsPage.xaml.cs" />
+    <Compile Include="Pages\ItemsPage.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -164,39 +164,39 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="BillsPage.xaml">
+    <Page Include="Pages\BillsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DrinksPage.xaml">
+    <Page Include="Pages\DrinksPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DrinkTypesPage.xaml">
+    <Page Include="Pages\DrinkTypesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AccountsPage.xaml">
+    <Page Include="Pages\AccountsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="EditAccountPage.xaml">
+    <Page Include="Pages\EditAccountPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="NewAccountPage.xaml">
+    <Page Include="Pages\NewAccountPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="NewBillPage.xaml">
+    <Page Include="Pages\NewBillPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="NewDrinkPage.xaml">
+    <Page Include="Pages\NewDrinkPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ItemsPage.xaml">
+    <Page Include="Pages\ItemsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

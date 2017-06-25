@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Drink_Tracker
+namespace Drink_Tracker.Model
 {
     public class DatabaseManager
     {

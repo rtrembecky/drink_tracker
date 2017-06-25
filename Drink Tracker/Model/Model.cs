@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
-using Drink_Tracker.ViewModel;
 
-namespace Drink_Tracker
+namespace Drink_Tracker.Model
 {
     public class AccountContext : DbContext
     {
