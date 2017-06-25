@@ -10,10 +10,10 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel>
             <Border x:Name="Header" Style="{StaticResource HeaderBackground}">
-                <TextBlock Name="EditAccountHeader" Text="Edit account" Style="{StaticResource HeaderStyle}"/>
+                <TextBlock Name="EditAccountHeader" Text="{Binding Header}" Style="{StaticResource HeaderStyle}"/>
             </Border>
             <TextBlock Text="Name:" Style="{StaticResource BaseTextBlockStyle}"/>
-            <TextBox Name="Username" PlaceholderText="John Doe"/>
+            <TextBox Name="Username" Text="{Binding Username}" PlaceholderText="John Doe"/>
             <TextBlock Text="Sex:" Style="{StaticResource BaseTextBlockStyle}"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <RadioButton Name="Man" Grid.Column="0" Content="Man" IsChecked="True"/>
@@ -21,7 +21,7 @@
             </StackPanel>
             <TextBlock Text="Weight:" Style="{StaticResource BaseTextBlockStyle}"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBox Name="Weight" Text="70"/>
+                <TextBox Name="Weight" Text="{Binding Weight}"/>
                 <TextBlock Text="kg" VerticalAlignment="Center" Margin="10,0,0,0"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">

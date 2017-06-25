@@ -1,4 +1,5 @@
 ﻿using Drink_Tracker.Model;
+using Drink_Tracker.ViewModel;
 using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -14,15 +15,17 @@ namespace Drink_Tracker
         }
 
         Account account;
+        EditAccountPageViewModel viewModel;
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             account = (Account)e.Parameter;
-            EditAccountHeader.Text = "Editing " + account.Username;
-            Username.Text = account.Username;
+
+            viewModel = new EditAccountPageViewModel(account);
+            this.DataContext = viewModel;
+            
             if (account.Man) Man.IsChecked = true;
                         else Woman.IsChecked = true;
-            Weight.Text = account.WeightInKg.ToString();
 
             base.OnNavigatedTo(e);
         }

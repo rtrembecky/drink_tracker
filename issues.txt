@@ -1,6 +1,3 @@
-viewmodely pre zostavajuce stranky - rucne nastavovanie v code behind by v nasom projekte asi nemalo existovat (nastavovanie vsetkych textov v OnNavigatedTo)
-- zostava len EditAccountPage
-
 low prio napady
 set cancel clicks on "new X" and "edit X" pages to proper back, not redirect
 ytemspage pisat okrem casu polozky aj jej dalsie udaje aby sa neplietli male a velke piva v zozname atd
