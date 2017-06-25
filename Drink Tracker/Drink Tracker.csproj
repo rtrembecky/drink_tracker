@@ -129,6 +129,9 @@
     <Compile Include="Pages\NewDrinkPage.xaml.cs">
       <DependentUpon>NewDrinkPage.xaml</DependentUpon>
     </Compile>
+	<Compile Include="Pages\ItemsPage.xaml.cs">
+	  <DependentUpon>ItemsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\AccountsPageViewModel.cs" />
     <Compile Include="ViewModel\AccountViewModel.cs" />
@@ -141,7 +144,6 @@
     <Compile Include="ViewModel\ItemsPageViewModel.cs" />
     <Compile Include="ViewModel\ItemViewModel.cs" />
     <Compile Include="ViewModel\TimestampViewModel.cs" />
-    <Compile Include="Pages\ItemsPage.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
