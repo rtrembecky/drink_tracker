@@ -1,4 +1,5 @@
 ﻿using Drink_Tracker.Model;
+using Drink_Tracker.ViewModel;
 using System;
 using System.Collections.Generic;
 using Windows.UI.Xaml;
@@ -15,47 +16,16 @@ namespace Drink_Tracker
         }
 
         BillAndType billAndType;
+        NewDrinkPageViewModel viewModel;
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             billAndType = (BillAndType)e.Parameter;
-            base.OnNavigatedTo(e);
 
-            HeaderText.Text = "New custom " + billAndType.Type;
-            
-            switch (billAndType.Type)
-            {
-                case "Beer":
-                    ABV.Text = "4";
-                    Volume.Text = "5";
-                    Cost.Text = "30";
-                    break;
-                case "Wine":
-                    ABV.Text = "12";
-                    Volume.Text = "2";
-                    Cost.Text = "40";
-                    break;
-                case "Shot":
-                    ABV.Text = "38";
-                    Volume.Text = "0.4";
-                    Cost.Text = "40";
-                    break;
-                case "Nonalco":
-                    ABV.Text = "0";
-                    Volume.Text = "5";
-                    Cost.Text = "30";
-                    break;
-                case "Cocktail":
-                    ABV.Text = "15";
-                    Volume.Text = "1.8";
-                    Cost.Text = "80";
-                    break;
-                case "Other":
-                    ABV.Text = "0";
-                    Volume.Text = "0";
-                    Cost.Text = "20";
-                    break;
-            }
+            viewModel = new NewDrinkPageViewModel(billAndType);
+            this.DataContext = viewModel;
+
+            base.OnNavigatedTo(e);
         }
 
         private void Create_Click(object sender, RoutedEventArgs e)

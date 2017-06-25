@@ -142,6 +142,7 @@
     <Compile Include="Model\DatabaseManager.cs" />
     <Compile Include="ViewModel\DrinksPageViewModel.cs" />
     <Compile Include="ViewModel\DrinkViewModel.cs" />
+    <Compile Include="ViewModel\NewDrinkPageViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="ViewModel\ItemsPageViewModel.cs" />
     <Compile Include="ViewModel\ItemViewModel.cs" />
