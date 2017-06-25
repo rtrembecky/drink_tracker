@@ -95,6 +95,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\AccountContext.cs" />
+    <Compile Include="Model\Passers.cs" />
     <Compile Include="Pages\BillsPage.xaml.cs">
       <DependentUpon>BillsPage.xaml</DependentUpon>
     </Compile>
@@ -119,7 +121,7 @@
       <DependentUpon>20170623173342_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\AccountContextModelSnapshot.cs" />
-    <Compile Include="Model\Model.cs" />
+    <Compile Include="Model\DatabaseModel.cs" />
     <Compile Include="Pages\NewAccountPage.xaml.cs">
       <DependentUpon>NewAccountPage.xaml</DependentUpon>
     </Compile>
@@ -129,8 +131,8 @@
     <Compile Include="Pages\NewDrinkPage.xaml.cs">
       <DependentUpon>NewDrinkPage.xaml</DependentUpon>
     </Compile>
-	<Compile Include="Pages\ItemsPage.xaml.cs">
-	  <DependentUpon>ItemsPage.xaml</DependentUpon>
+    <Compile Include="Pages\ItemsPage.xaml.cs">
+      <DependentUpon>ItemsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\AccountsPageViewModel.cs" />

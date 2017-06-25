@@ -1,25 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Drink_Tracker.Model
 {
-    public class AccountContext : DbContext
-    {
-        public DbSet<Account> Accounts { get; set; }
-        public DbSet<Bill> Bills { get; set; }
-        public DbSet<Item> Items { get; set; }
-        public DbSet<Timestamp> Timestamps { get; set; }
-        public DbSet<Drink> Drinks { get; set; }
-        public DbSet<Price> Prices { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlite("Data Source=d.db");
-        }
-    }
-
     public class Account
     {
         public int AccountId { get; set; }
@@ -79,17 +63,5 @@ namespace Drink_Tracker.Model
 
         public int DrinkId { get; set; }
         public Drink Drink { get; set; }
-    }
-
-    public class BillAndType
-    {
-        public Bill Bill { get; set; }
-        public string Type { get; set; }
-    }
-
-    public class DrinkAndPrice
-    {
-        public Drink Drink { get; set; }
-        public Price Price { get; set; }
     }
 }
