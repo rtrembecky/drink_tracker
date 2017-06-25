@@ -14,7 +14,6 @@ namespace Drink_Tracker.ViewModel
             item = i;
             timestamps = new ObservableCollection<TimestampViewModel>(item.Timestamps.Select(timestamp => new TimestampViewModel(timestamp)));
             expanded = false;
-            //createdText = Created.ToString("HH:mm:ss") + ", " + Created.ToString("dd.MM");
         }
 
         private ObservableCollection<TimestampViewModel> timestamps;

@@ -126,7 +126,7 @@ namespace Drink_Tracker
                 };
 
                 Price price = new Price() { Value = float.Parse(Cost.Text) };
-                //TODO: ak price uz je v db, tak
+                //TODO?: ak price uz je v db, tak
                 // price = najdeny price
                 // inak ho tam pridaj
                 price.Drink = drink;

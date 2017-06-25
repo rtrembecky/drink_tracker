@@ -11,7 +11,6 @@ namespace Drink_Tracker.ViewModel
         public AccountViewModel(Account a)
         {
             account = a;
-            // Sex = a.Man ? man : woman;
         }
 
         public Account Account
@@ -35,17 +34,6 @@ namespace Drink_Tracker.ViewModel
             set
             {
                 account.WeightInKg = value;
-                NotifyPropertyChanged();
-            }
-        }
-
-        private ImageSource sex;
-        public ImageSource Sex
-        {
-            get { return sex; }
-            set
-            {
-                sex = value;
                 NotifyPropertyChanged();
             }
         }
