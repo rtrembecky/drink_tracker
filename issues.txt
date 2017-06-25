@@ -1,3 +1,5 @@
+viewmodely pre zostavajuce stranky - rucne nastavovanie v code behind by v nasom projekte asi nemalo existovat (napriklad NewDrinkPage - nastavovanie vsetkych textov v OnNavigatedTo)
+
 low prio napady
 set cancel clicks on "new X" and "edit X" pages to proper back, not redirect
 ytemspage pisat okrem casu polozky aj jej dalsie udaje aby sa neplietli male a velke piva v zozname atd
